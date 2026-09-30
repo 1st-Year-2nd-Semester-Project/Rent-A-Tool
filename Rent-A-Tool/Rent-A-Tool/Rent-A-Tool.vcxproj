@@ -134,10 +134,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dashboard.cpp" />
+    <ClCompile Include="dashboard1.cpp" />
     <ClCompile Include="loginform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dashboard.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="dashboard1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="loginform.h">
@@ -147,6 +151,9 @@
   <ItemGroup>
     <EmbeddedResource Include="dashboard.resx">
       <DependentUpon>dashboard.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dashboard1.resx">
+      <DependentUpon>dashboard1.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="loginform.resx">
       <DependentUpon>loginform.h</DependentUpon>
