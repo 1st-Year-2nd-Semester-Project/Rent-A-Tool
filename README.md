@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" alt="Rent A Tool logo" width="140">
+  <img src="assets/logo.png" alt="Rent A Tool logo" height="500">
 </p>
 
 <h1 align="center">Rent A Tool</h1>
