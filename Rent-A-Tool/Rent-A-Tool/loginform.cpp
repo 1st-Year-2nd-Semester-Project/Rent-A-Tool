@@ -1,4 +1,5 @@
 #include "loginform.h"
+#include "dashboard.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -7,6 +8,6 @@ using namespace System::Windows::Forms;
 int main(array<String^>^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	RentATool::loginform form;
+	RentATool:: dashboard  form;
 	Application::Run(% form);
 }
