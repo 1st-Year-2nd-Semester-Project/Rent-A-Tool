@@ -11,15 +11,19 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
     id        INT AUTO_INCREMENT PRIMARY KEY,
     username  VARCHAR(50)  NOT NULL UNIQUE,
-    password  VARCHAR(255) NOT NULL,   -- plain text for test DB only; hash in production
+    password  VARCHAR(100) NOT NULL,   -- salted SHA-256, format "<saltHex>$<hashHex>" — see Data/PasswordHash.h
     role      ENUM('Admin', 'Cashier') NOT NULL DEFAULT 'Cashier',
     full_name VARCHAR(100),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Login with the plain-text passwords below; the hashes are precomputed with the
+-- same salted-SHA-256 scheme PasswordHash.h uses, so TryLogin() verifies correctly.
+-- admin    / admin123
+-- cashier  / cashier123
 INSERT INTO users (username, password, role, full_name) VALUES
-('admin',   'admin123',   'Admin',   'Chukka Fernando'),
-('cashier', 'cashier123', 'Cashier', 'Nimal Perera');
+('admin',   '000102030405060708090a0b0c0d0e0f$b38e1e550428e26561b2ae3e1a969b8fc6f4e596d82fd4055de60082dd2d410f', 'Admin',   'Chukka Fernando'),
+('cashier', '000102030405060708090a0b0c0d0e0f$d5585be436c6216c0e46cc599b29cf6d12c80a46bb5817afbc60237380b41a87', 'Cashier', 'Nimal Perera');
 
 -- ---------- Tools (Inventory page) ----------
 DROP TABLE IF EXISTS tools;

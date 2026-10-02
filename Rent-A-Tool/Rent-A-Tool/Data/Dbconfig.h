@@ -2,6 +2,7 @@
 // Requires: MySql.Data.dll (MySQL Connector/NET) added as a project Reference
 // NuGet: Install-Package MySql.Data
 #include "authresult.h"
+#include "PasswordHash.h"
 using namespace System;
 using namespace MySql::Data::MySqlClient;
 
@@ -11,7 +12,7 @@ public:
     static String^ Server = "localhost";
     static String^ Database = "rent_a_tool";
     static String^ User = "root";
-    static String^ Password = "root";
+    static String^ Password = "root";   // leave empty if your MySQL user has no password (e.g. default XAMPP root)
 
     static String^ ConnectionString() {
         return String::Format("Server={0};Database={1};Uid={2};Pwd={3};", Server, Database, User, Password);
@@ -34,16 +35,20 @@ public:
         MySqlConnection^ conn = nullptr;
         try {
             conn = Db::GetConnection();
+            // Look up by username only — the stored password is now a salted hash,
+            // so the comparison has to happen in code, not in the SQL WHERE clause.
             MySqlCommand^ cmd = gcnew MySqlCommand(
-                "SELECT role, full_name FROM users WHERE username=@u AND password=@p", conn);
+                "SELECT password, role, full_name FROM users WHERE username=@u", conn);
             cmd->Parameters->AddWithValue("@u", username);
-            cmd->Parameters->AddWithValue("@p", password);
 
             MySqlDataReader^ reader = cmd->ExecuteReader();
             if (reader->Read()) {
-                result->Success = true;
-                result->Role = reader["role"]->ToString();
-                result->FullName = reader["full_name"]->ToString();
+                String^ storedHash = reader["password"]->ToString();
+                if (PasswordHash::Verify(password, storedHash)) {
+                    result->Success = true;
+                    result->Role = reader["role"]->ToString();
+                    result->FullName = reader["full_name"]->ToString();
+                }
             }
             reader->Close();
 
@@ -73,10 +78,12 @@ public:
             int count = Convert::ToInt32(check->ExecuteScalar());
             if (count > 0) return "That username is already taken.";
 
+            String^ hashed = PasswordHash::Hash(password);
+
             MySqlCommand^ cmd = gcnew MySqlCommand(
                 "INSERT INTO users (username, password, role, full_name) VALUES (@u, @p, @r, @f)", conn);
             cmd->Parameters->AddWithValue("@u", username);
-            cmd->Parameters->AddWithValue("@p", password);   // plain text for test DB only
+            cmd->Parameters->AddWithValue("@p", hashed);
             cmd->Parameters->AddWithValue("@r", role);
             cmd->Parameters->AddWithValue("@f", fullName);
             cmd->ExecuteNonQuery();
