@@ -24,6 +24,9 @@
     <ClCompile Include="dashboard1.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="Signupform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="loginform.h">
@@ -33,6 +36,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="dashboard1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dbconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="authresult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Signupform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

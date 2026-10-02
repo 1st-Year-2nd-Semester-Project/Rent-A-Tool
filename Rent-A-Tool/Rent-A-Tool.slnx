@@ -3,5 +3,9 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Folder Name="/Data/">
+    <File Path="Rent-A-Tool/authresult.h" />
+    <File Path="Rent-A-Tool/Dbconfig.h" />
+  </Folder>
   <Project Path="Rent-A-Tool/Rent-A-Tool.vcxproj" />
 </Solution>

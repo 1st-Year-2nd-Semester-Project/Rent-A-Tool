@@ -1,4 +1,7 @@
 #pragma once
+#include "../Rent-A-Tool/Data/Dbconfig.h"   // adjust path to wherever you put DbConfig.h
+#include "dashboard1.h"         // adjust path/filename to match your actual dashboard header
+#include "signupform.h"
 
 namespace RentATool {
 
@@ -44,6 +47,7 @@ namespace RentATool {
 	private: System::Windows::Forms::Button^ loginbtn;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ signupbtn;
+	private: System::Windows::Forms::CheckBox^ chkShowPassword;
 
 
 
@@ -55,7 +59,7 @@ namespace RentATool {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -73,6 +77,7 @@ namespace RentATool {
 			this->loginbtn = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->signupbtn = (gcnew System::Windows::Forms::Button());
+			this->chkShowPassword = (gcnew System::Windows::Forms::CheckBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->logopic))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -119,6 +124,7 @@ namespace RentATool {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(190, 31);
 			this->textBox1->TabIndex = 3;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &loginform::textBox1_TextChanged);
 			// 
 			// textBox2
 			// 
@@ -128,6 +134,20 @@ namespace RentATool {
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(190, 31);
 			this->textBox2->TabIndex = 4;
+			this->textBox2->UseSystemPasswordChar = true;
+			// 
+			// chkShowPassword
+			// 
+			this->chkShowPassword->AutoSize = true;
+			this->chkShowPassword->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular));
+			this->chkShowPassword->ForeColor = System::Drawing::Color::White;
+			this->chkShowPassword->Location = System::Drawing::Point(170, 388);
+			this->chkShowPassword->Name = L"chkShowPassword";
+			this->chkShowPassword->Size = System::Drawing::Size(130, 24);
+			this->chkShowPassword->TabIndex = 4;
+			this->chkShowPassword->Text = L"Show password";
+			this->chkShowPassword->UseVisualStyleBackColor = true;
+			this->chkShowPassword->CheckedChanged += gcnew System::EventHandler(this, &loginform::chkShowPassword_CheckedChanged);
 			// 
 			// loginbtn
 			// 
@@ -141,6 +161,7 @@ namespace RentATool {
 			this->loginbtn->TabIndex = 5;
 			this->loginbtn->Text = L"Login";
 			this->loginbtn->UseVisualStyleBackColor = false;
+			this->loginbtn->Click += gcnew System::EventHandler(this, &loginform::loginbtn_Click);
 			// 
 			// label1
 			// 
@@ -167,6 +188,7 @@ namespace RentATool {
 			this->signupbtn->Text = L"SignUP";
 			this->signupbtn->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->signupbtn->UseVisualStyleBackColor = false;
+			this->signupbtn->Click += gcnew System::EventHandler(this, &loginform::signupbtn_Click);
 			// 
 			// loginform
 			// 
@@ -175,6 +197,7 @@ namespace RentATool {
 			this->BackColor = System::Drawing::Color::DarkSlateGray;
 			this->ClientSize = System::Drawing::Size(405, 618);
 			this->Controls->Add(this->signupbtn);
+			this->Controls->Add(this->chkShowPassword);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->loginbtn);
 			this->Controls->Add(this->textBox2);
@@ -200,5 +223,47 @@ namespace RentATool {
 	}
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-};
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void loginbtn_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		String^ username = textBox1->Text->Trim();
+		String^ password = textBox2->Text;
+
+		if (username->Length == 0 || password->Length == 0) {
+			MessageBox::Show(this, L"Please enter both username and password.", L"Login",
+				MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
+		}
+
+		loginbtn->Enabled = false;   // stop double-clicks while the DB call runs
+		AuthResult^ result = Auth::TryLogin(username, password);
+		loginbtn->Enabled = true;
+
+		if (result->Success) {
+			MessageBox::Show(this, L"Welcome, " + result->FullName + L" (" + result->Role + L")",
+				L"Login successful", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+			this->Hide();
+			dashboard1^ dash = gcnew dashboard1();
+			dash->ShowDialog();
+			this->Close();
+		}
+		else {
+			MessageBox::Show(this, L"Invalid username or password.", L"Login failed",
+				MessageBoxButtons::OK, MessageBoxIcon::Error);
+			textBox2->Clear();
+			textBox2->Focus();
+		}
+	}
+
+	private: System::Void signupbtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		signupform^ su = gcnew signupform();
+		su->ShowDialog(this);
+	}
+
+	private: System::Void chkShowPassword_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		textBox2->UseSystemPasswordChar = !chkShowPassword->Checked;
+	}
+	};
 }

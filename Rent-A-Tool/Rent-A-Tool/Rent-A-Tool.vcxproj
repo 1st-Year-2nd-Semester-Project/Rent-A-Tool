@@ -125,6 +125,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector NET 26.7\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -136,15 +139,21 @@
     <ClCompile Include="dashboard.cpp" />
     <ClCompile Include="dashboard1.cpp" />
     <ClCompile Include="loginform.cpp" />
+    <ClCompile Include="Signupform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="authresult.h" />
     <ClInclude Include="dashboard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="dashboard1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Dbconfig.h" />
     <ClInclude Include="loginform.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Signupform.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -157,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="loginform.resx">
       <DependentUpon>loginform.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Signupform.resx">
+      <DependentUpon>Signupform.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

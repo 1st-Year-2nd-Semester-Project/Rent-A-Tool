@@ -54,6 +54,10 @@ namespace RentATool {
 
 
 
+
+
+
+
 	protected:
 
 	private:
@@ -102,7 +106,8 @@ namespace RentATool {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1262, 28);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(948, 24);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			this->menuStrip1->ItemClicked += gcnew System::Windows::Forms::ToolStripItemClickedEventHandler(this, &dashboard1::menuStrip1_ItemClicked);
@@ -111,7 +116,7 @@ namespace RentATool {
 			// 
 			this->homeToolStripMenuItem->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->homeToolStripMenuItem->Name = L"homeToolStripMenuItem";
-			this->homeToolStripMenuItem->Size = System::Drawing::Size(64, 24);
+			this->homeToolStripMenuItem->Size = System::Drawing::Size(52, 20);
 			this->homeToolStripMenuItem->Text = L"Home";
 			// 
 			// toolsToolStripMenuItem
@@ -122,32 +127,32 @@ namespace RentATool {
 			});
 			this->toolsToolStripMenuItem->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->toolsToolStripMenuItem->Name = L"toolsToolStripMenuItem";
-			this->toolsToolStripMenuItem->Size = System::Drawing::Size(58, 24);
+			this->toolsToolStripMenuItem->Size = System::Drawing::Size(47, 20);
 			this->toolsToolStripMenuItem->Text = L"Tools";
 			// 
 			// addToolToolStripMenuItem
 			// 
 			this->addToolToolStripMenuItem->Name = L"addToolToolStripMenuItem";
-			this->addToolToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->addToolToolStripMenuItem->Size = System::Drawing::Size(143, 22);
 			this->addToolToolStripMenuItem->Text = L"Add Tool";
 			// 
 			// removeToolToolStripMenuItem
 			// 
 			this->removeToolToolStripMenuItem->Name = L"removeToolToolStripMenuItem";
-			this->removeToolToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->removeToolToolStripMenuItem->Size = System::Drawing::Size(143, 22);
 			this->removeToolToolStripMenuItem->Text = L"Remove Tool";
 			// 
 			// editToolsToolStripMenuItem
 			// 
 			this->editToolsToolStripMenuItem->Name = L"editToolsToolStripMenuItem";
-			this->editToolsToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->editToolsToolStripMenuItem->Size = System::Drawing::Size(143, 22);
 			this->editToolsToolStripMenuItem->Text = L"Edit Tools";
 			// 
 			// rentalsToolStripMenuItem
 			// 
 			this->rentalsToolStripMenuItem->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->rentalsToolStripMenuItem->Name = L"rentalsToolStripMenuItem";
-			this->rentalsToolStripMenuItem->Size = System::Drawing::Size(71, 24);
+			this->rentalsToolStripMenuItem->Size = System::Drawing::Size(57, 20);
 			this->rentalsToolStripMenuItem->Text = L"Rentals";
 			// 
 			// customersToolStripMenuItem
@@ -158,32 +163,32 @@ namespace RentATool {
 			});
 			this->customersToolStripMenuItem->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->customersToolStripMenuItem->Name = L"customersToolStripMenuItem";
-			this->customersToolStripMenuItem->Size = System::Drawing::Size(92, 24);
+			this->customersToolStripMenuItem->Size = System::Drawing::Size(76, 20);
 			this->customersToolStripMenuItem->Text = L"Customers";
 			// 
 			// addCustomerToolStripMenuItem
 			// 
 			this->addCustomerToolStripMenuItem->Name = L"addCustomerToolStripMenuItem";
-			this->addCustomerToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->addCustomerToolStripMenuItem->Size = System::Drawing::Size(172, 22);
 			this->addCustomerToolStripMenuItem->Text = L"Add Customer";
 			// 
 			// editCustomerToolStripMenuItem
 			// 
 			this->editCustomerToolStripMenuItem->Name = L"editCustomerToolStripMenuItem";
-			this->editCustomerToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->editCustomerToolStripMenuItem->Size = System::Drawing::Size(172, 22);
 			this->editCustomerToolStripMenuItem->Text = L"Edit Customer";
 			// 
 			// removeCustomerToolStripMenuItem
 			// 
 			this->removeCustomerToolStripMenuItem->Name = L"removeCustomerToolStripMenuItem";
-			this->removeCustomerToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->removeCustomerToolStripMenuItem->Size = System::Drawing::Size(172, 22);
 			this->removeCustomerToolStripMenuItem->Text = L"Remove Customer";
 			// 
 			// contactToolStripMenuItem
 			// 
 			this->contactToolStripMenuItem->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->contactToolStripMenuItem->Name = L"contactToolStripMenuItem";
-			this->contactToolStripMenuItem->Size = System::Drawing::Size(74, 24);
+			this->contactToolStripMenuItem->Size = System::Drawing::Size(61, 20);
 			this->contactToolStripMenuItem->Text = L"Contact";
 			// 
 			// chart1
@@ -195,13 +200,14 @@ namespace RentATool {
 			this->chart1->ChartAreas->Add(chartArea2);
 			legend2->Name = L"Legend1";
 			this->chart1->Legends->Add(legend2);
-			this->chart1->Location = System::Drawing::Point(86, 161);
+			this->chart1->Location = System::Drawing::Point(79, 130);
+			this->chart1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->chart1->Name = L"chart1";
 			series2->ChartArea = L"ChartArea1";
 			series2->Legend = L"Legend1";
 			series2->Name = L"Series1";
 			this->chart1->Series->Add(series2);
-			this->chart1->Size = System::Drawing::Size(798, 461);
+			this->chart1->Size = System::Drawing::Size(562, 375);
 			this->chart1->TabIndex = 1;
 			this->chart1->Text = L"chart1";
 			// 
@@ -210,9 +216,10 @@ namespace RentATool {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 36, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(38, 41);
+			this->label1->Location = System::Drawing::Point(28, 33);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(755, 69);
+			this->label1->Size = System::Drawing::Size(613, 55);
 			this->label1->TabIndex = 2;
 			this->label1->Text = L"Welcome to Rental a Tool ";
 			this->label1->Click += gcnew System::EventHandler(this, &dashboard1::label1_Click);
@@ -222,24 +229,26 @@ namespace RentATool {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(98, 110);
+			this->label2->Location = System::Drawing::Point(74, 89);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(138, 36);
+			this->label2->Size = System::Drawing::Size(114, 29);
 			this->label2->TabIndex = 3;
 			this->label2->Text = L"Overview";
 			this->label2->Click += gcnew System::EventHandler(this, &dashboard1::label2_Click);
 			// 
 			// dashboard1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1262, 673);
+			this->ClientSize = System::Drawing::Size(948, 553);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->chart1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
-			this->MinimumSize = System::Drawing::Size(1280, 720);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->MinimumSize = System::Drawing::Size(964, 592);
 			this->Name = L"dashboard1";
 			this->Text = L"dashboard1";
 			this->Load += gcnew System::EventHandler(this, &dashboard1::dashboard1_Load);
