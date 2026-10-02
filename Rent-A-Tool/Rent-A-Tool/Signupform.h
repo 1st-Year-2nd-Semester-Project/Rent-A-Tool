@@ -50,6 +50,7 @@ namespace RentATool {
 #pragma region Windows Form Designer generated code
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(signupform::typeid));
 			this->lblTitle = (gcnew System::Windows::Forms::Label());
 			this->lblFullName = (gcnew System::Windows::Forms::Label());
 			this->lblUsername = (gcnew System::Windows::Forms::Label());
@@ -63,113 +64,113 @@ namespace RentATool {
 			this->btnSignUp = (gcnew System::Windows::Forms::Button());
 			this->btnBack = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
-			//
+			// 
 			// lblTitle
-			//
+			// 
 			this->lblTitle->AutoSize = true;
 			this->lblTitle->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold));
 			this->lblTitle->ForeColor = System::Drawing::Color::White;
 			this->lblTitle->Location = System::Drawing::Point(39, 30);
 			this->lblTitle->Name = L"lblTitle";
-			this->lblTitle->Size = System::Drawing::Size(170, 32);
+			this->lblTitle->Size = System::Drawing::Size(190, 29);
 			this->lblTitle->TabIndex = 0;
 			this->lblTitle->Text = L"Create Account";
-			//
+			// 
 			// lblFullName
-			//
+			// 
 			this->lblFullName->AutoSize = true;
-			this->lblFullName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular));
+			this->lblFullName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
 			this->lblFullName->ForeColor = System::Drawing::Color::White;
 			this->lblFullName->Location = System::Drawing::Point(39, 95);
 			this->lblFullName->Name = L"lblFullName";
-			this->lblFullName->Size = System::Drawing::Size(90, 20);
+			this->lblFullName->Size = System::Drawing::Size(84, 20);
 			this->lblFullName->TabIndex = 1;
 			this->lblFullName->Text = L"Full Name:";
-			//
+			// 
 			// lblUsername
-			//
+			// 
 			this->lblUsername->AutoSize = true;
-			this->lblUsername->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular));
+			this->lblUsername->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
 			this->lblUsername->ForeColor = System::Drawing::Color::White;
 			this->lblUsername->Location = System::Drawing::Point(39, 150);
 			this->lblUsername->Name = L"lblUsername";
-			this->lblUsername->Size = System::Drawing::Size(92, 20);
+			this->lblUsername->Size = System::Drawing::Size(87, 20);
 			this->lblUsername->TabIndex = 2;
 			this->lblUsername->Text = L"Username:";
-			//
+			// 
 			// lblPassword
-			//
+			// 
 			this->lblPassword->AutoSize = true;
-			this->lblPassword->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular));
+			this->lblPassword->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
 			this->lblPassword->ForeColor = System::Drawing::Color::White;
 			this->lblPassword->Location = System::Drawing::Point(39, 205);
 			this->lblPassword->Name = L"lblPassword";
-			this->lblPassword->Size = System::Drawing::Size(90, 20);
+			this->lblPassword->Size = System::Drawing::Size(82, 20);
 			this->lblPassword->TabIndex = 3;
 			this->lblPassword->Text = L"Password:";
-			//
+			// 
 			// lblConfirm
-			//
+			// 
 			this->lblConfirm->AutoSize = true;
-			this->lblConfirm->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular));
+			this->lblConfirm->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
 			this->lblConfirm->ForeColor = System::Drawing::Color::White;
 			this->lblConfirm->Location = System::Drawing::Point(39, 260);
 			this->lblConfirm->Name = L"lblConfirm";
-			this->lblConfirm->Size = System::Drawing::Size(140, 20);
+			this->lblConfirm->Size = System::Drawing::Size(141, 20);
 			this->lblConfirm->TabIndex = 4;
 			this->lblConfirm->Text = L"Confirm Password:";
-			//
+			// 
 			// txtFullName
-			//
-			this->txtFullName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular));
+			// 
+			this->txtFullName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
 			this->txtFullName->Location = System::Drawing::Point(190, 93);
 			this->txtFullName->Name = L"txtFullName";
-			this->txtFullName->Size = System::Drawing::Size(190, 27);
+			this->txtFullName->Size = System::Drawing::Size(190, 26);
 			this->txtFullName->TabIndex = 6;
-			//
+			// 
 			// txtUsername
-			//
-			this->txtUsername->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular));
+			// 
+			this->txtUsername->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
 			this->txtUsername->Location = System::Drawing::Point(190, 148);
 			this->txtUsername->Name = L"txtUsername";
-			this->txtUsername->Size = System::Drawing::Size(190, 27);
+			this->txtUsername->Size = System::Drawing::Size(190, 26);
 			this->txtUsername->TabIndex = 7;
-			//
+			// 
 			// txtPassword
-			//
-			this->txtPassword->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular));
+			// 
+			this->txtPassword->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
 			this->txtPassword->Location = System::Drawing::Point(190, 203);
 			this->txtPassword->Name = L"txtPassword";
-			this->txtPassword->Size = System::Drawing::Size(190, 27);
+			this->txtPassword->Size = System::Drawing::Size(190, 26);
 			this->txtPassword->TabIndex = 8;
 			this->txtPassword->UseSystemPasswordChar = true;
-			//
+			// 
 			// txtConfirm
-			//
-			this->txtConfirm->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular));
+			// 
+			this->txtConfirm->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
 			this->txtConfirm->Location = System::Drawing::Point(190, 258);
 			this->txtConfirm->Name = L"txtConfirm";
-			this->txtConfirm->Size = System::Drawing::Size(190, 27);
+			this->txtConfirm->Size = System::Drawing::Size(190, 26);
 			this->txtConfirm->TabIndex = 9;
 			this->txtConfirm->UseSystemPasswordChar = true;
-			//
+			// 
 			// chkShowPassword
-			//
+			// 
 			this->chkShowPassword->AutoSize = true;
-			this->chkShowPassword->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular));
+			this->chkShowPassword->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
 			this->chkShowPassword->ForeColor = System::Drawing::Color::White;
 			this->chkShowPassword->Location = System::Drawing::Point(190, 288);
 			this->chkShowPassword->Name = L"chkShowPassword";
-			this->chkShowPassword->Size = System::Drawing::Size(130, 24);
+			this->chkShowPassword->Size = System::Drawing::Size(125, 21);
 			this->chkShowPassword->TabIndex = 10;
 			this->chkShowPassword->Text = L"Show password";
 			this->chkShowPassword->UseVisualStyleBackColor = true;
 			this->chkShowPassword->CheckedChanged += gcnew System::EventHandler(this, &signupform::chkShowPassword_CheckedChanged);
-			//
+			// 
 			// btnSignUp
-			//
+			// 
 			this->btnSignUp->BackColor = System::Drawing::Color::CadetBlue;
-			this->btnSignUp->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular));
+			this->btnSignUp->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13));
 			this->btnSignUp->ForeColor = System::Drawing::Color::Black;
 			this->btnSignUp->Location = System::Drawing::Point(39, 325);
 			this->btnSignUp->Name = L"btnSignUp";
@@ -178,12 +179,12 @@ namespace RentATool {
 			this->btnSignUp->Text = L"Sign Up";
 			this->btnSignUp->UseVisualStyleBackColor = false;
 			this->btnSignUp->Click += gcnew System::EventHandler(this, &signupform::btnSignUp_Click);
-			//
+			// 
 			// btnBack
-			//
+			// 
 			this->btnBack->BackColor = System::Drawing::Color::DeepSkyBlue;
 			this->btnBack->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnBack->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular));
+			this->btnBack->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13));
 			this->btnBack->Location = System::Drawing::Point(230, 325);
 			this->btnBack->Name = L"btnBack";
 			this->btnBack->Size = System::Drawing::Size(150, 38);
@@ -191,9 +192,9 @@ namespace RentATool {
 			this->btnBack->Text = L"Back to Login";
 			this->btnBack->UseVisualStyleBackColor = false;
 			this->btnBack->Click += gcnew System::EventHandler(this, &signupform::btnBack_Click);
-			//
+			// 
 			// signupform
-			//
+			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::DarkSlateGray;
@@ -210,6 +211,7 @@ namespace RentATool {
 			this->Controls->Add(this->chkShowPassword);
 			this->Controls->Add(this->btnSignUp);
 			this->Controls->Add(this->btnBack);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximumSize = System::Drawing::Size(436, 439);
 			this->MinimumSize = System::Drawing::Size(436, 439);
 			this->Name = L"signupform";
@@ -217,6 +219,7 @@ namespace RentATool {
 			this->Text = L"Rent-A-Tool - Sign Up";
 			this->ResumeLayout(false);
 			this->PerformLayout();
+
 		}
 #pragma endregion
 
