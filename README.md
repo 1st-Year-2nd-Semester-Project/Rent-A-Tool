@@ -1,87 +1,192 @@
 <p align="center">
-  <img src="assets/logo.png" alt="Rent A Tool logo" height="500">
+  <img src="assets/logo.png" alt="Rent A Tool logo" height="180">
 </p>
 
-<h1 align="center">Rent A Tool</h1>
-<p align="center">A Windows desktop app for managing tool rentals — inventory, customers, rentals, returns, and payments.</p>
+<h1 align="center">Rent-A-Tool</h1>
+
+<p align="center">
+  A Windows desktop application for managing tool rentals — inventory, customers, rentals, returns, and payments.
+</p>
+
+<p align="center">
+  <img alt="Platform" src="https://img.shields.io/badge/platform-Windows-blue?logo=windows">
+  <img alt="Framework" src="https://img.shields.io/badge/.NET-4.7.2-purple?logo=dotnet">
+  <img alt="Language" src="https://img.shields.io/badge/language-C%2B%2B%2FCLI-00599C?logo=cplusplus">
+  <img alt="Database" src="https://img.shields.io/badge/database-MySQL-4479A1?logo=mysql&logoColor=white">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-green">
+  <img alt="Release" src="https://img.shields.io/github/v/release/1st-Year-2nd-Semester-Project/Rent-A-Tool">
+</p>
 
 ---
 
-## Features
+## ✨ Features
 
-- 🔐 **Login** with role-based access (Admin / Cashier)
-- 📊 **Dashboard** — rentals today, overdue returns, revenue, tool availability
-- 🧰 **Tool Inventory** — add, edit, and track tool status
-- 📝 **Rentals** — start a new rental (customer, tools, dates, deposit) and track active ones
-- 👤 **Customers** — profiles, rental history, blacklist flag
-- ⚙️ **Settings** — rates, late fee rules, users, backup
-
-## Tech Stack
-
-| Layer | Choice |
+| Module | Description |
 |---|---|
-| UI | C++/CLI, Windows Forms |
-| Database | MySQL |
-| Platform | Windows, .NET Framework 4.8 |
+| 🔐 **Login / Sign Up** | Role-based access control (Admin / Cashier) with password hashing |
+| 📊 **Dashboard** | KPI cards (rentals today, overdue, revenue, available tools), pie chart, recent activity table |
+| 🧰 **Tool Inventory** | Add, edit, delete tools; track availability status |
+| 📝 **Rentals** | Create rentals with customer, tools, dates & deposit; track active rentals |
+| 👤 **Customers** | Customer profiles, rental history, blacklist flag |
+| ⚙️ **Settings** | Rental rates, late fee rules, user management, backup |
 
-## Getting Started
+---
 
-### Prerequisites
-- Visual Studio 2022 with the **Desktop development with C++** workload and **C++/CLI support**
-- .NET Framework 4.8
-- MySQL Server 8.0+
-- MySQL Connector/NET (or Connector/C++, depending on your data layer)
+## 🚀 Run Without Visual Studio (Recommended)
 
-### Setup
-1. Clone the repo:
-   ```
-   git clone https://github.com/NetworkChukka/rent-a-tool.git
-   ```
-2. Create the database:
+> Download the pre-built release — no installation of Visual Studio required.
+
+### Step 1 — Download
+
+Go to [**Releases**](https://github.com/1st-Year-2nd-Semester-Project/Rent-A-Tool/releases) and download **`Rent-A-Tool-v1.0.zip`**.
+
+### Step 2 — Install Prerequisites (one-time, on the target PC)
+
+| Requirement | Download |
+|---|---|
+| **.NET Framework 4.7.2** | Pre-installed on Windows 10/11. If missing → [Download](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472) |
+| **VC++ Redistributable 2022 (x86)** | Required to run the app → [Download vc_redist.x86.exe](https://aka.ms/vs/17/release/vc_redist.x86.exe) |
+| **MySQL Server 8.0+** | The app connects to a MySQL database. Make sure the server is accessible. |
+
+### Step 3 — Configure Database
+
+1. In your MySQL server, create the database and import the schema:
    ```sql
    CREATE DATABASE rent_a_tool;
    ```
-3. Import the schema (`Data/schema.sql`) and update the connection string in `Data/DbConfig.h` with your host, user, and password.
-4. Open the solution in Visual Studio.
-5. Set the project's Linker → System → SubSystem to **Windows**.
-6. Build and run.
+   Then import `Data/schema.sql` (from the source code).
 
-## Project Structure
+2. Open `Rent-A-Tool\Rent-A-Tool\Data\DbConfig.h` and set your connection details:
+   ```cpp
+   String^ server   = "localhost";   // or your MySQL server IP
+   String^ database = "rent_a_tool";
+   String^ user     = "root";
+   String^ password = "your_password";
+   ```
+
+### Step 4 — Run
+
+Extract the zip and double-click **`Rent-A-Tool.exe`**.
+
+```
+Rent-A-Tool-v1.0\
+├── Rent-A-Tool.exe      ← double-click to run
+├── MySql.Data.dll       ← MySQL connector (included)
+└── assets\
+    └── icon.ico
+```
+
+---
+
+## 🛠️ Build from Source
+
+### Prerequisites
+
+- **Visual Studio 2022** with:
+  - ✅ Desktop development with C++
+  - ✅ C++/CLI support
+  - ✅ .NET Framework 4.7.2 targeting pack
+- **MySQL Server 8.0+**
+- **MySQL Connector/NET 8.x** installed at `C:\Program Files (x86)\MySQL\MySQL Connector NET\`
+
+### Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/1st-Year-2nd-Semester-Project/Rent-A-Tool.git
+   cd Rent-A-Tool
+   ```
+
+2. **Set up the database**
+   ```sql
+   CREATE DATABASE rent_a_tool;
+   -- then import Data/schema.sql
+   ```
+
+3. **Update connection string**  
+   Edit `Rent-A-Tool/Rent-A-Tool/Data/DbConfig.h` with your MySQL credentials.
+
+4. **Open the solution**  
+   Open `Rent-A-Tool/Rent-A-Tool.sln` in Visual Studio 2022.
+
+5. **Build**
+   - Configuration: **Release** (for distribution) or **Debug** (for development)
+   - Press `Ctrl+Shift+B` or go to **Build → Build Solution**
+
+6. **Run**  
+   Press `F5` or find the exe in `Rent-A-Tool/Rent-A-Tool/Release/Rent-A-Tool.exe`
+
+### Build via Command Line (MSBuild)
+
+```powershell
+& 'C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe' `
+  'Rent-A-Tool\Rent-A-Tool\Rent-A-Tool.vcxproj' `
+  /t:Build /p:Configuration=Release
+```
+
+---
+
+## 📁 Project Structure
 
 ```
 Rent-A-Tool/
-├── Header Files/
-│   ├── dashboard.h
-│   ├── loginform.h
-│   ├── inventory.h
-│   ├── rentals.h
-│   ├── customers.h
-│   └── settings.h
-├── Source Files/
-│   ├── dashboard.cpp
-│   ├── loginform.cpp
-│   ├── inventory.cpp
-│   ├── rentals.cpp
-│   ├── customers.cpp
-│   └── settings.cpp
-├── Resource Files/
-│   ├── dashboard.resx
-│   └── loginform.resx
-└── Data/          # MySQL connection + queries (DbConfig.h, schema.sql)
+├── Rent-A-Tool/
+│   ├── dashboard.h / .cpp       # Dashboard form — KPI cards, chart, recent rentals table
+│   ├── loginform.h / .cpp       # Login form
+│   ├── Signupform.h / .cpp      # Sign-up form
+│   ├── inventory.h / .cpp       # Tool inventory management
+│   ├── rentals.h / .cpp         # Rentals management
+│   ├── customers.h / .cpp       # Customer management
+│   ├── settings.h / .cpp        # App settings
+│   ├── Data/
+│   │   ├── DbConfig.h           # MySQL connection string
+│   │   └── schema.sql           # Database schema
+│   └── Rent-A-Tool.vcxproj      # Visual Studio project file
+├── assets/
+│   ├── logo.png                 # App logo
+│   └── icon.ico                 # Window icon
+└── README.md
 ```
 
-## Screenshots
+---
 
-_Add screenshots of the Dashboard, Inventory, and New Rental pages here._
+## 📸 Screenshots
 
-## Roadmap
+| Dashboard | Rentals | Inventory |
+|---|---|---|
+| _(coming soon)_ | _(coming soon)_ | _(coming soon)_ |
 
-- [x] Late-fee calculation on return (automatic daily late fee on overdue rentals)
-- [x] Dashboard KPI metrics, category charts, and recent activity feed
-- [x] Full Tool Inventory, Rentals, Customer, and Settings management
-- [ ] Payment history / receipts
-- [ ] Reports export (Excel/PDF)
+---
 
-## License
+## 🗺️ Roadmap
 
-MIT
+- [x] Role-based login (Admin / Cashier)
+- [x] Dashboard KPI cards, category pie chart, recent activity table
+- [x] Tool inventory management
+- [x] Rentals management with deposit tracking
+- [x] Customer management with blacklist support
+- [x] Settings — rates, late fees, user management
+- [x] Automatic late-fee calculation on overdue rentals
+- [x] Custom window icon and modern UI redesign
+- [ ] Payment history & printable receipts
+- [ ] Reports export (Excel / PDF)
+- [ ] Email notifications for overdue rentals
+- [ ] Barcode / QR scanner support for tools
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
+
+1. Fork the repo
+2. Create your feature branch: `git checkout -b feature/my-feature`
+3. Commit your changes: `git commit -m "feat: add my feature"`
+4. Push to the branch: `git push origin feature/my-feature`
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
