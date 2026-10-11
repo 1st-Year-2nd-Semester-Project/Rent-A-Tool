@@ -167,6 +167,15 @@ Rent-A-Tool/
 ### Tool Inventory Management
 ![Inventory](assets/screenshots/inventory.png)
 
+### Customer Management Directory
+![Customers](assets/screenshots/customers.png)
+
+### Settings — General Configuration
+![Settings General](assets/screenshots/settings-general.png)
+
+### Settings — User Accounts & Roles
+![Settings Users](assets/screenshots/settings-users.png)
+
 ---
 
 ## 🗺️ Roadmap
