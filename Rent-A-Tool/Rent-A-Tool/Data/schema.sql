@@ -38,7 +38,7 @@ CREATE TABLE tools (
     category         VARCHAR(50),
     daily_rate       DECIMAL(10,2) NOT NULL,
     deposit          DECIMAL(10,2) NOT NULL,
-    status           ENUM('Available', 'Rented', 'Maintenance') NOT NULL DEFAULT 'Available',
+    status           ENUM('Available', 'Rented', 'Maintenance', 'Retired', 'Lost') NOT NULL DEFAULT 'Available',
     brand            VARCHAR(50)   NULL,
     model_serial     VARCHAR(50)   NULL,
     condition_status VARCHAR(50)   NULL,
