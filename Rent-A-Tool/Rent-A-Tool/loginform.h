@@ -1,6 +1,6 @@
 #pragma once
 #include "../Rent-A-Tool/Data/Dbconfig.h"   // adjust path to wherever you put DbConfig.h
-#include "dashboard1.h"         // adjust path/filename to match your actual dashboard header
+#include "dashboard.h"         // adjust path/filename to match your actual dashboard header
 #include "signupform.h"
 
 namespace RentATool {
@@ -245,7 +245,7 @@ namespace RentATool {
 				L"Login successful", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
 			this->Hide();
-			dashboard1^ dash = gcnew dashboard1();
+			dashboard^ dash = gcnew dashboard();
 			dash->ShowDialog();
 			this->Close();
 		}

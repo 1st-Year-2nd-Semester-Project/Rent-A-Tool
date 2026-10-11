@@ -1,5 +1,5 @@
 #include "loginform.h"
-#include "dashboard1.h"
+#include "dashboard.h"
 
 
 using namespace System;
