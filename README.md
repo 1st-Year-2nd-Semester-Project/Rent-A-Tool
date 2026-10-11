@@ -173,8 +173,7 @@ Rent-A-Tool/
 ### Settings — General Configuration
 ![Settings General](assets/screenshots/settings-general.png)
 
-### Settings — User Accounts & Roles
-![Settings Users](assets/screenshots/settings-users.png)
+
 
 ---
 
