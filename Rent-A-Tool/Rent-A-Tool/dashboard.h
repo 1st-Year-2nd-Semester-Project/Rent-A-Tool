@@ -110,6 +110,7 @@ namespace RentATool {
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(dashboard::typeid));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->menuFile = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuFileRefresh = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -162,8 +163,8 @@ namespace RentATool {
 			this->lblChartHeader = (gcnew System::Windows::Forms::Label());
 			this->pnlRecentContainer = (gcnew System::Windows::Forms::Panel());
 			this->pnlRecentHeaderTop = (gcnew System::Windows::Forms::Panel());
-			this->lblRecentHeader = (gcnew System::Windows::Forms::Label());
 			this->lblRecentSubtitle = (gcnew System::Windows::Forms::Label());
+			this->lblRecentHeader = (gcnew System::Windows::Forms::Label());
 			this->dgvRecentRentals = (gcnew System::Windows::Forms::DataGridView());
 			this->menuStrip1->SuspendLayout();
 			this->pnlHeader->SuspendLayout();
@@ -197,7 +198,7 @@ namespace RentATool {
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(6, 4, 6, 4);
-			this->menuStrip1->Size = System::Drawing::Size(1260, 24);
+			this->menuStrip1->Size = System::Drawing::Size(1260, 29);
 			this->menuStrip1->TabIndex = 4;
 			// 
 			// menuFile
@@ -208,33 +209,33 @@ namespace RentATool {
 			});
 			this->menuFile->ForeColor = System::Drawing::Color::White;
 			this->menuFile->Name = L"menuFile";
-			this->menuFile->Size = System::Drawing::Size(45, 20);
+			this->menuFile->Size = System::Drawing::Size(39, 21);
 			this->menuFile->Text = L"&File";
 			// 
 			// menuFileRefresh
 			// 
 			this->menuFileRefresh->Name = L"menuFileRefresh";
-			this->menuFileRefresh->Size = System::Drawing::Size(180, 22);
+			this->menuFileRefresh->ShortcutKeys = System::Windows::Forms::Keys::F5;
+			this->menuFileRefresh->Size = System::Drawing::Size(172, 22);
 			this->menuFileRefresh->Text = L"&Refresh Data";
-			this->menuFileRefresh->ShortcutKeys = static_cast<System::Windows::Forms::Keys>(System::Windows::Forms::Keys::F5);
 			this->menuFileRefresh->Click += gcnew System::EventHandler(this, &dashboard::menuRefresh_Click);
 			// 
 			// menuFileSep
 			// 
 			this->menuFileSep->Name = L"menuFileSep";
-			this->menuFileSep->Size = System::Drawing::Size(177, 6);
+			this->menuFileSep->Size = System::Drawing::Size(169, 6);
 			// 
 			// menuFileLogout
 			// 
 			this->menuFileLogout->Name = L"menuFileLogout";
-			this->menuFileLogout->Size = System::Drawing::Size(180, 22);
+			this->menuFileLogout->Size = System::Drawing::Size(172, 22);
 			this->menuFileLogout->Text = L"&Log Out";
 			this->menuFileLogout->Click += gcnew System::EventHandler(this, &dashboard::menuLogout_Click);
 			// 
 			// menuFileExit
 			// 
 			this->menuFileExit->Name = L"menuFileExit";
-			this->menuFileExit->Size = System::Drawing::Size(180, 22);
+			this->menuFileExit->Size = System::Drawing::Size(172, 22);
 			this->menuFileExit->Text = L"E&xit";
 			this->menuFileExit->Click += gcnew System::EventHandler(this, &dashboard::menuExit_Click);
 			// 
@@ -243,13 +244,13 @@ namespace RentATool {
 			this->menuInventory->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->menuInventoryManage });
 			this->menuInventory->ForeColor = System::Drawing::Color::White;
 			this->menuInventory->Name = L"menuInventory";
-			this->menuInventory->Size = System::Drawing::Size(76, 20);
+			this->menuInventory->Size = System::Drawing::Size(73, 21);
 			this->menuInventory->Text = L"&Inventory";
 			// 
 			// menuInventoryManage
 			// 
 			this->menuInventoryManage->Name = L"menuInventoryManage";
-			this->menuInventoryManage->Size = System::Drawing::Size(180, 22);
+			this->menuInventoryManage->Size = System::Drawing::Size(168, 22);
 			this->menuInventoryManage->Text = L"Manage &Tools...";
 			this->menuInventoryManage->Click += gcnew System::EventHandler(this, &dashboard::openInventory_Click);
 			// 
@@ -258,13 +259,13 @@ namespace RentATool {
 			this->menuRentals->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->menuRentalsAll });
 			this->menuRentals->ForeColor = System::Drawing::Color::White;
 			this->menuRentals->Name = L"menuRentals";
-			this->menuRentals->Size = System::Drawing::Size(63, 20);
+			this->menuRentals->Size = System::Drawing::Size(62, 21);
 			this->menuRentals->Text = L"&Rentals";
 			// 
 			// menuRentalsAll
 			// 
 			this->menuRentalsAll->Name = L"menuRentalsAll";
-			this->menuRentalsAll->Size = System::Drawing::Size(180, 22);
+			this->menuRentalsAll->Size = System::Drawing::Size(179, 22);
 			this->menuRentalsAll->Text = L"Manage &Rentals...";
 			this->menuRentalsAll->Click += gcnew System::EventHandler(this, &dashboard::openRentals_Click);
 			// 
@@ -273,13 +274,13 @@ namespace RentATool {
 			this->menuCustomers->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->menuCustomersManage });
 			this->menuCustomers->ForeColor = System::Drawing::Color::White;
 			this->menuCustomers->Name = L"menuCustomers";
-			this->menuCustomers->Size = System::Drawing::Size(83, 20);
+			this->menuCustomers->Size = System::Drawing::Size(82, 21);
 			this->menuCustomers->Text = L"&Customers";
 			// 
 			// menuCustomersManage
 			// 
 			this->menuCustomersManage->Name = L"menuCustomersManage";
-			this->menuCustomersManage->Size = System::Drawing::Size(185, 22);
+			this->menuCustomersManage->Size = System::Drawing::Size(199, 22);
 			this->menuCustomersManage->Text = L"Manage &Customers...";
 			this->menuCustomersManage->Click += gcnew System::EventHandler(this, &dashboard::openCustomers_Click);
 			// 
@@ -288,13 +289,13 @@ namespace RentATool {
 			this->menuSettings->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->menuSettingsManage });
 			this->menuSettings->ForeColor = System::Drawing::Color::White;
 			this->menuSettings->Name = L"menuSettings";
-			this->menuSettings->Size = System::Drawing::Size(66, 20);
+			this->menuSettings->Size = System::Drawing::Size(66, 21);
 			this->menuSettings->Text = L"&Settings";
 			// 
 			// menuSettingsManage
 			// 
 			this->menuSettingsManage->Name = L"menuSettingsManage";
-			this->menuSettingsManage->Size = System::Drawing::Size(180, 22);
+			this->menuSettingsManage->Size = System::Drawing::Size(176, 22);
 			this->menuSettingsManage->Text = L"System &Settings...";
 			this->menuSettingsManage->Click += gcnew System::EventHandler(this, &dashboard::openSettings_Click);
 			// 
@@ -303,13 +304,13 @@ namespace RentATool {
 			this->menuHelp->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->menuHelpAbout });
 			this->menuHelp->ForeColor = System::Drawing::Color::White;
 			this->menuHelp->Name = L"menuHelp";
-			this->menuHelp->Size = System::Drawing::Size(47, 20);
+			this->menuHelp->Size = System::Drawing::Size(47, 21);
 			this->menuHelp->Text = L"&Help";
 			// 
 			// menuHelpAbout
 			// 
 			this->menuHelpAbout->Name = L"menuHelpAbout";
-			this->menuHelpAbout->Size = System::Drawing::Size(180, 22);
+			this->menuHelpAbout->Size = System::Drawing::Size(184, 22);
 			this->menuHelpAbout->Text = L"&About Rent-A-Tool";
 			this->menuHelpAbout->Click += gcnew System::EventHandler(this, &dashboard::menuAbout_Click);
 			// 
@@ -324,7 +325,7 @@ namespace RentATool {
 			this->pnlHeader->Controls->Add(this->btnHeaderRefresh);
 			this->pnlHeader->Controls->Add(this->btnHeaderLogout);
 			this->pnlHeader->Dock = System::Windows::Forms::DockStyle::Top;
-			this->pnlHeader->Location = System::Drawing::Point(0, 24);
+			this->pnlHeader->Location = System::Drawing::Point(0, 29);
 			this->pnlHeader->Name = L"pnlHeader";
 			this->pnlHeader->Padding = System::Windows::Forms::Padding(24, 12, 24, 12);
 			this->pnlHeader->Size = System::Drawing::Size(1260, 82);
@@ -425,7 +426,7 @@ namespace RentATool {
 			this->pnlActions->Controls->Add(this->btnActCustomers);
 			this->pnlActions->Controls->Add(this->btnActSettings);
 			this->pnlActions->Dock = System::Windows::Forms::DockStyle::Top;
-			this->pnlActions->Location = System::Drawing::Point(0, 106);
+			this->pnlActions->Location = System::Drawing::Point(0, 111);
 			this->pnlActions->Name = L"pnlActions";
 			this->pnlActions->Padding = System::Windows::Forms::Padding(24, 10, 24, 10);
 			this->pnlActions->Size = System::Drawing::Size(1260, 56);
@@ -525,7 +526,7 @@ namespace RentATool {
 			this->pnlKpiContainer->Controls->Add(this->cardTools);
 			this->pnlKpiContainer->Controls->Add(this->cardRevenue);
 			this->pnlKpiContainer->Dock = System::Windows::Forms::DockStyle::Top;
-			this->pnlKpiContainer->Location = System::Drawing::Point(0, 162);
+			this->pnlKpiContainer->Location = System::Drawing::Point(0, 167);
 			this->pnlKpiContainer->Name = L"pnlKpiContainer";
 			this->pnlKpiContainer->Padding = System::Windows::Forms::Padding(24, 14, 24, 14);
 			this->pnlKpiContainer->Size = System::Drawing::Size(1260, 120);
@@ -551,7 +552,7 @@ namespace RentATool {
 				static_cast<System::Int32>(static_cast<System::Byte>(185)));
 			this->lblCard1Title->Location = System::Drawing::Point(16, 12);
 			this->lblCard1Title->Name = L"lblCard1Title";
-			this->lblCard1Title->Size = System::Drawing::Size(96, 13);
+			this->lblCard1Title->Size = System::Drawing::Size(94, 13);
 			this->lblCard1Title->TabIndex = 0;
 			this->lblCard1Title->Text = L"ACTIVE RENTALS";
 			// 
@@ -563,7 +564,7 @@ namespace RentATool {
 				static_cast<System::Int32>(static_cast<System::Byte>(185)));
 			this->lblCard1Value->Location = System::Drawing::Point(14, 28);
 			this->lblCard1Value->Name = L"lblCard1Value";
-			this->lblCard1Value->Size = System::Drawing::Size(34, 40);
+			this->lblCard1Value->Size = System::Drawing::Size(35, 41);
 			this->lblCard1Value->TabIndex = 1;
 			this->lblCard1Value->Text = L"0";
 			// 
@@ -599,7 +600,7 @@ namespace RentATool {
 				static_cast<System::Int32>(static_cast<System::Byte>(43)));
 			this->lblCard2Title->Location = System::Drawing::Point(16, 12);
 			this->lblCard2Title->Name = L"lblCard2Title";
-			this->lblCard2Title->Size = System::Drawing::Size(110, 13);
+			this->lblCard2Title->Size = System::Drawing::Size(109, 13);
 			this->lblCard2Title->TabIndex = 0;
 			this->lblCard2Title->Text = L"OVERDUE RETURNS";
 			// 
@@ -611,7 +612,7 @@ namespace RentATool {
 				static_cast<System::Int32>(static_cast<System::Byte>(43)));
 			this->lblCard2Value->Location = System::Drawing::Point(14, 28);
 			this->lblCard2Value->Name = L"lblCard2Value";
-			this->lblCard2Value->Size = System::Drawing::Size(34, 40);
+			this->lblCard2Value->Size = System::Drawing::Size(35, 41);
 			this->lblCard2Value->TabIndex = 1;
 			this->lblCard2Value->Text = L"0";
 			// 
@@ -647,7 +648,7 @@ namespace RentATool {
 				static_cast<System::Int32>(static_cast<System::Byte>(96)));
 			this->lblCard3Title->Location = System::Drawing::Point(16, 12);
 			this->lblCard3Title->Name = L"lblCard3Title";
-			this->lblCard3Title->Size = System::Drawing::Size(117, 13);
+			this->lblCard3Title->Size = System::Drawing::Size(108, 13);
 			this->lblCard3Title->TabIndex = 0;
 			this->lblCard3Title->Text = L"TOOL AVAILABILITY";
 			// 
@@ -659,7 +660,7 @@ namespace RentATool {
 				static_cast<System::Int32>(static_cast<System::Byte>(96)));
 			this->lblCard3Value->Location = System::Drawing::Point(14, 28);
 			this->lblCard3Value->Name = L"lblCard3Value";
-			this->lblCard3Value->Size = System::Drawing::Size(34, 40);
+			this->lblCard3Value->Size = System::Drawing::Size(35, 41);
 			this->lblCard3Value->TabIndex = 1;
 			this->lblCard3Value->Text = L"0";
 			// 
@@ -695,7 +696,7 @@ namespace RentATool {
 				static_cast<System::Int32>(static_cast<System::Byte>(173)));
 			this->lblCard4Title->Location = System::Drawing::Point(16, 12);
 			this->lblCard4Title->Name = L"lblCard4Title";
-			this->lblCard4Title->Size = System::Drawing::Size(96, 13);
+			this->lblCard4Title->Size = System::Drawing::Size(92, 13);
 			this->lblCard4Title->TabIndex = 0;
 			this->lblCard4Title->Text = L"TOTAL REVENUE";
 			// 
@@ -707,7 +708,7 @@ namespace RentATool {
 				static_cast<System::Int32>(static_cast<System::Byte>(173)));
 			this->lblCard4Value->Location = System::Drawing::Point(14, 29);
 			this->lblCard4Value->Name = L"lblCard4Value";
-			this->lblCard4Value->Size = System::Drawing::Size(127, 37);
+			this->lblCard4Value->Size = System::Drawing::Size(129, 37);
 			this->lblCard4Value->TabIndex = 1;
 			this->lblCard4Value->Text = L"LKR 0.00";
 			// 
@@ -728,7 +729,7 @@ namespace RentATool {
 			this->splitMain->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(240)), static_cast<System::Int32>(static_cast<System::Byte>(243)),
 				static_cast<System::Int32>(static_cast<System::Byte>(246)));
 			this->splitMain->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->splitMain->Location = System::Drawing::Point(0, 282);
+			this->splitMain->Location = System::Drawing::Point(0, 287);
 			this->splitMain->Name = L"splitMain";
 			// 
 			// splitMain.Panel1
@@ -738,7 +739,7 @@ namespace RentATool {
 			// splitMain.Panel2
 			// 
 			this->splitMain->Panel2->Controls->Add(this->pnlRecentContainer);
-			this->splitMain->Size = System::Drawing::Size(1260, 498);
+			this->splitMain->Size = System::Drawing::Size(1260, 493);
 			this->splitMain->SplitterDistance = 600;
 			this->splitMain->TabIndex = 0;
 			// 
@@ -751,7 +752,7 @@ namespace RentATool {
 			this->pnlChartContainer->Location = System::Drawing::Point(0, 0);
 			this->pnlChartContainer->Name = L"pnlChartContainer";
 			this->pnlChartContainer->Padding = System::Windows::Forms::Padding(16);
-			this->pnlChartContainer->Size = System::Drawing::Size(600, 400);
+			this->pnlChartContainer->Size = System::Drawing::Size(600, 493);
 			this->pnlChartContainer->TabIndex = 0;
 			// 
 			// chartInventory
@@ -767,16 +768,16 @@ namespace RentATool {
 			legend1->Docking = System::Windows::Forms::DataVisualization::Charting::Docking::Bottom;
 			legend1->Name = L"MainLegend";
 			this->chartInventory->Legends->Add(legend1);
-			this->chartInventory->Location = System::Drawing::Point(0, 0);
+			this->chartInventory->Location = System::Drawing::Point(16, 48);
 			this->chartInventory->Name = L"chartInventory";
 			series1->ChartArea = L"MainArea";
 			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
+			series1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14, System::Drawing::FontStyle::Bold));
 			series1->IsValueShownAsLabel = true;
 			series1->Legend = L"MainLegend";
 			series1->Name = L"Categories";
-			series1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14, System::Drawing::FontStyle::Bold));
 			this->chartInventory->Series->Add(series1);
-			this->chartInventory->Size = System::Drawing::Size(300, 300);
+			this->chartInventory->Size = System::Drawing::Size(568, 429);
 			this->chartInventory->TabIndex = 0;
 			this->chartInventory->Click += gcnew System::EventHandler(this, &dashboard::chartInventory_Click);
 			// 
@@ -786,9 +787,9 @@ namespace RentATool {
 			this->lblChartHeader->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold));
 			this->lblChartHeader->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(47)), static_cast<System::Int32>(static_cast<System::Byte>(79)),
 				static_cast<System::Int32>(static_cast<System::Byte>(79)));
-			this->lblChartHeader->Location = System::Drawing::Point(0, 0);
+			this->lblChartHeader->Location = System::Drawing::Point(16, 16);
 			this->lblChartHeader->Name = L"lblChartHeader";
-			this->lblChartHeader->Size = System::Drawing::Size(100, 32);
+			this->lblChartHeader->Size = System::Drawing::Size(568, 32);
 			this->lblChartHeader->TabIndex = 1;
 			this->lblChartHeader->Text = L"Tool Inventory by Category";
 			// 
@@ -800,8 +801,7 @@ namespace RentATool {
 			this->pnlRecentContainer->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->pnlRecentContainer->Location = System::Drawing::Point(0, 0);
 			this->pnlRecentContainer->Name = L"pnlRecentContainer";
-			this->pnlRecentContainer->Padding = System::Windows::Forms::Padding(0);
-			this->pnlRecentContainer->Size = System::Drawing::Size(656, 498);
+			this->pnlRecentContainer->Size = System::Drawing::Size(656, 493);
 			this->pnlRecentContainer->TabIndex = 0;
 			// 
 			// pnlRecentHeaderTop
@@ -812,8 +812,20 @@ namespace RentATool {
 			this->pnlRecentHeaderTop->Location = System::Drawing::Point(0, 0);
 			this->pnlRecentHeaderTop->Name = L"pnlRecentHeaderTop";
 			this->pnlRecentHeaderTop->Padding = System::Windows::Forms::Padding(12, 6, 0, 0);
-			this->pnlRecentHeaderTop->Size = System::Drawing::Size(624, 60);
+			this->pnlRecentHeaderTop->Size = System::Drawing::Size(656, 60);
 			this->pnlRecentHeaderTop->TabIndex = 2;
+			// 
+			// lblRecentSubtitle
+			// 
+			this->lblRecentSubtitle->AutoSize = true;
+			this->lblRecentSubtitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.5F));
+			this->lblRecentSubtitle->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(127)),
+				static_cast<System::Int32>(static_cast<System::Byte>(140)), static_cast<System::Int32>(static_cast<System::Byte>(141)));
+			this->lblRecentSubtitle->Location = System::Drawing::Point(1, 24);
+			this->lblRecentSubtitle->Name = L"lblRecentSubtitle";
+			this->lblRecentSubtitle->Size = System::Drawing::Size(313, 15);
+			this->lblRecentSubtitle->TabIndex = 1;
+			this->lblRecentSubtitle->Text = L"Latest transactions, customer assignments & return statuses";
 			// 
 			// lblRecentHeader
 			// 
@@ -823,21 +835,9 @@ namespace RentATool {
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->lblRecentHeader->Location = System::Drawing::Point(0, 0);
 			this->lblRecentHeader->Name = L"lblRecentHeader";
-			this->lblRecentHeader->Size = System::Drawing::Size(186, 23);
+			this->lblRecentHeader->Size = System::Drawing::Size(187, 23);
 			this->lblRecentHeader->TabIndex = 0;
 			this->lblRecentHeader->Text = L"Recent Rental Activity";
-			// 
-			// lblRecentSubtitle
-			// 
-			this->lblRecentSubtitle->AutoSize = true;
-			this->lblRecentSubtitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.5F));
-			this->lblRecentSubtitle->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(127)), static_cast<System::Int32>(static_cast<System::Byte>(140)),
-				static_cast<System::Int32>(static_cast<System::Byte>(141)));
-			this->lblRecentSubtitle->Location = System::Drawing::Point(1, 24);
-			this->lblRecentSubtitle->Name = L"lblRecentSubtitle";
-			this->lblRecentSubtitle->Size = System::Drawing::Size(248, 15);
-			this->lblRecentSubtitle->TabIndex = 1;
-			this->lblRecentSubtitle->Text = L"Latest transactions, customer assignments & return statuses";
 			// 
 			// dgvRecentRentals
 			// 
@@ -846,7 +846,6 @@ namespace RentATool {
 			this->dgvRecentRentals->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dgvRecentRentals->BackgroundColor = System::Drawing::Color::White;
 			this->dgvRecentRentals->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->dgvRecentRentals->Dock = System::Windows::Forms::DockStyle::None;
 			this->dgvRecentRentals->Location = System::Drawing::Point(0, 60);
 			this->dgvRecentRentals->Name = L"dgvRecentRentals";
 			this->dgvRecentRentals->ReadOnly = true;
@@ -854,6 +853,8 @@ namespace RentATool {
 			this->dgvRecentRentals->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dgvRecentRentals->Size = System::Drawing::Size(624, 438);
 			this->dgvRecentRentals->TabIndex = 0;
+			this->dgvRecentRentals->CellFormatting += gcnew System::Windows::Forms::DataGridViewCellFormattingEventHandler(this, &dashboard::dgvRecent_CellFormatting);
+			this->dgvRecentRentals->DataError += gcnew System::Windows::Forms::DataGridViewDataErrorEventHandler(this, &dashboard::dgvRecent_DataError);
 			// 
 			// dashboard
 			// 
@@ -866,14 +867,13 @@ namespace RentATool {
 			this->Controls->Add(this->pnlHeader);
 			this->Controls->Add(this->menuStrip1);
 			this->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F));
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
 			this->MinimumSize = System::Drawing::Size(1100, 700);
 			this->Name = L"dashboard";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Rent-A-Tool - Master Dashboard";
 			this->Load += gcnew System::EventHandler(this, &dashboard::dashboard_Load);
-			this->dgvRecentRentals->CellFormatting += gcnew System::Windows::Forms::DataGridViewCellFormattingEventHandler(this, &dashboard::dgvRecent_CellFormatting);
-			this->dgvRecentRentals->DataError += gcnew System::Windows::Forms::DataGridViewDataErrorEventHandler(this, &dashboard::dgvRecent_DataError);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->pnlHeader->ResumeLayout(false);
