@@ -647,10 +647,10 @@ void dgvTools_DataError(System::Object^ sender, DataGridViewDataErrorEventArgs^ 
 			selectedToolId = -1;
 			txtCode->Clear();
 			txtName->Clear();
-			cmbCategory->SelectedIndex = 0;
+			if (cmbCategory->Items->Count > 0) cmbCategory->SelectedIndex = 0;
 			numDailyRate->Value = 0;
 			numDeposit->Value = 0;
-			cmbStatus->SelectedIndex = 0;
+			if (cmbStatus->Items->Count > 0) cmbStatus->SelectedIndex = 0;
 			txtBrand->Clear();
 			txtModel->Clear();
 			lblEditorTitle->Text = L"Tool Details";
