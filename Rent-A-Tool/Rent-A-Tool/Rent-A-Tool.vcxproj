@@ -140,6 +140,10 @@
     <ClCompile Include="dashboard1.cpp" />
     <ClCompile Include="loginform.cpp" />
     <ClCompile Include="Signupform.cpp" />
+    <ClCompile Include="inventory.cpp" />
+    <ClCompile Include="rentals.cpp" />
+    <ClCompile Include="customers.cpp" />
+    <ClCompile Include="settings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="authresult.h" />
@@ -156,6 +160,23 @@
     <ClInclude Include="Signupform.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="inventory.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="rentals.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="customers.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="settings.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Data\ToolService.h" />
+    <ClInclude Include="Data\CustomerService.h" />
+    <ClInclude Include="Data\RentalService.h" />
+    <ClInclude Include="Data\DashboardService.h" />
+    <ClInclude Include="Data\SettingsService.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="dashboard.resx">

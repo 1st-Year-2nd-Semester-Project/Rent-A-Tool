@@ -76,7 +76,9 @@ _Add screenshots of the Dashboard, Inventory, and New Rental pages here._
 
 ## Roadmap
 
-- [ ] Late-fee calculation on return
+- [x] Late-fee calculation on return (automatic daily late fee on overdue rentals)
+- [x] Dashboard KPI metrics, category charts, and recent activity feed
+- [x] Full Tool Inventory, Rentals, Customer, and Settings management
 - [ ] Payment history / receipts
 - [ ] Reports export (Excel/PDF)
 
