@@ -254,22 +254,20 @@ namespace RentATool {
 			this->btnHeaderRefresh->Anchor = System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right;
 			this->btnHeaderRefresh->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->btnHeaderRefresh->Click += gcnew EventHandler(this, &dashboard::menuRefresh_Click);
-			String^ userName = CurrentUser::FullName != nullptr ? CurrentUser::FullName : "Chukka Fernando";
-			String^ role = CurrentUser::Role != nullptr ? CurrentUser::Role : "Admin";
-			this->lblUserBadge->Text = String::Format("User: {0} ({1})", userName, role);
+			this->lblUserBadge->Text = L"User: Chukka Fernando (Admin)";
 			this->lblUserBadge->Font = gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold);
 			this->lblUserBadge->ForeColor = System::Drawing::Color::FromArgb(254, 211, 48);
 			this->lblUserBadge->Location = System::Drawing::Point(730, 18);
 			this->lblUserBadge->Size = System::Drawing::Size(285, 20);
-			this->lblUserBadge->TextAlign = ContentAlignment::MiddleRight;
-			this->lblUserBadge->Anchor = System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right;
-			this->lblDateBadge->Text = DateTime::Now.ToString("dddd, MMMM dd, yyyy");
+			this->lblUserBadge->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
+			this->lblUserBadge->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right);
+			this->lblDateBadge->Text = L"Today";
 			this->lblDateBadge->Font = gcnew System::Drawing::Font(L"Segoe UI", 9);
 			this->lblDateBadge->ForeColor = System::Drawing::Color::FromArgb(210, 230, 230);
 			this->lblDateBadge->Location = System::Drawing::Point(730, 42);
 			this->lblDateBadge->Size = System::Drawing::Size(285, 20);
-			this->lblDateBadge->TextAlign = ContentAlignment::MiddleRight;
-			this->lblDateBadge->Anchor = System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right;
+			this->lblDateBadge->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
+			this->lblDateBadge->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right);
 
 			this->pnlHeader->Controls->Add(this->lblAppTitle);
 			this->pnlHeader->Controls->Add(this->lblAppSubtitle);
@@ -529,6 +527,12 @@ namespace RentATool {
 		void dashboard_Load(System::Object^ sender, System::EventArgs^ e)
 		{
 			if (this->DesignMode) return;
+			try {
+				String^ userName = CurrentUser::FullName != nullptr ? CurrentUser::FullName : "Chukka Fernando";
+				String^ role = CurrentUser::Role != nullptr ? CurrentUser::Role : "Admin";
+				this->lblUserBadge->Text = String::Format("User: {0} ({1})", userName, role);
+				this->lblDateBadge->Text = DateTime::Now.ToString("dddd, MMMM dd, yyyy");
+			} catch (Exception^) {}
 			try {
 				RefreshDashboardData();
 			} catch (Exception^) {}
