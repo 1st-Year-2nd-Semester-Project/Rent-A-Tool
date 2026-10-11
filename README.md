@@ -152,9 +152,20 @@ Rent-A-Tool/
 
 ## 📸 Screenshots
 
-| Dashboard | Rentals | Inventory |
-|---|---|---|
-| _(coming soon)_ | _(coming soon)_ | _(coming soon)_ |
+### Login
+![Login](assets/screenshots/login.png)
+
+### Dashboard
+![Dashboard](assets/screenshots/dashboard.png)
+
+### Rentals — Issue New Rental
+![New Rental](assets/screenshots/new-rental.png)
+
+### Rentals — Active & All Rentals
+![Rentals List](assets/screenshots/rentals.png)
+
+### Tool Inventory Management
+![Inventory](assets/screenshots/inventory.png)
 
 ---
 
