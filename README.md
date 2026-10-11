@@ -46,7 +46,7 @@ Go to [**Releases**](https://github.com/1st-Year-2nd-Semester-Project/Rent-A-Too
 |---|---|
 | **.NET Framework 4.7.2** | Pre-installed on Windows 10/11. If missing → [Download](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472) |
 | **VC++ Redistributable 2022 (x86)** | Required to run the app → [Download vc_redist.x86.exe](https://aka.ms/vs/17/release/vc_redist.x86.exe) |
-| **MySQL Server 8.0+** | The app connects to a MySQL database. Make sure the server is accessible. |
+| **MySQL Server 8.0+** | Required for the database → [Download MySQL Installer](https://dev.mysql.com/downloads/installer/) |
 
 ### Step 3 — Configure Database
 
