@@ -35,509 +35,484 @@ namespace RentATool {
 
 	private:
 		System::ComponentModel::Container^ components;
+		System::Windows::Forms::MenuStrip^ menuStrip1;
+		System::Windows::Forms::ToolStripMenuItem^ menuFile;
+		System::Windows::Forms::ToolStripMenuItem^ menuFileRefresh;
+		System::Windows::Forms::ToolStripMenuItem^ menuFileLogout;
+		System::Windows::Forms::ToolStripMenuItem^ menuFileExit;
+		System::Windows::Forms::ToolStripMenuItem^ menuInventory;
+		System::Windows::Forms::ToolStripMenuItem^ menuInventoryManage;
+		System::Windows::Forms::ToolStripMenuItem^ menuRentals;
+		System::Windows::Forms::ToolStripMenuItem^ menuRentalsAll;
+		System::Windows::Forms::ToolStripMenuItem^ menuCustomers;
+		System::Windows::Forms::ToolStripMenuItem^ menuCustomersManage;
+		System::Windows::Forms::ToolStripMenuItem^ menuSettings;
+		System::Windows::Forms::ToolStripMenuItem^ menuSettingsManage;
+		System::Windows::Forms::ToolStripMenuItem^ menuHelp;
+		System::Windows::Forms::ToolStripMenuItem^ menuHelpAbout;
+		System::Windows::Forms::Panel^ pnlHeader;
+		System::Windows::Forms::Label^ lblAppTitle;
+		System::Windows::Forms::Label^ lblAppSubtitle;
+		System::Windows::Forms::Label^ lblUserBadge;
+		System::Windows::Forms::Label^ lblDateBadge;
+		System::Windows::Forms::Button^ btnHeaderRefresh;
+		System::Windows::Forms::Button^ btnHeaderLogout;
+		System::Windows::Forms::Panel^ pnlActions;
+		System::Windows::Forms::Button^ btnActNewRental;
+		System::Windows::Forms::Button^ btnActReturn;
+		System::Windows::Forms::Button^ btnActTools;
+		System::Windows::Forms::Button^ btnActCustomers;
+		System::Windows::Forms::Button^ btnActSettings;
+		System::Windows::Forms::Panel^ pnlKpiContainer;
+		System::Windows::Forms::Panel^ cardActiveRentals;
+		System::Windows::Forms::Label^ lblCard1Title;
+		System::Windows::Forms::Label^ lblCard1Value;
+		System::Windows::Forms::Label^ lblCard1Sub;
+		System::Windows::Forms::Panel^ cardOverdue;
+		System::Windows::Forms::Label^ lblCard2Title;
+		System::Windows::Forms::Label^ lblCard2Value;
+		System::Windows::Forms::Label^ lblCard2Sub;
+		System::Windows::Forms::Panel^ cardTools;
+		System::Windows::Forms::Label^ lblCard3Title;
+		System::Windows::Forms::Label^ lblCard3Value;
+		System::Windows::Forms::Label^ lblCard3Sub;
+		System::Windows::Forms::Panel^ cardRevenue;
+		System::Windows::Forms::Label^ lblCard4Title;
+		System::Windows::Forms::Label^ lblCard4Value;
+		System::Windows::Forms::Label^ lblCard4Sub;
+		System::Windows::Forms::SplitContainer^ splitMain;
+		System::Windows::Forms::Panel^ pnlChartContainer;
+		System::Windows::Forms::Label^ lblChartHeader;
+		System::Windows::Forms::DataVisualization::Charting::Chart^ chartInventory;
+		System::Windows::Forms::Panel^ pnlRecentContainer;
+		System::Windows::Forms::Label^ lblRecentHeader;
+		System::Windows::Forms::DataGridView^ dgvRecentRentals;
 
-		// Menu strip
-		MenuStrip^ menuStrip1;
-		ToolStripMenuItem^ menuFile;
-		ToolStripMenuItem^ menuFileRefresh;
-		ToolStripMenuItem^ menuFileLogout;
-		ToolStripMenuItem^ menuFileExit;
-
-		ToolStripMenuItem^ menuInventory;
-		ToolStripMenuItem^ menuInventoryManage;
-
-		ToolStripMenuItem^ menuRentals;
-		ToolStripMenuItem^ menuRentalsAll;
-
-		ToolStripMenuItem^ menuCustomers;
-		ToolStripMenuItem^ menuCustomersManage;
-
-		ToolStripMenuItem^ menuSettings;
-		ToolStripMenuItem^ menuSettingsManage;
-
-		ToolStripMenuItem^ menuHelp;
-		ToolStripMenuItem^ menuHelpAbout;
-
-		// Top Header
-		Panel^ pnlHeader;
-		Label^ lblAppTitle;
-		Label^ lblAppSubtitle;
-		Label^ lblUserBadge;
-		Label^ lblDateBadge;
-		Button^ btnHeaderRefresh;
-		Button^ btnHeaderLogout;
-
-		// Quick Actions Bar
-		Panel^ pnlActions;
-		Button^ btnActNewRental;
-		Button^ btnActReturn;
-		Button^ btnActTools;
-		Button^ btnActCustomers;
-		Button^ btnActSettings;
-
-		// KPI Cards Panel
-		Panel^ pnlKpiContainer;
-		Panel^ cardActiveRentals;
-		Label^ lblCard1Title;
-		Label^ lblCard1Value;
-		Label^ lblCard1Sub;
-
-		Panel^ cardOverdue;
-		Label^ lblCard2Title;
-		Label^ lblCard2Value;
-		Label^ lblCard2Sub;
-
-		Panel^ cardTools;
-		Label^ lblCard3Title;
-		Label^ lblCard3Value;
-		Label^ lblCard3Sub;
-
-		Panel^ cardRevenue;
-		Label^ lblCard4Title;
-		Label^ lblCard4Value;
-		Label^ lblCard4Sub;
-
-		// Split Main Container
-		SplitContainer^ splitMain;
-
-		// Chart Section
-		Panel^ pnlChartContainer;
-		Label^ lblChartHeader;
-		Chart^ chartInventory;
-
-		// Recent Activity Section
-		Panel^ pnlRecentContainer;
-		Label^ lblRecentHeader;
-		DataGridView^ dgvRecentRentals;
-
+#pragma region Windows Form Designer generated code
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
 		void InitializeComponent(void)
 		{
 			this->components = gcnew System::ComponentModel::Container();
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+			this->menuFile = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menuFileRefresh = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menuFileLogout = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menuFileExit = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menuInventory = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menuInventoryManage = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menuRentals = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menuRentalsAll = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menuCustomers = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menuCustomersManage = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menuSettings = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menuSettingsManage = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menuHelp = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->menuHelpAbout = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->pnlHeader = (gcnew System::Windows::Forms::Panel());
+			this->lblAppTitle = (gcnew System::Windows::Forms::Label());
+			this->lblAppSubtitle = (gcnew System::Windows::Forms::Label());
+			this->lblUserBadge = (gcnew System::Windows::Forms::Label());
+			this->lblDateBadge = (gcnew System::Windows::Forms::Label());
+			this->btnHeaderRefresh = (gcnew System::Windows::Forms::Button());
+			this->btnHeaderLogout = (gcnew System::Windows::Forms::Button());
+			this->pnlActions = (gcnew System::Windows::Forms::Panel());
+			this->btnActNewRental = (gcnew System::Windows::Forms::Button());
+			this->btnActReturn = (gcnew System::Windows::Forms::Button());
+			this->btnActTools = (gcnew System::Windows::Forms::Button());
+			this->btnActCustomers = (gcnew System::Windows::Forms::Button());
+			this->btnActSettings = (gcnew System::Windows::Forms::Button());
+			this->pnlKpiContainer = (gcnew System::Windows::Forms::Panel());
+			this->cardActiveRentals = (gcnew System::Windows::Forms::Panel());
+			this->lblCard1Title = (gcnew System::Windows::Forms::Label());
+			this->lblCard1Value = (gcnew System::Windows::Forms::Label());
+			this->lblCard1Sub = (gcnew System::Windows::Forms::Label());
+			this->cardOverdue = (gcnew System::Windows::Forms::Panel());
+			this->lblCard2Title = (gcnew System::Windows::Forms::Label());
+			this->lblCard2Value = (gcnew System::Windows::Forms::Label());
+			this->lblCard2Sub = (gcnew System::Windows::Forms::Label());
+			this->cardTools = (gcnew System::Windows::Forms::Panel());
+			this->lblCard3Title = (gcnew System::Windows::Forms::Label());
+			this->lblCard3Value = (gcnew System::Windows::Forms::Label());
+			this->lblCard3Sub = (gcnew System::Windows::Forms::Label());
+			this->cardRevenue = (gcnew System::Windows::Forms::Panel());
+			this->lblCard4Title = (gcnew System::Windows::Forms::Label());
+			this->lblCard4Value = (gcnew System::Windows::Forms::Label());
+			this->lblCard4Sub = (gcnew System::Windows::Forms::Label());
+			this->splitMain = (gcnew System::Windows::Forms::SplitContainer());
+			this->pnlChartContainer = (gcnew System::Windows::Forms::Panel());
+			this->lblChartHeader = (gcnew System::Windows::Forms::Label());
+			this->chartInventory = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			this->pnlRecentContainer = (gcnew System::Windows::Forms::Panel());
+			this->lblRecentHeader = (gcnew System::Windows::Forms::Label());
+			this->dgvRecentRentals = (gcnew System::Windows::Forms::DataGridView());
+			this->menuStrip1->SuspendLayout();
+			this->pnlHeader->SuspendLayout();
+			this->pnlActions->SuspendLayout();
+			this->pnlKpiContainer->SuspendLayout();
+			this->cardActiveRentals->SuspendLayout();
+			this->cardOverdue->SuspendLayout();
+			this->cardTools->SuspendLayout();
+			this->cardRevenue->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitMain))->BeginInit();
+			this->splitMain->Panel1->SuspendLayout();
+			this->splitMain->Panel2->SuspendLayout();
+			this->splitMain->SuspendLayout();
+			this->pnlChartContainer->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartInventory))->BeginInit();
+			this->pnlRecentContainer->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvRecentRentals))->BeginInit();
 			this->SuspendLayout();
 
 			// Form properties
 			this->Text = L"Rent-A-Tool - Master Dashboard";
 			this->ClientSize = System::Drawing::Size(1260, 780);
 			this->MinimumSize = System::Drawing::Size(1100, 700);
-			this->StartPosition = FormStartPosition::CenterScreen;
-			this->BackColor = Color::FromArgb(240, 243, 246);
-			this->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F);
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
+			this->BackColor = System::Drawing::Color::FromArgb(240, 243, 246);
+			this->Font = gcnew System::Drawing::Font(L"Segoe UI", 9.5F);
 
 			// ================= MENU STRIP =================
-			menuStrip1 = gcnew MenuStrip();
-			menuStrip1->BackColor = Color::FromArgb(38, 64, 64);
-			menuStrip1->ForeColor = Color::White;
-			menuStrip1->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F);
-			menuStrip1->Padding = System::Windows::Forms::Padding(6, 4, 6, 4);
+			this->menuStrip1->BackColor = System::Drawing::Color::FromArgb(38, 64, 64);
+			this->menuStrip1->ForeColor = System::Drawing::Color::White;
+			this->menuStrip1->Font = gcnew System::Drawing::Font(L"Segoe UI", 9.5F);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(6, 4, 6, 4);
 
 			// File menu
-			menuFile = gcnew ToolStripMenuItem(L"&File");
-			menuFile->ForeColor = Color::White;
-			menuFileRefresh = gcnew ToolStripMenuItem(L"&Refresh Dashboard", nullptr, gcnew EventHandler(this, &dashboard::menuRefresh_Click));
-			menuFileLogout = gcnew ToolStripMenuItem(L"&Logout", nullptr, gcnew EventHandler(this, &dashboard::menuLogout_Click));
-			menuFileExit = gcnew ToolStripMenuItem(L"E&xit", nullptr, gcnew EventHandler(this, &dashboard::menuExit_Click));
-			menuFile->DropDownItems->Add(menuFileRefresh);
-			menuFile->DropDownItems->Add(gcnew ToolStripSeparator());
-			menuFile->DropDownItems->Add(menuFileLogout);
-			menuFile->DropDownItems->Add(menuFileExit);
+			this->menuFile->ForeColor = System::Drawing::Color::White;
+			this->menuFile->DropDownItems->Add(this->menuFileRefresh);
+			this->menuFile->DropDownItems->Add(gcnew ToolStripSeparator());
+			this->menuFile->DropDownItems->Add(this->menuFileLogout);
+			this->menuFile->DropDownItems->Add(this->menuFileExit);
 
 			// Inventory menu
-			menuInventory = gcnew ToolStripMenuItem(L"&Inventory");
-			menuInventory->ForeColor = Color::White;
-			menuInventoryManage = gcnew ToolStripMenuItem(L"&Tool Inventory Management", nullptr, gcnew EventHandler(this, &dashboard::openInventory_Click));
-			menuInventory->DropDownItems->Add(menuInventoryManage);
+			this->menuInventory->ForeColor = System::Drawing::Color::White;
+			this->menuInventory->DropDownItems->Add(this->menuInventoryManage);
 
 			// Rentals menu
-			menuRentals = gcnew ToolStripMenuItem(L"&Rentals");
-			menuRentals->ForeColor = Color::White;
-			menuRentalsAll = gcnew ToolStripMenuItem(L"&Rental Transactions & Checkout", nullptr, gcnew EventHandler(this, &dashboard::openRentals_Click));
-			menuRentals->DropDownItems->Add(menuRentalsAll);
+			this->menuRentals->ForeColor = System::Drawing::Color::White;
+			this->menuRentals->DropDownItems->Add(this->menuRentalsAll);
 
 			// Customers menu
-			menuCustomers = gcnew ToolStripMenuItem(L"&Customers");
-			menuCustomers->ForeColor = Color::White;
-			menuCustomersManage = gcnew ToolStripMenuItem(L"&Customer Directory & Profiles", nullptr, gcnew EventHandler(this, &dashboard::openCustomers_Click));
-			menuCustomers->DropDownItems->Add(menuCustomersManage);
+			this->menuCustomers->ForeColor = System::Drawing::Color::White;
+			this->menuCustomers->DropDownItems->Add(this->menuCustomersManage);
 
 			// Settings menu
-			menuSettings = gcnew ToolStripMenuItem(L"&Settings");
-			menuSettings->ForeColor = Color::White;
-			menuSettingsManage = gcnew ToolStripMenuItem(L"&System Rules & User Accounts", nullptr, gcnew EventHandler(this, &dashboard::openSettings_Click));
-			menuSettings->DropDownItems->Add(menuSettingsManage);
+			this->menuSettings->ForeColor = System::Drawing::Color::White;
+			this->menuSettings->DropDownItems->Add(this->menuSettingsManage);
 
 			// Help menu
-			menuHelp = gcnew ToolStripMenuItem(L"&Help");
-			menuHelp->ForeColor = Color::White;
-			menuHelpAbout = gcnew ToolStripMenuItem(L"&About Rent-A-Tool", nullptr, gcnew EventHandler(this, &dashboard::menuAbout_Click));
-			menuHelp->DropDownItems->Add(menuHelpAbout);
+			this->menuHelp->ForeColor = System::Drawing::Color::White;
+			this->menuHelp->DropDownItems->Add(this->menuHelpAbout);
 
-			menuStrip1->Items->Add(menuFile);
-			menuStrip1->Items->Add(menuInventory);
-			menuStrip1->Items->Add(menuRentals);
-			menuStrip1->Items->Add(menuCustomers);
-			menuStrip1->Items->Add(menuSettings);
-			menuStrip1->Items->Add(menuHelp);
+			this->menuStrip1->Items->Add(menuFile);
+			this->menuStrip1->Items->Add(menuInventory);
+			this->menuStrip1->Items->Add(menuRentals);
+			this->menuStrip1->Items->Add(menuCustomers);
+			this->menuStrip1->Items->Add(menuSettings);
+			this->menuStrip1->Items->Add(menuHelp);
 
 			// ================= TOP HEADER PANEL =================
-			pnlHeader = gcnew Panel();
-			pnlHeader->Dock = DockStyle::Top;
-			pnlHeader->Height = 82;
-			pnlHeader->BackColor = Color::FromArgb(47, 79, 79); // DarkSlateGray
-			pnlHeader->Padding = System::Windows::Forms::Padding(24, 12, 24, 12);
-
-			lblAppTitle = gcnew Label();
-			lblAppTitle->Text = L"RENT-A-TOOL MANAGEMENT CONSOLE";
-			lblAppTitle->Font = gcnew Drawing::Font(L"Segoe UI", 16, FontStyle::Bold);
-			lblAppTitle->ForeColor = Color::White;
-			lblAppTitle->Location = Point(24, 14);
-			lblAppTitle->AutoSize = true;
-
-			lblAppSubtitle = gcnew Label();
-			lblAppSubtitle->Text = L"Real-time overview of active rentals, inventory availability, returns, and revenue";
-			lblAppSubtitle->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F);
-			lblAppSubtitle->ForeColor = Color::FromArgb(200, 225, 225);
-			lblAppSubtitle->Location = Point(26, 46);
-			lblAppSubtitle->AutoSize = true;
-
-			btnHeaderLogout = gcnew Button();
-			btnHeaderLogout->Text = L"Log Out";
-			btnHeaderLogout->Font = gcnew Drawing::Font(L"Segoe UI", 9, FontStyle::Bold);
-			btnHeaderLogout->ForeColor = Color::White;
-			btnHeaderLogout->BackColor = Color::FromArgb(192, 57, 43);
-			btnHeaderLogout->FlatStyle = FlatStyle::Flat;
-			btnHeaderLogout->FlatAppearance->BorderSize = 0;
-			btnHeaderLogout->Size = System::Drawing::Size(85, 32);
-			btnHeaderLogout->Location = Point(1145, 24);
-			btnHeaderLogout->Anchor = AnchorStyles::Top | AnchorStyles::Right;
-			btnHeaderLogout->Cursor = Cursors::Hand;
-			btnHeaderLogout->Click += gcnew EventHandler(this, &dashboard::menuLogout_Click);
-
-			btnHeaderRefresh = gcnew Button();
-			btnHeaderRefresh->Text = L"Refresh Data";
-			btnHeaderRefresh->Font = gcnew Drawing::Font(L"Segoe UI", 9, FontStyle::Bold);
-			btnHeaderRefresh->ForeColor = Color::White;
-			btnHeaderRefresh->BackColor = Color::FromArgb(52, 152, 219);
-			btnHeaderRefresh->FlatStyle = FlatStyle::Flat;
-			btnHeaderRefresh->FlatAppearance->BorderSize = 0;
-			btnHeaderRefresh->Size = System::Drawing::Size(105, 32);
-			btnHeaderRefresh->Location = Point(1030, 24);
-			btnHeaderRefresh->Anchor = AnchorStyles::Top | AnchorStyles::Right;
-			btnHeaderRefresh->Cursor = Cursors::Hand;
-			btnHeaderRefresh->Click += gcnew EventHandler(this, &dashboard::menuRefresh_Click);
-
-			lblUserBadge = gcnew Label();
+			this->pnlHeader->Dock = System::Windows::Forms::DockStyle::Top;
+			this->pnlHeader->Height = 82;
+			this->pnlHeader->BackColor = System::Drawing::Color::FromArgb(47, 79, 79); // DarkSlateGray
+			this->pnlHeader->Padding = System::Windows::Forms::Padding(24, 12, 24, 12);
+			this->lblAppTitle->Text = L"RENT-A-TOOL MANAGEMENT CONSOLE";
+			this->lblAppTitle->Font = gcnew System::Drawing::Font(L"Segoe UI", 16, System::Drawing::FontStyle::Bold);
+			this->lblAppTitle->ForeColor = System::Drawing::Color::White;
+			this->lblAppTitle->Location = System::Drawing::Point(24, 14);
+			this->lblAppTitle->AutoSize = true;
+			this->lblAppSubtitle->Text = L"Real-time overview of active rentals, inventory availability, returns, and revenue";
+			this->lblAppSubtitle->Font = gcnew System::Drawing::Font(L"Segoe UI", 9.5F);
+			this->lblAppSubtitle->ForeColor = System::Drawing::Color::FromArgb(200, 225, 225);
+			this->lblAppSubtitle->Location = System::Drawing::Point(26, 46);
+			this->lblAppSubtitle->AutoSize = true;
+			this->btnHeaderLogout->Text = L"Log Out";
+			this->btnHeaderLogout->Font = gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Bold);
+			this->btnHeaderLogout->ForeColor = System::Drawing::Color::White;
+			this->btnHeaderLogout->BackColor = System::Drawing::Color::FromArgb(192, 57, 43);
+			this->btnHeaderLogout->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnHeaderLogout->FlatAppearance->BorderSize = 0;
+			this->btnHeaderLogout->Size = System::Drawing::Size(85, 32);
+			this->btnHeaderLogout->Location = System::Drawing::Point(1145, 24);
+			this->btnHeaderLogout->Anchor = System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right;
+			this->btnHeaderLogout->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnHeaderLogout->Click += gcnew EventHandler(this, &dashboard::menuLogout_Click);
+			this->btnHeaderRefresh->Text = L"Refresh Data";
+			this->btnHeaderRefresh->Font = gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Bold);
+			this->btnHeaderRefresh->ForeColor = System::Drawing::Color::White;
+			this->btnHeaderRefresh->BackColor = System::Drawing::Color::FromArgb(52, 152, 219);
+			this->btnHeaderRefresh->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnHeaderRefresh->FlatAppearance->BorderSize = 0;
+			this->btnHeaderRefresh->Size = System::Drawing::Size(105, 32);
+			this->btnHeaderRefresh->Location = System::Drawing::Point(1030, 24);
+			this->btnHeaderRefresh->Anchor = System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right;
+			this->btnHeaderRefresh->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnHeaderRefresh->Click += gcnew EventHandler(this, &dashboard::menuRefresh_Click);
 			String^ userName = CurrentUser::FullName != nullptr ? CurrentUser::FullName : "Chukka Fernando";
 			String^ role = CurrentUser::Role != nullptr ? CurrentUser::Role : "Admin";
-			lblUserBadge->Text = String::Format("User: {0} ({1})", userName, role);
-			lblUserBadge->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-			lblUserBadge->ForeColor = Color::FromArgb(254, 211, 48);
-			lblUserBadge->Location = Point(730, 18);
-			lblUserBadge->Size = System::Drawing::Size(285, 20);
-			lblUserBadge->TextAlign = ContentAlignment::MiddleRight;
-			lblUserBadge->Anchor = AnchorStyles::Top | AnchorStyles::Right;
+			this->lblUserBadge->Text = String::Format("User: {0} ({1})", userName, role);
+			this->lblUserBadge->Font = gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold);
+			this->lblUserBadge->ForeColor = System::Drawing::Color::FromArgb(254, 211, 48);
+			this->lblUserBadge->Location = System::Drawing::Point(730, 18);
+			this->lblUserBadge->Size = System::Drawing::Size(285, 20);
+			this->lblUserBadge->TextAlign = ContentAlignment::MiddleRight;
+			this->lblUserBadge->Anchor = System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right;
+			this->lblDateBadge->Text = DateTime::Now.ToString("dddd, MMMM dd, yyyy");
+			this->lblDateBadge->Font = gcnew System::Drawing::Font(L"Segoe UI", 9);
+			this->lblDateBadge->ForeColor = System::Drawing::Color::FromArgb(210, 230, 230);
+			this->lblDateBadge->Location = System::Drawing::Point(730, 42);
+			this->lblDateBadge->Size = System::Drawing::Size(285, 20);
+			this->lblDateBadge->TextAlign = ContentAlignment::MiddleRight;
+			this->lblDateBadge->Anchor = System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right;
 
-			lblDateBadge = gcnew Label();
-			lblDateBadge->Text = DateTime::Now.ToString("dddd, MMMM dd, yyyy");
-			lblDateBadge->Font = gcnew Drawing::Font(L"Segoe UI", 9);
-			lblDateBadge->ForeColor = Color::FromArgb(210, 230, 230);
-			lblDateBadge->Location = Point(730, 42);
-			lblDateBadge->Size = System::Drawing::Size(285, 20);
-			lblDateBadge->TextAlign = ContentAlignment::MiddleRight;
-			lblDateBadge->Anchor = AnchorStyles::Top | AnchorStyles::Right;
-
-			pnlHeader->Controls->Add(lblAppTitle);
-			pnlHeader->Controls->Add(lblAppSubtitle);
-			pnlHeader->Controls->Add(lblUserBadge);
-			pnlHeader->Controls->Add(lblDateBadge);
-			pnlHeader->Controls->Add(btnHeaderRefresh);
-			pnlHeader->Controls->Add(btnHeaderLogout);
+			this->pnlHeader->Controls->Add(this->lblAppTitle);
+			this->pnlHeader->Controls->Add(this->lblAppSubtitle);
+			this->pnlHeader->Controls->Add(this->lblUserBadge);
+			this->pnlHeader->Controls->Add(this->lblDateBadge);
+			this->pnlHeader->Controls->Add(this->btnHeaderRefresh);
+			this->pnlHeader->Controls->Add(this->btnHeaderLogout);
 
 			// ================= QUICK ACTIONS BAR =================
-			pnlActions = gcnew Panel();
-			pnlActions->Dock = DockStyle::Top;
-			pnlActions->Height = 56;
-			pnlActions->BackColor = Color::White;
-			pnlActions->Padding = System::Windows::Forms::Padding(24, 10, 24, 10);
+			this->pnlActions->Dock = System::Windows::Forms::DockStyle::Top;
+			this->pnlActions->Height = 56;
+			this->pnlActions->BackColor = System::Drawing::Color::White;
+			this->pnlActions->Padding = System::Windows::Forms::Padding(24, 10, 24, 10);
+			this->btnActNewRental->Text = L"+ Issue New Rental";
+			this->btnActNewRental->Font = gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold);
+			this->btnActNewRental->BackColor = System::Drawing::Color::FromArgb(39, 174, 96); // Green
+			this->btnActNewRental->ForeColor = System::Drawing::Color::White;
+			this->btnActNewRental->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnActNewRental->FlatAppearance->BorderSize = 0;
+			this->btnActNewRental->Location = System::Drawing::Point(24, 10);
+			this->btnActNewRental->Size = System::Drawing::Size(170, 36);
+			this->btnActNewRental->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnActNewRental->Click += gcnew EventHandler(this, &dashboard::openRentals_Click);
+			this->btnActReturn->Text = L"Process Return";
+			this->btnActReturn->Font = gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold);
+			this->btnActReturn->BackColor = System::Drawing::Color::FromArgb(230, 126, 34); // Orange
+			this->btnActReturn->ForeColor = System::Drawing::Color::White;
+			this->btnActReturn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnActReturn->FlatAppearance->BorderSize = 0;
+			this->btnActReturn->Location = System::Drawing::Point(204, 10);
+			this->btnActReturn->Size = System::Drawing::Size(150, 36);
+			this->btnActReturn->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnActReturn->Click += gcnew EventHandler(this, &dashboard::openRentals_Click);
+			this->btnActTools->Text = L"Tool Inventory";
+			this->btnActTools->Font = gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold);
+			this->btnActTools->BackColor = System::Drawing::Color::FromArgb(47, 79, 79); // Dark teal
+			this->btnActTools->ForeColor = System::Drawing::Color::White;
+			this->btnActTools->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnActTools->FlatAppearance->BorderSize = 0;
+			this->btnActTools->Location = System::Drawing::Point(364, 10);
+			this->btnActTools->Size = System::Drawing::Size(150, 36);
+			this->btnActTools->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnActTools->Click += gcnew EventHandler(this, &dashboard::openInventory_Click);
+			this->btnActCustomers->Text = L"Customer Directory";
+			this->btnActCustomers->Font = gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold);
+			this->btnActCustomers->BackColor = System::Drawing::Color::FromArgb(52, 152, 219); // Blue
+			this->btnActCustomers->ForeColor = System::Drawing::Color::White;
+			this->btnActCustomers->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnActCustomers->FlatAppearance->BorderSize = 0;
+			this->btnActCustomers->Location = System::Drawing::Point(524, 10);
+			this->btnActCustomers->Size = System::Drawing::Size(160, 36);
+			this->btnActCustomers->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnActCustomers->Click += gcnew EventHandler(this, &dashboard::openCustomers_Click);
+			this->btnActSettings->Text = L"Settings & Users";
+			this->btnActSettings->Font = gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold);
+			this->btnActSettings->BackColor = System::Drawing::Color::FromArgb(108, 122, 137); // Slate
+			this->btnActSettings->ForeColor = System::Drawing::Color::White;
+			this->btnActSettings->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnActSettings->FlatAppearance->BorderSize = 0;
+			this->btnActSettings->Location = System::Drawing::Point(694, 10);
+			this->btnActSettings->Size = System::Drawing::Size(150, 36);
+			this->btnActSettings->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnActSettings->Click += gcnew EventHandler(this, &dashboard::openSettings_Click);
 
-			btnActNewRental = gcnew Button();
-			btnActNewRental->Text = L"+ Issue New Rental";
-			btnActNewRental->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-			btnActNewRental->BackColor = Color::FromArgb(39, 174, 96); // Green
-			btnActNewRental->ForeColor = Color::White;
-			btnActNewRental->FlatStyle = FlatStyle::Flat;
-			btnActNewRental->FlatAppearance->BorderSize = 0;
-			btnActNewRental->Location = Point(24, 10);
-			btnActNewRental->Size = System::Drawing::Size(170, 36);
-			btnActNewRental->Cursor = Cursors::Hand;
-			btnActNewRental->Click += gcnew EventHandler(this, &dashboard::openRentals_Click);
-
-			btnActReturn = gcnew Button();
-			btnActReturn->Text = L"Process Return";
-			btnActReturn->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-			btnActReturn->BackColor = Color::FromArgb(230, 126, 34); // Orange
-			btnActReturn->ForeColor = Color::White;
-			btnActReturn->FlatStyle = FlatStyle::Flat;
-			btnActReturn->FlatAppearance->BorderSize = 0;
-			btnActReturn->Location = Point(204, 10);
-			btnActReturn->Size = System::Drawing::Size(150, 36);
-			btnActReturn->Cursor = Cursors::Hand;
-			btnActReturn->Click += gcnew EventHandler(this, &dashboard::openRentals_Click);
-
-			btnActTools = gcnew Button();
-			btnActTools->Text = L"Tool Inventory";
-			btnActTools->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-			btnActTools->BackColor = Color::FromArgb(47, 79, 79); // Dark teal
-			btnActTools->ForeColor = Color::White;
-			btnActTools->FlatStyle = FlatStyle::Flat;
-			btnActTools->FlatAppearance->BorderSize = 0;
-			btnActTools->Location = Point(364, 10);
-			btnActTools->Size = System::Drawing::Size(150, 36);
-			btnActTools->Cursor = Cursors::Hand;
-			btnActTools->Click += gcnew EventHandler(this, &dashboard::openInventory_Click);
-
-			btnActCustomers = gcnew Button();
-			btnActCustomers->Text = L"Customer Directory";
-			btnActCustomers->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-			btnActCustomers->BackColor = Color::FromArgb(52, 152, 219); // Blue
-			btnActCustomers->ForeColor = Color::White;
-			btnActCustomers->FlatStyle = FlatStyle::Flat;
-			btnActCustomers->FlatAppearance->BorderSize = 0;
-			btnActCustomers->Location = Point(524, 10);
-			btnActCustomers->Size = System::Drawing::Size(160, 36);
-			btnActCustomers->Cursor = Cursors::Hand;
-			btnActCustomers->Click += gcnew EventHandler(this, &dashboard::openCustomers_Click);
-
-			btnActSettings = gcnew Button();
-			btnActSettings->Text = L"Settings & Users";
-			btnActSettings->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-			btnActSettings->BackColor = Color::FromArgb(108, 122, 137); // Slate
-			btnActSettings->ForeColor = Color::White;
-			btnActSettings->FlatStyle = FlatStyle::Flat;
-			btnActSettings->FlatAppearance->BorderSize = 0;
-			btnActSettings->Location = Point(694, 10);
-			btnActSettings->Size = System::Drawing::Size(150, 36);
-			btnActSettings->Cursor = Cursors::Hand;
-			btnActSettings->Click += gcnew EventHandler(this, &dashboard::openSettings_Click);
-
-			pnlActions->Controls->Add(btnActNewRental);
-			pnlActions->Controls->Add(btnActReturn);
-			pnlActions->Controls->Add(btnActTools);
-			pnlActions->Controls->Add(btnActCustomers);
-			pnlActions->Controls->Add(btnActSettings);
+			this->pnlActions->Controls->Add(this->btnActNewRental);
+			this->pnlActions->Controls->Add(this->btnActReturn);
+			this->pnlActions->Controls->Add(this->btnActTools);
+			this->pnlActions->Controls->Add(this->btnActCustomers);
+			this->pnlActions->Controls->Add(this->btnActSettings);
 
 			// ================= KPI CARDS PANEL =================
-			pnlKpiContainer = gcnew Panel();
-			pnlKpiContainer->Dock = DockStyle::Top;
-			pnlKpiContainer->Height = 120;
-			pnlKpiContainer->BackColor = Color::FromArgb(240, 243, 246);
-			pnlKpiContainer->Padding = System::Windows::Forms::Padding(24, 14, 24, 14);
+			this->pnlKpiContainer->Dock = System::Windows::Forms::DockStyle::Top;
+			this->pnlKpiContainer->Height = 120;
+			this->pnlKpiContainer->BackColor = System::Drawing::Color::FromArgb(240, 243, 246);
+			this->pnlKpiContainer->Padding = System::Windows::Forms::Padding(24, 14, 24, 14);
 
 			// Card 1: Active Rentals
-			cardActiveRentals = gcnew Panel();
-			cardActiveRentals->BackColor = Color::White;
-			cardActiveRentals->Size = System::Drawing::Size(280, 92);
-			cardActiveRentals->Location = Point(24, 14);
+			this->cardActiveRentals->BackColor = System::Drawing::Color::White;
+			this->cardActiveRentals->Size = System::Drawing::Size(280, 92);
+			this->cardActiveRentals->Location = System::Drawing::Point(24, 14);
+			this->lblCard1Title->Text = L"ACTIVE RENTALS";
+			this->lblCard1Title->Font = gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Bold);
+			this->lblCard1Title->ForeColor = System::Drawing::Color::FromArgb(41, 128, 185);
+			this->lblCard1Title->Location = System::Drawing::Point(16, 12);
+			this->lblCard1Title->AutoSize = true;
+			this->lblCard1Value->Text = L"0";
+			this->lblCard1Value->Font = gcnew System::Drawing::Font(L"Segoe UI", 20, System::Drawing::FontStyle::Bold);
+			this->lblCard1Value->ForeColor = System::Drawing::Color::FromArgb(44, 62, 80);
+			this->lblCard1Value->Location = System::Drawing::Point(14, 30);
+			this->lblCard1Value->AutoSize = true;
+			this->lblCard1Sub->Text = L"Rentals today: 0";
+			this->lblCard1Sub->Font = gcnew System::Drawing::Font(L"Segoe UI", 8.5F);
+			this->lblCard1Sub->ForeColor = System::Drawing::Color::FromArgb(127, 140, 141);
+			this->lblCard1Sub->Location = System::Drawing::Point(16, 68);
+			this->lblCard1Sub->AutoSize = true;
 
-			lblCard1Title = gcnew Label();
-			lblCard1Title->Text = L"ACTIVE RENTALS";
-			lblCard1Title->Font = gcnew Drawing::Font(L"Segoe UI", 9, FontStyle::Bold);
-			lblCard1Title->ForeColor = Color::FromArgb(41, 128, 185);
-			lblCard1Title->Location = Point(16, 12);
-			lblCard1Title->AutoSize = true;
-
-			lblCard1Value = gcnew Label();
-			lblCard1Value->Text = L"0";
-			lblCard1Value->Font = gcnew Drawing::Font(L"Segoe UI", 20, FontStyle::Bold);
-			lblCard1Value->ForeColor = Color::FromArgb(44, 62, 80);
-			lblCard1Value->Location = Point(14, 30);
-			lblCard1Value->AutoSize = true;
-
-			lblCard1Sub = gcnew Label();
-			lblCard1Sub->Text = L"Rentals today: 0";
-			lblCard1Sub->Font = gcnew Drawing::Font(L"Segoe UI", 8.5F);
-			lblCard1Sub->ForeColor = Color::FromArgb(127, 140, 141);
-			lblCard1Sub->Location = Point(16, 68);
-			lblCard1Sub->AutoSize = true;
-
-			cardActiveRentals->Controls->Add(lblCard1Title);
-			cardActiveRentals->Controls->Add(lblCard1Value);
-			cardActiveRentals->Controls->Add(lblCard1Sub);
+			this->cardActiveRentals->Controls->Add(this->lblCard1Title);
+			this->cardActiveRentals->Controls->Add(this->lblCard1Value);
+			this->cardActiveRentals->Controls->Add(this->lblCard1Sub);
 
 			// Card 2: Overdue
-			cardOverdue = gcnew Panel();
-			cardOverdue->BackColor = Color::White;
-			cardOverdue->Size = System::Drawing::Size(280, 92);
-			cardOverdue->Location = Point(324, 14);
+			this->cardOverdue->BackColor = System::Drawing::Color::White;
+			this->cardOverdue->Size = System::Drawing::Size(280, 92);
+			this->cardOverdue->Location = System::Drawing::Point(324, 14);
+			this->lblCard2Title->Text = L"OVERDUE RETURNS";
+			this->lblCard2Title->Font = gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Bold);
+			this->lblCard2Title->ForeColor = System::Drawing::Color::FromArgb(192, 57, 43);
+			this->lblCard2Title->Location = System::Drawing::Point(16, 12);
+			this->lblCard2Title->AutoSize = true;
+			this->lblCard2Value->Text = L"0";
+			this->lblCard2Value->Font = gcnew System::Drawing::Font(L"Segoe UI", 20, System::Drawing::FontStyle::Bold);
+			this->lblCard2Value->ForeColor = System::Drawing::Color::FromArgb(192, 57, 43);
+			this->lblCard2Value->Location = System::Drawing::Point(14, 30);
+			this->lblCard2Value->AutoSize = true;
+			this->lblCard2Sub->Text = L"Requires follow-up";
+			this->lblCard2Sub->Font = gcnew System::Drawing::Font(L"Segoe UI", 8.5F);
+			this->lblCard2Sub->ForeColor = System::Drawing::Color::FromArgb(127, 140, 141);
+			this->lblCard2Sub->Location = System::Drawing::Point(16, 68);
+			this->lblCard2Sub->AutoSize = true;
 
-			lblCard2Title = gcnew Label();
-			lblCard2Title->Text = L"OVERDUE RETURNS";
-			lblCard2Title->Font = gcnew Drawing::Font(L"Segoe UI", 9, FontStyle::Bold);
-			lblCard2Title->ForeColor = Color::FromArgb(192, 57, 43);
-			lblCard2Title->Location = Point(16, 12);
-			lblCard2Title->AutoSize = true;
-
-			lblCard2Value = gcnew Label();
-			lblCard2Value->Text = L"0";
-			lblCard2Value->Font = gcnew Drawing::Font(L"Segoe UI", 20, FontStyle::Bold);
-			lblCard2Value->ForeColor = Color::FromArgb(192, 57, 43);
-			lblCard2Value->Location = Point(14, 30);
-			lblCard2Value->AutoSize = true;
-
-			lblCard2Sub = gcnew Label();
-			lblCard2Sub->Text = L"Requires follow-up";
-			lblCard2Sub->Font = gcnew Drawing::Font(L"Segoe UI", 8.5F);
-			lblCard2Sub->ForeColor = Color::FromArgb(127, 140, 141);
-			lblCard2Sub->Location = Point(16, 68);
-			lblCard2Sub->AutoSize = true;
-
-			cardOverdue->Controls->Add(lblCard2Title);
-			cardOverdue->Controls->Add(lblCard2Value);
-			cardOverdue->Controls->Add(lblCard2Sub);
+			this->cardOverdue->Controls->Add(this->lblCard2Title);
+			this->cardOverdue->Controls->Add(this->lblCard2Value);
+			this->cardOverdue->Controls->Add(this->lblCard2Sub);
 
 			// Card 3: Available Tools
-			cardTools = gcnew Panel();
-			cardTools->BackColor = Color::White;
-			cardTools->Size = System::Drawing::Size(280, 92);
-			cardTools->Location = Point(624, 14);
+			this->cardTools->BackColor = System::Drawing::Color::White;
+			this->cardTools->Size = System::Drawing::Size(280, 92);
+			this->cardTools->Location = System::Drawing::Point(624, 14);
+			this->lblCard3Title->Text = L"TOOL AVAILABILITY";
+			this->lblCard3Title->Font = gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Bold);
+			this->lblCard3Title->ForeColor = System::Drawing::Color::FromArgb(39, 174, 96);
+			this->lblCard3Title->Location = System::Drawing::Point(16, 12);
+			this->lblCard3Title->AutoSize = true;
+			this->lblCard3Value->Text = L"0";
+			this->lblCard3Value->Font = gcnew System::Drawing::Font(L"Segoe UI", 20, System::Drawing::FontStyle::Bold);
+			this->lblCard3Value->ForeColor = System::Drawing::Color::FromArgb(44, 62, 80);
+			this->lblCard3Value->Location = System::Drawing::Point(14, 30);
+			this->lblCard3Value->AutoSize = true;
+			this->lblCard3Sub->Text = L"Rented: 0 | Maintenance: 0";
+			this->lblCard3Sub->Font = gcnew System::Drawing::Font(L"Segoe UI", 8.5F);
+			this->lblCard3Sub->ForeColor = System::Drawing::Color::FromArgb(127, 140, 141);
+			this->lblCard3Sub->Location = System::Drawing::Point(16, 68);
+			this->lblCard3Sub->AutoSize = true;
 
-			lblCard3Title = gcnew Label();
-			lblCard3Title->Text = L"TOOL AVAILABILITY";
-			lblCard3Title->Font = gcnew Drawing::Font(L"Segoe UI", 9, FontStyle::Bold);
-			lblCard3Title->ForeColor = Color::FromArgb(39, 174, 96);
-			lblCard3Title->Location = Point(16, 12);
-			lblCard3Title->AutoSize = true;
-
-			lblCard3Value = gcnew Label();
-			lblCard3Value->Text = L"0";
-			lblCard3Value->Font = gcnew Drawing::Font(L"Segoe UI", 20, FontStyle::Bold);
-			lblCard3Value->ForeColor = Color::FromArgb(44, 62, 80);
-			lblCard3Value->Location = Point(14, 30);
-			lblCard3Value->AutoSize = true;
-
-			lblCard3Sub = gcnew Label();
-			lblCard3Sub->Text = L"Rented: 0 | Maintenance: 0";
-			lblCard3Sub->Font = gcnew Drawing::Font(L"Segoe UI", 8.5F);
-			lblCard3Sub->ForeColor = Color::FromArgb(127, 140, 141);
-			lblCard3Sub->Location = Point(16, 68);
-			lblCard3Sub->AutoSize = true;
-
-			cardTools->Controls->Add(lblCard3Title);
-			cardTools->Controls->Add(lblCard3Value);
-			cardTools->Controls->Add(lblCard3Sub);
+			this->cardTools->Controls->Add(this->lblCard3Title);
+			this->cardTools->Controls->Add(this->lblCard3Value);
+			this->cardTools->Controls->Add(this->lblCard3Sub);
 
 			// Card 4: Total Revenue & Deposits
-			cardRevenue = gcnew Panel();
-			cardRevenue->BackColor = Color::White;
-			cardRevenue->Size = System::Drawing::Size(305, 92);
-			cardRevenue->Location = Point(924, 14);
+			this->cardRevenue->BackColor = System::Drawing::Color::White;
+			this->cardRevenue->Size = System::Drawing::Size(305, 92);
+			this->cardRevenue->Location = System::Drawing::Point(924, 14);
+			this->lblCard4Title->Text = L"TOTAL REVENUE";
+			this->lblCard4Title->Font = gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Bold);
+			this->lblCard4Title->ForeColor = System::Drawing::Color::FromArgb(142, 68, 173);
+			this->lblCard4Title->Location = System::Drawing::Point(16, 12);
+			this->lblCard4Title->AutoSize = true;
+			this->lblCard4Value->Text = L"LKR 0.00";
+			this->lblCard4Value->Font = gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold);
+			this->lblCard4Value->ForeColor = System::Drawing::Color::FromArgb(44, 62, 80);
+			this->lblCard4Value->Location = System::Drawing::Point(14, 32);
+			this->lblCard4Value->AutoSize = true;
+			this->lblCard4Sub->Text = L"Deposits held: LKR 0.00";
+			this->lblCard4Sub->Font = gcnew System::Drawing::Font(L"Segoe UI", 8.5F);
+			this->lblCard4Sub->ForeColor = System::Drawing::Color::FromArgb(127, 140, 141);
+			this->lblCard4Sub->Location = System::Drawing::Point(16, 68);
+			this->lblCard4Sub->AutoSize = true;
 
-			lblCard4Title = gcnew Label();
-			lblCard4Title->Text = L"TOTAL REVENUE";
-			lblCard4Title->Font = gcnew Drawing::Font(L"Segoe UI", 9, FontStyle::Bold);
-			lblCard4Title->ForeColor = Color::FromArgb(142, 68, 173);
-			lblCard4Title->Location = Point(16, 12);
-			lblCard4Title->AutoSize = true;
+			this->cardRevenue->Controls->Add(this->lblCard4Title);
+			this->cardRevenue->Controls->Add(this->lblCard4Value);
+			this->cardRevenue->Controls->Add(this->lblCard4Sub);
 
-			lblCard4Value = gcnew Label();
-			lblCard4Value->Text = L"LKR 0.00";
-			lblCard4Value->Font = gcnew Drawing::Font(L"Segoe UI", 18, FontStyle::Bold);
-			lblCard4Value->ForeColor = Color::FromArgb(44, 62, 80);
-			lblCard4Value->Location = Point(14, 32);
-			lblCard4Value->AutoSize = true;
-
-			lblCard4Sub = gcnew Label();
-			lblCard4Sub->Text = L"Deposits held: LKR 0.00";
-			lblCard4Sub->Font = gcnew Drawing::Font(L"Segoe UI", 8.5F);
-			lblCard4Sub->ForeColor = Color::FromArgb(127, 140, 141);
-			lblCard4Sub->Location = Point(16, 68);
-			lblCard4Sub->AutoSize = true;
-
-			cardRevenue->Controls->Add(lblCard4Title);
-			cardRevenue->Controls->Add(lblCard4Value);
-			cardRevenue->Controls->Add(lblCard4Sub);
-
-			pnlKpiContainer->Controls->Add(cardActiveRentals);
-			pnlKpiContainer->Controls->Add(cardOverdue);
-			pnlKpiContainer->Controls->Add(cardTools);
-			pnlKpiContainer->Controls->Add(cardRevenue);
+			this->pnlKpiContainer->Controls->Add(this->cardActiveRentals);
+			this->pnlKpiContainer->Controls->Add(this->cardOverdue);
+			this->pnlKpiContainer->Controls->Add(this->cardTools);
+			this->pnlKpiContainer->Controls->Add(this->cardRevenue);
 
 			// ================= SPLIT MAIN SECTION =================
-			splitMain = gcnew SplitContainer();
-			splitMain->Dock = DockStyle::Fill;
-			splitMain->SplitterDistance = 490;
-			splitMain->Padding = System::Windows::Forms::Padding(24, 0, 24, 16);
-			splitMain->BackColor = Color::FromArgb(240, 243, 246);
+			this->splitMain->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->splitMain->SplitterDistance = 490;
+			this->splitMain->Padding = System::Windows::Forms::Padding(24, 0, 24, 16);
+			this->splitMain->BackColor = System::Drawing::Color::FromArgb(240, 243, 246);
 
 			// Left Panel: Tool Distribution Chart
-			pnlChartContainer = gcnew Panel();
-			pnlChartContainer->Dock = DockStyle::Fill;
-			pnlChartContainer->BackColor = Color::White;
-			pnlChartContainer->Padding = System::Windows::Forms::Padding(16);
+			this->pnlChartContainer->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pnlChartContainer->BackColor = System::Drawing::Color::White;
+			this->pnlChartContainer->Padding = System::Windows::Forms::Padding(16);
+			this->lblChartHeader->Text = L"Tool Inventory by Category";
+			this->lblChartHeader->Font = gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold);
+			this->lblChartHeader->ForeColor = System::Drawing::Color::FromArgb(47, 79, 79);
+			this->lblChartHeader->Dock = System::Windows::Forms::DockStyle::Top;
+			this->lblChartHeader->Height = 32;
+			this->chartInventory->Dock = System::Windows::Forms::DockStyle::Fill;
+			chartArea1->Name = L"MainArea";
+			chartArea1->BackColor = System::Drawing::Color::White;
+			chartArea1->AxisX->MajorGrid->LineColor = System::Drawing::Color::FromArgb(240, 240, 240);
+			chartArea1->AxisY->MajorGrid->LineColor = System::Drawing::Color::FromArgb(240, 240, 240);
+			this->chartInventory->ChartAreas->Add(chartArea1);
 
-			lblChartHeader = gcnew Label();
-			lblChartHeader->Text = L"Tool Inventory by Category";
-			lblChartHeader->Font = gcnew Drawing::Font(L"Segoe UI", 12, FontStyle::Bold);
-			lblChartHeader->ForeColor = Color::FromArgb(47, 79, 79);
-			lblChartHeader->Dock = DockStyle::Top;
-			lblChartHeader->Height = 32;
+			legend1->Name = L"MainLegend";
+			legend1->Docking = System::Windows::Forms::DataVisualization::Charting::Docking::Bottom;
+			this->chartInventory->Legends->Add(legend1);
 
-			chartInventory = gcnew Chart();
-			chartInventory->Dock = DockStyle::Fill;
-			ChartArea^ chartArea1 = gcnew ChartArea(L"MainArea");
-			chartArea1->BackColor = Color::White;
-			chartArea1->AxisX->MajorGrid->LineColor = Color::FromArgb(240, 240, 240);
-			chartArea1->AxisY->MajorGrid->LineColor = Color::FromArgb(240, 240, 240);
-			chartInventory->ChartAreas->Add(chartArea1);
-
-			Legend^ legend1 = gcnew Legend(L"MainLegend");
-			legend1->Docking = Docking::Bottom;
-			chartInventory->Legends->Add(legend1);
-
-			Series^ series1 = gcnew Series(L"Categories");
-			series1->ChartType = SeriesChartType::Pie;
+			series1->Name = L"Categories";
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
 			series1->IsValueShownAsLabel = true;
-			chartInventory->Series->Add(series1);
+			this->chartInventory->Series->Add(series1);
 
-			pnlChartContainer->Controls->Add(chartInventory);
-			pnlChartContainer->Controls->Add(lblChartHeader);
-			splitMain->Panel1->Controls->Add(pnlChartContainer);
+			this->pnlChartContainer->Controls->Add(this->chartInventory);
+			this->pnlChartContainer->Controls->Add(this->lblChartHeader);
+			this->splitMain->Panel1->Controls->Add(this->pnlChartContainer);
 
 			// Right Panel: Recent Rentals Table
-			pnlRecentContainer = gcnew Panel();
-			pnlRecentContainer->Dock = DockStyle::Fill;
-			pnlRecentContainer->BackColor = Color::White;
-			pnlRecentContainer->Padding = System::Windows::Forms::Padding(16);
+			this->pnlRecentContainer->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pnlRecentContainer->BackColor = System::Drawing::Color::White;
+			this->pnlRecentContainer->Padding = System::Windows::Forms::Padding(16);
+			this->lblRecentHeader->Text = L"Recent Rental Activity";
+			this->lblRecentHeader->Font = gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold);
+			this->lblRecentHeader->ForeColor = System::Drawing::Color::FromArgb(47, 79, 79);
+			this->lblRecentHeader->Dock = System::Windows::Forms::DockStyle::Top;
+			this->lblRecentHeader->Height = 32;
+			this->dgvRecentRentals->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->dgvRecentRentals->BackgroundColor = System::Drawing::Color::White;
+			this->dgvRecentRentals->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->dgvRecentRentals->AllowUserToAddRows = false;
+			this->dgvRecentRentals->AllowUserToDeleteRows = false;
+			this->dgvRecentRentals->ReadOnly = true;
+			this->dgvRecentRentals->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->dgvRecentRentals->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			this->dgvRecentRentals->RowHeadersVisible = false;
+			this->dgvRecentRentals->CellFormatting += gcnew DataGridViewCellFormattingEventHandler(this, &dashboard::dgvRecent_CellFormatting);
+			this->dgvRecentRentals->DataError += gcnew DataGridViewDataErrorEventHandler(this, &dashboard::dgvRecent_DataError);
 
-			lblRecentHeader = gcnew Label();
-			lblRecentHeader->Text = L"Recent Rental Activity";
-			lblRecentHeader->Font = gcnew Drawing::Font(L"Segoe UI", 12, FontStyle::Bold);
-			lblRecentHeader->ForeColor = Color::FromArgb(47, 79, 79);
-			lblRecentHeader->Dock = DockStyle::Top;
-			lblRecentHeader->Height = 32;
-
-			dgvRecentRentals = gcnew DataGridView();
-			dgvRecentRentals->Dock = DockStyle::Fill;
-			dgvRecentRentals->BackgroundColor = Color::White;
-			dgvRecentRentals->BorderStyle = BorderStyle::None;
-			dgvRecentRentals->AllowUserToAddRows = false;
-			dgvRecentRentals->AllowUserToDeleteRows = false;
-			dgvRecentRentals->ReadOnly = true;
-			dgvRecentRentals->SelectionMode = DataGridViewSelectionMode::FullRowSelect;
-			dgvRecentRentals->AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode::Fill;
-			dgvRecentRentals->RowHeadersVisible = false;
-			dgvRecentRentals->CellFormatting += gcnew DataGridViewCellFormattingEventHandler(this, &dashboard::dgvRecent_CellFormatting);
-			dgvRecentRentals->DataError += gcnew DataGridViewDataErrorEventHandler(this, &dashboard::dgvRecent_DataError);
-
-			pnlRecentContainer->Controls->Add(dgvRecentRentals);
-			pnlRecentContainer->Controls->Add(lblRecentHeader);
-			splitMain->Panel2->Controls->Add(pnlRecentContainer);
+			this->pnlRecentContainer->Controls->Add(this->dgvRecentRentals);
+			this->pnlRecentContainer->Controls->Add(this->lblRecentHeader);
+			this->splitMain->Panel2->Controls->Add(this->pnlRecentContainer);
 
 			// Assemble Form controls
-			this->Controls->Add(splitMain);
-			this->Controls->Add(pnlKpiContainer);
-			this->Controls->Add(pnlActions);
-			this->Controls->Add(pnlHeader);
-			this->Controls->Add(menuStrip1);
+			this->Controls->Add(this->splitMain);
+			this->Controls->Add(this->pnlKpiContainer);
+			this->Controls->Add(this->pnlActions);
+			this->Controls->Add(this->pnlHeader);
+			this->Controls->Add(this->menuStrip1);
 
 			this->MainMenuStrip = menuStrip1;
 			this->Load += gcnew EventHandler(this, &dashboard::dashboard_Load);
@@ -553,7 +528,10 @@ namespace RentATool {
 
 		void dashboard_Load(System::Object^ sender, System::EventArgs^ e)
 		{
-			RefreshDashboardData();
+			if (this->DesignMode) return;
+			try {
+				RefreshDashboardData();
+			} catch (Exception^) {}
 		}
 
 	public:
@@ -562,27 +540,27 @@ namespace RentATool {
 			// 1. Fetch live metrics
 			Data::DashboardSummary^ summary = Data::DashboardService::GetSummary();
 
-			lblCard1Value->Text = summary->ActiveRentals.ToString();
-			lblCard1Sub->Text = "Rentals today: +" + summary->RentalsToday;
+			this->lblCard1Value->Text = summary->ActiveRentals.ToString();
+			this->lblCard1Sub->Text = "Rentals today: +" + summary->RentalsToday;
 
-			lblCard2Value->Text = summary->OverdueRentals.ToString();
+			this->lblCard2Value->Text = summary->OverdueRentals.ToString();
 			if (summary->OverdueRentals > 0) {
-				lblCard2Sub->Text = "Requires immediate return action!";
-				lblCard2Sub->ForeColor = Color::FromArgb(192, 57, 43);
+				this->lblCard2Sub->Text = "Requires immediate return action!";
+				this->lblCard2Sub->ForeColor = System::Drawing::Color::FromArgb(192, 57, 43);
 			}
 			else {
-				lblCard2Sub->Text = "No overdue rentals";
-				lblCard2Sub->ForeColor = Color::FromArgb(39, 174, 96);
+				this->lblCard2Sub->Text = "No overdue rentals";
+				this->lblCard2Sub->ForeColor = System::Drawing::Color::FromArgb(39, 174, 96);
 			}
 
-			lblCard3Value->Text = String::Format("{0} / {1}", summary->AvailableTools, summary->TotalTools);
-			lblCard3Sub->Text = String::Format("Rented: {0} | Maint: {1}", summary->RentedTools, summary->MaintenanceTools);
+			this->lblCard3Value->Text = String::Format("{0} / {1}", summary->AvailableTools, summary->TotalTools);
+			this->lblCard3Sub->Text = String::Format("Rented: {0} | Maint: {1}", summary->RentedTools, summary->MaintenanceTools);
 
-			lblCard4Value->Text = String::Format("LKR {0:N2}", summary->TotalRevenue);
-			lblCard4Sub->Text = String::Format("Deposits held: LKR {0:N2}", summary->DepositsHeld);
+			this->lblCard4Value->Text = String::Format("LKR {0:N2}", summary->TotalRevenue);
+			this->lblCard4Sub->Text = String::Format("Deposits held: LKR {0:N2}", summary->DepositsHeld);
 
 			// 2. Populate Chart with category breakdown
-			chartInventory->Series["Categories"]->Points->Clear();
+			this->chartInventory->Series["Categories"]->Points->Clear();
 			DataTable^ dtCat = Data::DashboardService::GetCategoryStats();
 			for (int i = 0; i < dtCat->Rows->Count; i++) {
 				String^ cat = dtCat->Rows[i]["Category"]->ToString();
@@ -591,37 +569,37 @@ namespace RentATool {
 				dp->SetValueXY(cat, count);
 				dp->LegendText = cat + " (" + count + ")";
 				dp->Label = count.ToString();
-				chartInventory->Series["Categories"]->Points->Add(dp);
+				this->chartInventory->Series["Categories"]->Points->Add(dp);
 			}
 
 			// 3. Populate Recent Rentals Grid
 			DataTable^ dtRecent = Data::DashboardService::GetRecentRentals(8);
-			dgvRecentRentals->DataSource = dtRecent;
-			if (dgvRecentRentals->Columns->Contains("rental_code")) dgvRecentRentals->Columns["rental_code"]->HeaderText = L"Code";
-			if (dgvRecentRentals->Columns->Contains("customer_name")) dgvRecentRentals->Columns["customer_name"]->HeaderText = L"Customer";
-			if (dgvRecentRentals->Columns->Contains("tool_name")) dgvRecentRentals->Columns["tool_name"]->HeaderText = L"Tool";
-			if (dgvRecentRentals->Columns->Contains("rent_date")) dgvRecentRentals->Columns["rent_date"]->HeaderText = L"Rent Date";
-			if (dgvRecentRentals->Columns->Contains("due_date")) dgvRecentRentals->Columns["due_date"]->HeaderText = L"Due Date";
-			if (dgvRecentRentals->Columns->Contains("status")) dgvRecentRentals->Columns["status"]->HeaderText = L"Status";
-			if (dgvRecentRentals->Columns->Contains("deposit_paid")) dgvRecentRentals->Columns["deposit_paid"]->Visible = false;
-			if (dgvRecentRentals->Columns->Contains("total_amount")) dgvRecentRentals->Columns["total_amount"]->Visible = false;
+			this->dgvRecentRentals->DataSource = dtRecent;
+			if (this->dgvRecentRentals->Columns->Contains("rental_code")) this->dgvRecentRentals->Columns["rental_code"]->HeaderText = L"Code";
+			if (this->dgvRecentRentals->Columns->Contains("customer_name")) this->dgvRecentRentals->Columns["customer_name"]->HeaderText = L"Customer";
+			if (this->dgvRecentRentals->Columns->Contains("tool_name")) this->dgvRecentRentals->Columns["tool_name"]->HeaderText = L"Tool";
+			if (this->dgvRecentRentals->Columns->Contains("rent_date")) this->dgvRecentRentals->Columns["rent_date"]->HeaderText = L"Rent Date";
+			if (this->dgvRecentRentals->Columns->Contains("due_date")) this->dgvRecentRentals->Columns["due_date"]->HeaderText = L"Due Date";
+			if (this->dgvRecentRentals->Columns->Contains("status")) this->dgvRecentRentals->Columns["status"]->HeaderText = L"Status";
+			if (this->dgvRecentRentals->Columns->Contains("deposit_paid")) this->dgvRecentRentals->Columns["deposit_paid"]->Visible = false;
+			if (this->dgvRecentRentals->Columns->Contains("total_amount")) this->dgvRecentRentals->Columns["total_amount"]->Visible = false;
 		}
 
 	private:
 		void dgvRecent_CellFormatting(System::Object^ sender, DataGridViewCellFormattingEventArgs^ e)
 		{
-			if (dgvRecentRentals->Columns[e->ColumnIndex]->Name == "status" && e->Value != nullptr) {
+			if (this->dgvRecentRentals->Columns[e->ColumnIndex]->Name == "status" && e->Value != nullptr) {
 				String^ val = e->Value->ToString();
 				if (val == "Active") {
-					e->CellStyle->ForeColor = Color::FromArgb(41, 128, 185);
-					e->CellStyle->Font = gcnew Drawing::Font(dgvRecentRentals->Font, FontStyle::Bold);
+					e->CellStyle->ForeColor = System::Drawing::Color::FromArgb(41, 128, 185);
+					e->CellStyle->Font = gcnew System::Drawing::Font(this->dgvRecentRentals->Font, System::Drawing::FontStyle::Bold);
 				}
 				else if (val == "Overdue") {
-					e->CellStyle->ForeColor = Color::FromArgb(192, 57, 43);
-					e->CellStyle->Font = gcnew Drawing::Font(dgvRecentRentals->Font, FontStyle::Bold);
+					e->CellStyle->ForeColor = System::Drawing::Color::FromArgb(192, 57, 43);
+					e->CellStyle->Font = gcnew System::Drawing::Font(this->dgvRecentRentals->Font, System::Drawing::FontStyle::Bold);
 				}
 				else if (val == "Returned") {
-					e->CellStyle->ForeColor = Color::FromArgb(39, 174, 96);
+					e->CellStyle->ForeColor = System::Drawing::Color::FromArgb(39, 174, 96);
 				}
 			}
 		}

@@ -32,327 +32,508 @@ namespace RentATool {
 	private:
 		int selectedUserId;
 		System::ComponentModel::Container^ components;
+		System::Windows::Forms::Panel^ pnlHeader;
+		System::Windows::Forms::Label^ lblTitle;
+		System::Windows::Forms::Label^ lblSubtitle;
+		System::Windows::Forms::Button^ btnClose;
+		System::Windows::Forms::TabControl^ tabControl1;
+		System::Windows::Forms::TabPage^ tabGeneral;
+		System::Windows::Forms::TabPage^ tabUsers;
+		System::Windows::Forms::Label^ lblGenTitle;
+		System::Windows::Forms::Label^ lblCompany;
+		System::Windows::Forms::TextBox^ txtCompany;
+		System::Windows::Forms::Label^ lblCurrency;
+		System::Windows::Forms::TextBox^ txtCurrency;
+		System::Windows::Forms::Label^ lblLateFee;
+		System::Windows::Forms::NumericUpDown^ numLateFee;
+		System::Windows::Forms::Label^ lblBackup;
+		System::Windows::Forms::TextBox^ txtBackup;
+		System::Windows::Forms::Button^ btnSaveSettings;
+		System::Windows::Forms::Label^ lblSaveStatus;
+		System::Windows::Forms::DataGridView^ dgvUsers;
+		System::Windows::Forms::Panel^ pnlUserEditor;
+		System::Windows::Forms::Label^ lblUserEditorTitle;
+		System::Windows::Forms::Label^ lblNewUsername;
+		System::Windows::Forms::TextBox^ txtNewUsername;
+		System::Windows::Forms::Label^ lblNewPassword;
+		System::Windows::Forms::TextBox^ txtNewPassword;
+		System::Windows::Forms::Label^ lblNewFullName;
+		System::Windows::Forms::TextBox^ txtNewFullName;
+		System::Windows::Forms::Label^ lblNewRole;
+		System::Windows::Forms::ComboBox^ cmbNewRole;
+		System::Windows::Forms::Button^ btnAddUser;
+		System::Windows::Forms::Button^ btnDeleteUser;
+		System::Windows::Forms::Button^ btnRefreshUsers;
 
-		Panel^ pnlHeader;
-		Label^ lblTitle;
-		Label^ lblSubtitle;
-		Button^ btnClose;
-
-		TabControl^ tabControl1;
-		TabPage^ tabGeneral;
-		TabPage^ tabUsers;
-
-		// Tab 1 General Settings
-		Label^ lblGenTitle;
-		Label^ lblCompany;
-		TextBox^ txtCompany;
-		Label^ lblCurrency;
-		TextBox^ txtCurrency;
-		Label^ lblLateFee;
-		NumericUpDown^ numLateFee;
-		Label^ lblBackup;
-		TextBox^ txtBackup;
-		Button^ btnSaveSettings;
-		Label^ lblSaveStatus;
-
-		// Tab 2 User Accounts
-		DataGridView^ dgvUsers;
-		Panel^ pnlUserEditor;
-		Label^ lblUserEditorTitle;
-		Label^ lblNewUsername;
-		TextBox^ txtNewUsername;
-		Label^ lblNewPassword;
-		TextBox^ txtNewPassword;
-		Label^ lblNewFullName;
-		TextBox^ txtNewFullName;
-		Label^ lblNewRole;
-		ComboBox^ cmbNewRole;
-		Button^ btnAddUser;
-		Button^ btnDeleteUser;
-		Button^ btnRefreshUsers;
-
+		#pragma region Windows Form Designer generated code
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(settings::typeid));
+			this->pnlHeader = (gcnew System::Windows::Forms::Panel());
+			this->lblTitle = (gcnew System::Windows::Forms::Label());
+			this->lblSubtitle = (gcnew System::Windows::Forms::Label());
+			this->btnClose = (gcnew System::Windows::Forms::Button());
+			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
+			this->tabGeneral = (gcnew System::Windows::Forms::TabPage());
+			this->lblGenTitle = (gcnew System::Windows::Forms::Label());
+			this->lblCompany = (gcnew System::Windows::Forms::Label());
+			this->txtCompany = (gcnew System::Windows::Forms::TextBox());
+			this->lblCurrency = (gcnew System::Windows::Forms::Label());
+			this->txtCurrency = (gcnew System::Windows::Forms::TextBox());
+			this->lblLateFee = (gcnew System::Windows::Forms::Label());
+			this->numLateFee = (gcnew System::Windows::Forms::NumericUpDown());
+			this->lblBackup = (gcnew System::Windows::Forms::Label());
+			this->txtBackup = (gcnew System::Windows::Forms::TextBox());
+			this->btnSaveSettings = (gcnew System::Windows::Forms::Button());
+			this->lblSaveStatus = (gcnew System::Windows::Forms::Label());
+			this->tabUsers = (gcnew System::Windows::Forms::TabPage());
+			this->dgvUsers = (gcnew System::Windows::Forms::DataGridView());
+			this->pnlUserEditor = (gcnew System::Windows::Forms::Panel());
+			this->lblUserEditorTitle = (gcnew System::Windows::Forms::Label());
+			this->lblNewUsername = (gcnew System::Windows::Forms::Label());
+			this->txtNewUsername = (gcnew System::Windows::Forms::TextBox());
+			this->lblNewPassword = (gcnew System::Windows::Forms::Label());
+			this->txtNewPassword = (gcnew System::Windows::Forms::TextBox());
+			this->lblNewFullName = (gcnew System::Windows::Forms::Label());
+			this->txtNewFullName = (gcnew System::Windows::Forms::TextBox());
+			this->lblNewRole = (gcnew System::Windows::Forms::Label());
+			this->cmbNewRole = (gcnew System::Windows::Forms::ComboBox());
+			this->btnAddUser = (gcnew System::Windows::Forms::Button());
+			this->btnDeleteUser = (gcnew System::Windows::Forms::Button());
+			this->btnRefreshUsers = (gcnew System::Windows::Forms::Button());
+			this->pnlHeader->SuspendLayout();
+			this->tabControl1->SuspendLayout();
+			this->tabGeneral->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numLateFee))->BeginInit();
+			this->tabUsers->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUsers))->BeginInit();
+			this->pnlUserEditor->SuspendLayout();
 			this->SuspendLayout();
-
-			// Form properties
-			this->Text = L"Rent-A-Tool - Settings & Users";
+			// 
+			// pnlHeader
+			// 
+			this->pnlHeader->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(47)), static_cast<System::Int32>(static_cast<System::Byte>(79)),
+				static_cast<System::Int32>(static_cast<System::Byte>(79)));
+			this->pnlHeader->Controls->Add(this->lblTitle);
+			this->pnlHeader->Controls->Add(this->lblSubtitle);
+			this->pnlHeader->Controls->Add(this->btnClose);
+			this->pnlHeader->Dock = System::Windows::Forms::DockStyle::Top;
+			this->pnlHeader->Location = System::Drawing::Point(0, 0);
+			this->pnlHeader->Name = L"pnlHeader";
+			this->pnlHeader->Size = System::Drawing::Size(1050, 70);
+			this->pnlHeader->TabIndex = 0;
+			// 
+			// lblTitle
+			// 
+			this->lblTitle->AutoSize = true;
+			this->lblTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 16, System::Drawing::FontStyle::Bold));
+			this->lblTitle->ForeColor = System::Drawing::Color::White;
+			this->lblTitle->Location = System::Drawing::Point(20, 12);
+			this->lblTitle->Name = L"lblTitle";
+			this->lblTitle->Size = System::Drawing::Size(395, 30);
+			this->lblTitle->TabIndex = 0;
+			this->lblTitle->Text = L"SETTINGS & SYSTEM CONFIGURATION";
+			// 
+			// lblSubtitle
+			// 
+			this->lblSubtitle->AutoSize = true;
+			this->lblSubtitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F));
+			this->lblSubtitle->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(210)), static_cast<System::Int32>(static_cast<System::Byte>(230)),
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
+			this->lblSubtitle->Location = System::Drawing::Point(22, 42);
+			this->lblSubtitle->Name = L"lblSubtitle";
+			this->lblSubtitle->Size = System::Drawing::Size(427, 17);
+			this->lblSubtitle->TabIndex = 1;
+			this->lblSubtitle->Text = L"Configure business rules, late fees, currency, and manage user accounts";
+			// 
+			// btnClose
+			// 
+			this->btnClose->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->btnClose->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(70)), static_cast<System::Int32>(static_cast<System::Byte>(110)),
+				static_cast<System::Int32>(static_cast<System::Byte>(110)));
+			this->btnClose->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnClose->FlatAppearance->BorderSize = 0;
+			this->btnClose->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnClose->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->btnClose->ForeColor = System::Drawing::Color::White;
+			this->btnClose->Location = System::Drawing::Point(880, 18);
+			this->btnClose->Name = L"btnClose";
+			this->btnClose->Size = System::Drawing::Size(150, 35);
+			this->btnClose->TabIndex = 2;
+			this->btnClose->Text = L"Back to Dashboard";
+			this->btnClose->UseVisualStyleBackColor = false;
+			this->btnClose->Click += gcnew System::EventHandler(this, &settings::btnClose_Click);
+			// 
+			// tabControl1
+			// 
+			this->tabControl1->Controls->Add(this->tabGeneral);
+			this->tabControl1->Controls->Add(this->tabUsers);
+			this->tabControl1->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->tabControl1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.5F));
+			this->tabControl1->Location = System::Drawing::Point(0, 70);
+			this->tabControl1->Name = L"tabControl1";
+			this->tabControl1->SelectedIndex = 0;
+			this->tabControl1->Size = System::Drawing::Size(1050, 580);
+			this->tabControl1->TabIndex = 1;
+			// 
+			// tabGeneral
+			// 
+			this->tabGeneral->BackColor = System::Drawing::Color::White;
+			this->tabGeneral->Controls->Add(this->lblGenTitle);
+			this->tabGeneral->Controls->Add(this->lblCompany);
+			this->tabGeneral->Controls->Add(this->txtCompany);
+			this->tabGeneral->Controls->Add(this->lblCurrency);
+			this->tabGeneral->Controls->Add(this->txtCurrency);
+			this->tabGeneral->Controls->Add(this->lblLateFee);
+			this->tabGeneral->Controls->Add(this->numLateFee);
+			this->tabGeneral->Controls->Add(this->lblBackup);
+			this->tabGeneral->Controls->Add(this->txtBackup);
+			this->tabGeneral->Controls->Add(this->btnSaveSettings);
+			this->tabGeneral->Controls->Add(this->lblSaveStatus);
+			this->tabGeneral->Location = System::Drawing::Point(4, 28);
+			this->tabGeneral->Name = L"tabGeneral";
+			this->tabGeneral->Padding = System::Windows::Forms::Padding(30);
+			this->tabGeneral->Size = System::Drawing::Size(1042, 548);
+			this->tabGeneral->TabIndex = 0;
+			this->tabGeneral->Text = L"  General Settings  ";
+			// 
+			// lblGenTitle
+			// 
+			this->lblGenTitle->AutoSize = true;
+			this->lblGenTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14, System::Drawing::FontStyle::Bold));
+			this->lblGenTitle->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(47)), static_cast<System::Int32>(static_cast<System::Byte>(79)),
+				static_cast<System::Int32>(static_cast<System::Byte>(79)));
+			this->lblGenTitle->Location = System::Drawing::Point(30, 20);
+			this->lblGenTitle->Name = L"lblGenTitle";
+			this->lblGenTitle->Size = System::Drawing::Size(230, 25);
+			this->lblGenTitle->TabIndex = 0;
+			this->lblGenTitle->Text = L"Business & System Policies";
+			// 
+			// lblCompany
+			// 
+			this->lblCompany->AutoSize = true;
+			this->lblCompany->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->lblCompany->Location = System::Drawing::Point(30, 65);
+			this->lblCompany->Name = L"lblCompany";
+			this->lblCompany->Size = System::Drawing::Size(110, 17);
+			this->lblCompany->TabIndex = 1;
+			this->lblCompany->Text = L"Company Name:";
+			// 
+			// txtCompany
+			// 
+			this->txtCompany->Location = System::Drawing::Point(30, 87);
+			this->txtCompany->Name = L"txtCompany";
+			this->txtCompany->Size = System::Drawing::Size(450, 26);
+			this->txtCompany->TabIndex = 2;
+			// 
+			// lblCurrency
+			// 
+			this->lblCurrency->AutoSize = true;
+			this->lblCurrency->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->lblCurrency->Location = System::Drawing::Point(30, 130);
+			this->lblCurrency->Name = L"lblCurrency";
+			this->lblCurrency->Size = System::Drawing::Size(116, 17);
+			this->lblCurrency->TabIndex = 3;
+			this->lblCurrency->Text = L"Currency Symbol:";
+			// 
+			// txtCurrency
+			// 
+			this->txtCurrency->Location = System::Drawing::Point(30, 152);
+			this->txtCurrency->Name = L"txtCurrency";
+			this->txtCurrency->Size = System::Drawing::Size(200, 26);
+			this->txtCurrency->TabIndex = 4;
+			// 
+			// lblLateFee
+			// 
+			this->lblLateFee->AutoSize = true;
+			this->lblLateFee->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->lblLateFee->Location = System::Drawing::Point(30, 195);
+			this->lblLateFee->Name = L"lblLateFee";
+			this->lblLateFee->Size = System::Drawing::Size(151, 17);
+			this->lblLateFee->TabIndex = 5;
+			this->lblLateFee->Text = L"Default Late Fee / Day:";
+			// 
+			// numLateFee
+			// 
+			this->numLateFee->DecimalPlaces = 2;
+			this->numLateFee->Location = System::Drawing::Point(30, 217);
+			this->numLateFee->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 100000, 0, 0, 0 });
+			this->numLateFee->Name = L"numLateFee";
+			this->numLateFee->Size = System::Drawing::Size(200, 26);
+			this->numLateFee->TabIndex = 6;
+			// 
+			// lblBackup
+			// 
+			this->lblBackup->AutoSize = true;
+			this->lblBackup->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->lblBackup->Location = System::Drawing::Point(30, 260);
+			this->lblBackup->Name = L"lblBackup";
+			this->lblBackup->Size = System::Drawing::Size(128, 17);
+			this->lblBackup->TabIndex = 7;
+			this->lblBackup->Text = L"Database Host / IP:";
+			// 
+			// txtBackup
+			// 
+			this->txtBackup->Location = System::Drawing::Point(30, 282);
+			this->txtBackup->Name = L"txtBackup";
+			this->txtBackup->ReadOnly = true;
+			this->txtBackup->Size = System::Drawing::Size(450, 26);
+			this->txtBackup->TabIndex = 8;
+			// 
+			// btnSaveSettings
+			// 
+			this->btnSaveSettings->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(39)), static_cast<System::Int32>(static_cast<System::Byte>(174)),
+				static_cast<System::Int32>(static_cast<System::Byte>(96)));
+			this->btnSaveSettings->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnSaveSettings->FlatAppearance->BorderSize = 0;
+			this->btnSaveSettings->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnSaveSettings->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11, System::Drawing::FontStyle::Bold));
+			this->btnSaveSettings->ForeColor = System::Drawing::Color::White;
+			this->btnSaveSettings->Location = System::Drawing::Point(30, 335);
+			this->btnSaveSettings->Name = L"btnSaveSettings";
+			this->btnSaveSettings->Size = System::Drawing::Size(240, 42);
+			this->btnSaveSettings->TabIndex = 9;
+			this->btnSaveSettings->Text = L"Save System Settings";
+			this->btnSaveSettings->UseVisualStyleBackColor = false;
+			this->btnSaveSettings->Click += gcnew System::EventHandler(this, &settings::btnSaveSettings_Click);
+			// 
+			// lblSaveStatus
+			// 
+			this->lblSaveStatus->AutoSize = true;
+			this->lblSaveStatus->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(39)), static_cast<System::Int32>(static_cast<System::Byte>(174)),
+				static_cast<System::Int32>(static_cast<System::Byte>(96)));
+			this->lblSaveStatus->Location = System::Drawing::Point(285, 348);
+			this->lblSaveStatus->Name = L"lblSaveStatus";
+			this->lblSaveStatus->Size = System::Drawing::Size(0, 19);
+			this->lblSaveStatus->TabIndex = 10;
+			// 
+			// tabUsers
+			// 
+			this->tabUsers->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(244)), static_cast<System::Int32>(static_cast<System::Byte>(246)),
+				static_cast<System::Int32>(static_cast<System::Byte>(249)));
+			this->tabUsers->Controls->Add(this->dgvUsers);
+			this->tabUsers->Controls->Add(this->pnlUserEditor);
+			this->tabUsers->Location = System::Drawing::Point(4, 28);
+			this->tabUsers->Name = L"tabUsers";
+			this->tabUsers->Padding = System::Windows::Forms::Padding(3);
+			this->tabUsers->Size = System::Drawing::Size(1042, 548);
+			this->tabUsers->TabIndex = 1;
+			this->tabUsers->Text = L"  User Accounts & Roles  ";
+			// 
+			// dgvUsers
+			// 
+			this->dgvUsers->AllowUserToAddRows = false;
+			this->dgvUsers->AllowUserToDeleteRows = false;
+			this->dgvUsers->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			this->dgvUsers->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(244)), static_cast<System::Int32>(static_cast<System::Byte>(246)),
+				static_cast<System::Int32>(static_cast<System::Byte>(249)));
+			this->dgvUsers->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->dgvUsers->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgvUsers->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->dgvUsers->Location = System::Drawing::Point(3, 3);
+			this->dgvUsers->MultiSelect = false;
+			this->dgvUsers->Name = L"dgvUsers";
+			this->dgvUsers->ReadOnly = true;
+			this->dgvUsers->RowHeadersVisible = false;
+			this->dgvUsers->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->dgvUsers->Size = System::Drawing::Size(701, 542);
+			this->dgvUsers->TabIndex = 1;
+			this->dgvUsers->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &settings::dgvUsers_CellClick);
+			this->dgvUsers->DataError += gcnew System::Windows::Forms::DataGridViewDataErrorEventHandler(this, &settings::dgvUsers_DataError);
+			// 
+			// pnlUserEditor
+			// 
+			this->pnlUserEditor->BackColor = System::Drawing::Color::White;
+			this->pnlUserEditor->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->pnlUserEditor->Controls->Add(this->lblUserEditorTitle);
+			this->pnlUserEditor->Controls->Add(this->lblNewUsername);
+			this->pnlUserEditor->Controls->Add(this->txtNewUsername);
+			this->pnlUserEditor->Controls->Add(this->lblNewPassword);
+			this->pnlUserEditor->Controls->Add(this->txtNewPassword);
+			this->pnlUserEditor->Controls->Add(this->lblNewFullName);
+			this->pnlUserEditor->Controls->Add(this->txtNewFullName);
+			this->pnlUserEditor->Controls->Add(this->lblNewRole);
+			this->pnlUserEditor->Controls->Add(this->cmbNewRole);
+			this->pnlUserEditor->Controls->Add(this->btnAddUser);
+			this->pnlUserEditor->Controls->Add(this->btnDeleteUser);
+			this->pnlUserEditor->Controls->Add(this->btnRefreshUsers);
+			this->pnlUserEditor->Dock = System::Windows::Forms::DockStyle::Right;
+			this->pnlUserEditor->Location = System::Drawing::Point(704, 3);
+			this->pnlUserEditor->Name = L"pnlUserEditor";
+			this->pnlUserEditor->Padding = System::Windows::Forms::Padding(20);
+			this->pnlUserEditor->Size = System::Drawing::Size(335, 542);
+			this->pnlUserEditor->TabIndex = 0;
+			// 
+			// lblUserEditorTitle
+			// 
+			this->lblUserEditorTitle->AutoSize = true;
+			this->lblUserEditorTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold));
+			this->lblUserEditorTitle->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(47)),
+				static_cast<System::Int32>(static_cast<System::Byte>(79)), static_cast<System::Int32>(static_cast<System::Byte>(79)));
+			this->lblUserEditorTitle->Location = System::Drawing::Point(20, 15);
+			this->lblUserEditorTitle->Name = L"lblUserEditorTitle";
+			this->lblUserEditorTitle->Size = System::Drawing::Size(164, 21);
+			this->lblUserEditorTitle->TabIndex = 0;
+			this->lblUserEditorTitle->Text = L"Create User Account";
+			// 
+			// lblNewUsername
+			// 
+			this->lblNewUsername->AutoSize = true;
+			this->lblNewUsername->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.5F, System::Drawing::FontStyle::Bold));
+			this->lblNewUsername->Location = System::Drawing::Point(20, 48);
+			this->lblNewUsername->Name = L"lblNewUsername";
+			this->lblNewUsername->Size = System::Drawing::Size(67, 15);
+			this->lblNewUsername->TabIndex = 1;
+			this->lblNewUsername->Text = L"Username:";
+			// 
+			// txtNewUsername
+			// 
+			this->txtNewUsername->Location = System::Drawing::Point(20, 66);
+			this->txtNewUsername->Name = L"txtNewUsername";
+			this->txtNewUsername->Size = System::Drawing::Size(295, 26);
+			this->txtNewUsername->TabIndex = 2;
+			// 
+			// lblNewPassword
+			// 
+			this->lblNewPassword->AutoSize = true;
+			this->lblNewPassword->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.5F, System::Drawing::FontStyle::Bold));
+			this->lblNewPassword->Location = System::Drawing::Point(20, 101);
+			this->lblNewPassword->Name = L"lblNewPassword";
+			this->lblNewPassword->Size = System::Drawing::Size(62, 15);
+			this->lblNewPassword->TabIndex = 3;
+			this->lblNewPassword->Text = L"Password:";
+			// 
+			// txtNewPassword
+			// 
+			this->txtNewPassword->Location = System::Drawing::Point(20, 119);
+			this->txtNewPassword->Name = L"txtNewPassword";
+			this->txtNewPassword->Size = System::Drawing::Size(295, 26);
+			this->txtNewPassword->TabIndex = 4;
+			this->txtNewPassword->UseSystemPasswordChar = true;
+			// 
+			// lblNewFullName
+			// 
+			this->lblNewFullName->AutoSize = true;
+			this->lblNewFullName->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.5F, System::Drawing::FontStyle::Bold));
+			this->lblNewFullName->Location = System::Drawing::Point(20, 154);
+			this->lblNewFullName->Name = L"lblNewFullName";
+			this->lblNewFullName->Size = System::Drawing::Size(65, 15);
+			this->lblNewFullName->TabIndex = 5;
+			this->lblNewFullName->Text = L"Full Name:";
+			// 
+			// txtNewFullName
+			// 
+			this->txtNewFullName->Location = System::Drawing::Point(20, 172);
+			this->txtNewFullName->Name = L"txtNewFullName";
+			this->txtNewFullName->Size = System::Drawing::Size(295, 26);
+			this->txtNewFullName->TabIndex = 6;
+			// 
+			// lblNewRole
+			// 
+			this->lblNewRole->AutoSize = true;
+			this->lblNewRole->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.5F, System::Drawing::FontStyle::Bold));
+			this->lblNewRole->Location = System::Drawing::Point(20, 207);
+			this->lblNewRole->Name = L"lblNewRole";
+			this->lblNewRole->Size = System::Drawing::Size(64, 15);
+			this->lblNewRole->TabIndex = 7;
+			this->lblNewRole->Text = L"User Role:";
+			// 
+			// cmbNewRole
+			// 
+			this->cmbNewRole->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->cmbNewRole->FormattingEnabled = true;
+			this->cmbNewRole->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Cashier", L"Admin" });
+			this->cmbNewRole->Location = System::Drawing::Point(20, 227);
+			this->cmbNewRole->Name = L"cmbNewRole";
+			this->cmbNewRole->Size = System::Drawing::Size(295, 27);
+			this->cmbNewRole->TabIndex = 8;
+			// 
+			// btnAddUser
+			// 
+			this->btnAddUser->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(39)), static_cast<System::Int32>(static_cast<System::Byte>(174)),
+				static_cast<System::Int32>(static_cast<System::Byte>(96)));
+			this->btnAddUser->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnAddUser->FlatAppearance->BorderSize = 0;
+			this->btnAddUser->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnAddUser->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->btnAddUser->ForeColor = System::Drawing::Color::White;
+			this->btnAddUser->Location = System::Drawing::Point(20, 272);
+			this->btnAddUser->Name = L"btnAddUser";
+			this->btnAddUser->Size = System::Drawing::Size(295, 38);
+			this->btnAddUser->TabIndex = 9;
+			this->btnAddUser->Text = L"+ Create Account";
+			this->btnAddUser->UseVisualStyleBackColor = false;
+			this->btnAddUser->Click += gcnew System::EventHandler(this, &settings::btnAddUser_Click);
+			// 
+			// btnDeleteUser
+			// 
+			this->btnDeleteUser->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(231)), static_cast<System::Int32>(static_cast<System::Byte>(76)),
+				static_cast<System::Int32>(static_cast<System::Byte>(60)));
+			this->btnDeleteUser->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnDeleteUser->FlatAppearance->BorderSize = 0;
+			this->btnDeleteUser->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnDeleteUser->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Bold));
+			this->btnDeleteUser->ForeColor = System::Drawing::Color::White;
+			this->btnDeleteUser->Location = System::Drawing::Point(20, 322);
+			this->btnDeleteUser->Name = L"btnDeleteUser";
+			this->btnDeleteUser->Size = System::Drawing::Size(295, 34);
+			this->btnDeleteUser->TabIndex = 10;
+			this->btnDeleteUser->Text = L"Delete Selected User";
+			this->btnDeleteUser->UseVisualStyleBackColor = false;
+			this->btnDeleteUser->Click += gcnew System::EventHandler(this, &settings::btnDeleteUser_Click);
+			// 
+			// btnRefreshUsers
+			// 
+			this->btnRefreshUsers->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(52)), static_cast<System::Int32>(static_cast<System::Byte>(152)),
+				static_cast<System::Int32>(static_cast<System::Byte>(219)));
+			this->btnRefreshUsers->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnRefreshUsers->FlatAppearance->BorderSize = 0;
+			this->btnRefreshUsers->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnRefreshUsers->ForeColor = System::Drawing::Color::White;
+			this->btnRefreshUsers->Location = System::Drawing::Point(20, 366);
+			this->btnRefreshUsers->Name = L"btnRefreshUsers";
+			this->btnRefreshUsers->Size = System::Drawing::Size(295, 32);
+			this->btnRefreshUsers->TabIndex = 11;
+			this->btnRefreshUsers->Text = L"Refresh User List";
+			this->btnRefreshUsers->UseVisualStyleBackColor = false;
+			this->btnRefreshUsers->Click += gcnew System::EventHandler(this, &settings::btnRefreshUsers_Click);
+			// 
+			// settings
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(7, 17);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(244)), static_cast<System::Int32>(static_cast<System::Byte>(246)),
+				static_cast<System::Int32>(static_cast<System::Byte>(249)));
 			this->ClientSize = System::Drawing::Size(1050, 650);
+			this->Controls->Add(this->tabControl1);
+			this->Controls->Add(this->pnlHeader);
+			this->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F));
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MinimumSize = System::Drawing::Size(900, 580);
-			this->StartPosition = FormStartPosition::CenterScreen;
-			this->BackColor = Color::FromArgb(244, 246, 249);
-			this->Font = gcnew Drawing::Font(L"Segoe UI", 10);
-
-			// Header Panel
-			pnlHeader = gcnew Panel();
-			pnlHeader->Dock = DockStyle::Top;
-			pnlHeader->Height = 70;
-			pnlHeader->BackColor = Color::FromArgb(47, 79, 79);
-
-			lblTitle = gcnew Label();
-			lblTitle->Text = L"SETTINGS & SYSTEM CONFIGURATION";
-			lblTitle->Font = gcnew Drawing::Font(L"Segoe UI", 16, FontStyle::Bold);
-			lblTitle->ForeColor = Color::White;
-			lblTitle->Location = Point(20, 12);
-			lblTitle->AutoSize = true;
-
-			lblSubtitle = gcnew Label();
-			lblSubtitle->Text = L"Configure business rules, late fees, currency, and manage user accounts";
-			lblSubtitle->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F);
-			lblSubtitle->ForeColor = Color::FromArgb(210, 230, 230);
-			lblSubtitle->Location = Point(22, 42);
-			lblSubtitle->AutoSize = true;
-
-			btnClose = gcnew Button();
-			btnClose->Text = L"Back to Dashboard";
-			btnClose->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-			btnClose->ForeColor = Color::White;
-			btnClose->BackColor = Color::FromArgb(70, 110, 110);
-			btnClose->FlatStyle = FlatStyle::Flat;
-			btnClose->FlatAppearance->BorderSize = 0;
-			btnClose->Location = Point(880, 18);
-			btnClose->Size = System::Drawing::Size(150, 35);
-			btnClose->Anchor = AnchorStyles::Top | AnchorStyles::Right;
-			btnClose->Cursor = Cursors::Hand;
-			btnClose->Click += gcnew EventHandler(this, &settings::btnClose_Click);
-
-			pnlHeader->Controls->Add(lblTitle);
-			pnlHeader->Controls->Add(lblSubtitle);
-			pnlHeader->Controls->Add(btnClose);
-
-			// Tab Control
-			tabControl1 = gcnew TabControl();
-			tabControl1->Dock = DockStyle::Fill;
-			tabControl1->Font = gcnew Drawing::Font(L"Segoe UI", 10.5F);
-
-			tabGeneral = gcnew TabPage();
-			tabGeneral->Text = L"  General Settings  ";
-			tabGeneral->BackColor = Color::White;
-			tabGeneral->Padding = System::Windows::Forms::Padding(40);
-
-			tabUsers = gcnew TabPage();
-			tabUsers->Text = L"  User Management  ";
-			tabUsers->BackColor = Color::FromArgb(244, 246, 249);
-
-			// ================= TAB 1: GENERAL SETTINGS =================
-			lblGenTitle = gcnew Label();
-			lblGenTitle->Text = L"Application & Billing Preferences";
-			lblGenTitle->Font = gcnew Drawing::Font(L"Segoe UI", 14, FontStyle::Bold);
-			lblGenTitle->ForeColor = Color::FromArgb(47, 79, 79);
-			lblGenTitle->Location = Point(40, 30);
-			lblGenTitle->AutoSize = true;
-
-			int y = 80;
-			lblCompany = gcnew Label();
-			lblCompany->Text = L"Company / Shop Name:";
-			lblCompany->Location = Point(40, y);
-			lblCompany->AutoSize = true;
-			lblCompany->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-
-			txtCompany = gcnew TextBox();
-			txtCompany->Location = Point(40, y + 22);
-			txtCompany->Size = System::Drawing::Size(400, 25);
-
-			y += 65;
-			lblCurrency = gcnew Label();
-			lblCurrency->Text = L"Currency Code / Symbol:";
-			lblCurrency->Location = Point(40, y);
-			lblCurrency->AutoSize = true;
-			lblCurrency->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-
-			txtCurrency = gcnew TextBox();
-			txtCurrency->Location = Point(40, y + 22);
-			txtCurrency->Size = System::Drawing::Size(400, 25);
-
-			y += 65;
-			lblLateFee = gcnew Label();
-			lblLateFee->Text = L"Default Late Fee per Day (LKR):";
-			lblLateFee->Location = Point(40, y);
-			lblLateFee->AutoSize = true;
-			lblLateFee->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-
-			numLateFee = gcnew NumericUpDown();
-			numLateFee->Location = Point(40, y + 22);
-			numLateFee->Size = System::Drawing::Size(400, 25);
-			numLateFee->Maximum = 100000;
-			numLateFee->DecimalPlaces = 2;
-
-			y += 65;
-			lblBackup = gcnew Label();
-			lblBackup->Text = L"Database Backup Destination Path:";
-			lblBackup->Location = Point(40, y);
-			lblBackup->AutoSize = true;
-			lblBackup->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-
-			txtBackup = gcnew TextBox();
-			txtBackup->Location = Point(40, y + 22);
-			txtBackup->Size = System::Drawing::Size(400, 25);
-
-			y += 75;
-			btnSaveSettings = gcnew Button();
-			btnSaveSettings->Text = L"Save Changes";
-			btnSaveSettings->Font = gcnew Drawing::Font(L"Segoe UI", 11, FontStyle::Bold);
-			btnSaveSettings->BackColor = Color::FromArgb(39, 174, 96);
-			btnSaveSettings->ForeColor = Color::White;
-			btnSaveSettings->FlatStyle = FlatStyle::Flat;
-			btnSaveSettings->FlatAppearance->BorderSize = 0;
-			btnSaveSettings->Location = Point(40, y);
-			btnSaveSettings->Size = System::Drawing::Size(200, 42);
-			btnSaveSettings->Cursor = Cursors::Hand;
-			btnSaveSettings->Click += gcnew EventHandler(this, &settings::btnSaveSettings_Click);
-
-			lblSaveStatus = gcnew Label();
-			lblSaveStatus->Location = Point(255, y + 10);
-			lblSaveStatus->AutoSize = true;
-			lblSaveStatus->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Italic);
-			lblSaveStatus->ForeColor = Color::DarkGreen;
-
-			tabGeneral->Controls->Add(lblGenTitle);
-			tabGeneral->Controls->Add(lblCompany);
-			tabGeneral->Controls->Add(txtCompany);
-			tabGeneral->Controls->Add(lblCurrency);
-			tabGeneral->Controls->Add(txtCurrency);
-			tabGeneral->Controls->Add(lblLateFee);
-			tabGeneral->Controls->Add(numLateFee);
-			tabGeneral->Controls->Add(lblBackup);
-			tabGeneral->Controls->Add(txtBackup);
-			tabGeneral->Controls->Add(btnSaveSettings);
-			tabGeneral->Controls->Add(lblSaveStatus);
-
-			// ================= TAB 2: USER MANAGEMENT =================
-			pnlUserEditor = gcnew Panel();
-			pnlUserEditor->Dock = DockStyle::Right;
-			pnlUserEditor->Width = 340;
-			pnlUserEditor->BackColor = Color::White;
-			pnlUserEditor->Padding = System::Windows::Forms::Padding(20);
-
-			lblUserEditorTitle = gcnew Label();
-			lblUserEditorTitle->Text = L"Add New User";
-			lblUserEditorTitle->Font = gcnew Drawing::Font(L"Segoe UI", 12, FontStyle::Bold);
-			lblUserEditorTitle->ForeColor = Color::FromArgb(47, 79, 79);
-			lblUserEditorTitle->Location = Point(20, 15);
-			lblUserEditorTitle->AutoSize = true;
-
-			int uy = 55;
-			lblNewUsername = gcnew Label();
-			lblNewUsername->Text = L"Username:";
-			lblNewUsername->Location = Point(20, uy);
-			lblNewUsername->AutoSize = true;
-			txtNewUsername = gcnew TextBox();
-			txtNewUsername->Location = Point(20, uy + 20);
-			txtNewUsername->Size = System::Drawing::Size(295, 25);
-
-			uy += 55;
-			lblNewPassword = gcnew Label();
-			lblNewPassword->Text = L"Password:";
-			lblNewPassword->Location = Point(20, uy);
-			lblNewPassword->AutoSize = true;
-			txtNewPassword = gcnew TextBox();
-			txtNewPassword->UseSystemPasswordChar = true;
-			txtNewPassword->Location = Point(20, uy + 20);
-			txtNewPassword->Size = System::Drawing::Size(295, 25);
-
-			uy += 55;
-			lblNewFullName = gcnew Label();
-			lblNewFullName->Text = L"Full Name:";
-			lblNewFullName->Location = Point(20, uy);
-			lblNewFullName->AutoSize = true;
-			txtNewFullName = gcnew TextBox();
-			txtNewFullName->Location = Point(20, uy + 20);
-			txtNewFullName->Size = System::Drawing::Size(295, 25);
-
-			uy += 55;
-			lblNewRole = gcnew Label();
-			lblNewRole->Text = L"Role:";
-			lblNewRole->Location = Point(20, uy);
-			lblNewRole->AutoSize = true;
-			cmbNewRole = gcnew ComboBox();
-			cmbNewRole->DropDownStyle = ComboBoxStyle::DropDownList;
-			cmbNewRole->Items->AddRange(gcnew cli::array<Object^>{ L"Cashier", L"Admin" });
-			cmbNewRole->SelectedIndex = 0;
-			cmbNewRole->Location = Point(20, uy + 20);
-			cmbNewRole->Size = System::Drawing::Size(295, 25);
-
-			uy += 65;
-			btnAddUser = gcnew Button();
-			btnAddUser->Text = L"+ Create Account";
-			btnAddUser->Location = Point(20, uy);
-			btnAddUser->Size = System::Drawing::Size(295, 38);
-			btnAddUser->BackColor = Color::FromArgb(39, 174, 96);
-			btnAddUser->ForeColor = Color::White;
-			btnAddUser->FlatStyle = FlatStyle::Flat;
-			btnAddUser->FlatAppearance->BorderSize = 0;
-			btnAddUser->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-			btnAddUser->Cursor = Cursors::Hand;
-			btnAddUser->Click += gcnew EventHandler(this, &settings::btnAddUser_Click);
-
-			uy += 50;
-			btnDeleteUser = gcnew Button();
-			btnDeleteUser->Text = L"Delete Selected User";
-			btnDeleteUser->Location = Point(20, uy);
-			btnDeleteUser->Size = System::Drawing::Size(295, 34);
-			btnDeleteUser->BackColor = Color::FromArgb(231, 76, 60);
-			btnDeleteUser->ForeColor = Color::White;
-			btnDeleteUser->FlatStyle = FlatStyle::Flat;
-			btnDeleteUser->FlatAppearance->BorderSize = 0;
-			btnDeleteUser->Font = gcnew Drawing::Font(L"Segoe UI", 9, FontStyle::Bold);
-			btnDeleteUser->Cursor = Cursors::Hand;
-			btnDeleteUser->Click += gcnew EventHandler(this, &settings::btnDeleteUser_Click);
-
-			uy += 44;
-			btnRefreshUsers = gcnew Button();
-			btnRefreshUsers->Text = L"Refresh User List";
-			btnRefreshUsers->Location = Point(20, uy);
-			btnRefreshUsers->Size = System::Drawing::Size(295, 32);
-			btnRefreshUsers->BackColor = Color::FromArgb(52, 152, 219);
-			btnRefreshUsers->ForeColor = Color::White;
-			btnRefreshUsers->FlatStyle = FlatStyle::Flat;
-			btnRefreshUsers->FlatAppearance->BorderSize = 0;
-			btnRefreshUsers->Cursor = Cursors::Hand;
-			btnRefreshUsers->Click += gcnew EventHandler(this, &settings::btnRefreshUsers_Click);
-
-			pnlUserEditor->Controls->Add(lblUserEditorTitle);
-			pnlUserEditor->Controls->Add(lblNewUsername);
-			pnlUserEditor->Controls->Add(txtNewUsername);
-			pnlUserEditor->Controls->Add(lblNewPassword);
-			pnlUserEditor->Controls->Add(txtNewPassword);
-			pnlUserEditor->Controls->Add(lblNewFullName);
-			pnlUserEditor->Controls->Add(txtNewFullName);
-			pnlUserEditor->Controls->Add(lblNewRole);
-			pnlUserEditor->Controls->Add(cmbNewRole);
-			pnlUserEditor->Controls->Add(btnAddUser);
-			pnlUserEditor->Controls->Add(btnDeleteUser);
-			pnlUserEditor->Controls->Add(btnRefreshUsers);
-
-			dgvUsers = gcnew DataGridView();
-			dgvUsers->Dock = DockStyle::Fill;
-			dgvUsers->BackgroundColor = Color::FromArgb(244, 246, 249);
-			dgvUsers->BorderStyle = BorderStyle::None;
-			dgvUsers->AllowUserToAddRows = false;
-			dgvUsers->AllowUserToDeleteRows = false;
-			dgvUsers->ReadOnly = true;
-			dgvUsers->SelectionMode = DataGridViewSelectionMode::FullRowSelect;
-			dgvUsers->MultiSelect = false;
-			dgvUsers->AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode::Fill;
-			dgvUsers->RowHeadersVisible = false;
-			dgvUsers->CellClick += gcnew DataGridViewCellEventHandler(this, &settings::dgvUsers_CellClick);
-			dgvUsers->DataError += gcnew DataGridViewDataErrorEventHandler(this, &settings::dgvUsers_DataError);
-
-			tabUsers->Controls->Add(dgvUsers);
-			tabUsers->Controls->Add(pnlUserEditor);
-
-			tabControl1->TabPages->Add(tabGeneral);
-			tabControl1->TabPages->Add(tabUsers);
-
-			this->Controls->Add(tabControl1);
-			this->Controls->Add(pnlHeader);
-
-			this->Load += gcnew EventHandler(this, &settings::settings_Load);
+			this->Name = L"settings";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
+			this->Text = L"Rent-A-Tool - Settings & Users";
+			this->Load += gcnew System::EventHandler(this, &settings::settings_Load);
+			this->pnlHeader->ResumeLayout(false);
+			this->pnlHeader->PerformLayout();
+			this->tabControl1->ResumeLayout(false);
+			this->tabGeneral->ResumeLayout(false);
+			this->tabGeneral->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numLateFee))->EndInit();
+			this->tabUsers->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUsers))->EndInit();
+			this->pnlUserEditor->ResumeLayout(false);
+			this->pnlUserEditor->PerformLayout();
 			this->ResumeLayout(false);
-		}
 
-		void dgvUsers_DataError(System::Object^ sender, DataGridViewDataErrorEventArgs^ e)
+		}
+#pragma endregion
+
+void dgvUsers_DataError(System::Object^ sender, DataGridViewDataErrorEventArgs^ e)
 		{
 			e->ThrowException = false;
 		}

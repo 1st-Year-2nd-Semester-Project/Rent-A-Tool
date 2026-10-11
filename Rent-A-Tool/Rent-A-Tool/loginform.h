@@ -220,6 +220,8 @@ namespace RentATool {
 		}
 #pragma endregion
 	private: System::Void loginform_Load(System::Object^ sender, System::EventArgs^ e) {
+		// Ensure default admin exists or can be seeded on load
+		Auth::EnsureDefaultAdmin();
 	}
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}

@@ -22,7 +22,7 @@ namespace RentATool {
 			selectedToolId = -1;
 			selectedDeposit = Decimal(0);
 			selectedDailyRate = Decimal(0);
-			lateFeePerDay = Data::RentalService::GetLateFeePerDay();
+			lateFeePerDay = Decimal(0);
 
 			InitializeComponent();
 		}
@@ -45,441 +45,686 @@ namespace RentATool {
 		DateTime selectedDueDate;
 		Decimal lateFeePerDay;
 
+	private:
 		System::ComponentModel::Container^ components;
+		System::Windows::Forms::Panel^ pnlHeader;
+		System::Windows::Forms::Label^ lblTitle;
+		System::Windows::Forms::Label^ lblSubtitle;
+		System::Windows::Forms::Button^ btnClose;
+		System::Windows::Forms::TabControl^ tabControl1;
+		System::Windows::Forms::TabPage^ tabRentalsList;
+		System::Windows::Forms::TabPage^ tabNewRental;
+		System::Windows::Forms::Panel^ pnlListFilter;
+		System::Windows::Forms::Label^ lblFilterStatus;
+		System::Windows::Forms::ComboBox^ cmbFilterStatus;
+		System::Windows::Forms::Label^ lblSearch;
+		System::Windows::Forms::TextBox^ txtSearch;
+		System::Windows::Forms::Button^ btnRefresh;
+		System::Windows::Forms::DataGridView^ dgvRentals;
+		System::Windows::Forms::Panel^ pnlReturnAction;
+		System::Windows::Forms::Label^ lblReturnTitle;
+		System::Windows::Forms::Label^ lblReturnInfo;
+		System::Windows::Forms::Label^ lblReturnDate;
+		System::Windows::Forms::DateTimePicker^ dtpReturnDate;
+		System::Windows::Forms::Label^ lblLateFeeCalc;
+		System::Windows::Forms::Label^ lblTotalCalc;
+		System::Windows::Forms::Label^ lblRefundCalc;
+		System::Windows::Forms::Button^ btnProcessReturn;
+		System::Windows::Forms::Panel^ pnlNewRental;
+		System::Windows::Forms::Label^ lblNewTitle;
+		System::Windows::Forms::Label^ lblCustomer;
+		System::Windows::Forms::ComboBox^ cmbCustomer;
+		System::Windows::Forms::Label^ lblTool;
+		System::Windows::Forms::ComboBox^ cmbTool;
+		System::Windows::Forms::Label^ lblRentDate;
+		System::Windows::Forms::DateTimePicker^ dtpRentDate;
+		System::Windows::Forms::Label^ lblDueDate;
+		System::Windows::Forms::DateTimePicker^ dtpDueDate;
+		System::Windows::Forms::Label^ lblDeposit;
+		System::Windows::Forms::NumericUpDown^ numDeposit;
+		System::Windows::Forms::Label^ lblNotes;
+		System::Windows::Forms::TextBox^ txtNotes;
+		System::Windows::Forms::Panel^ pnlSummaryCard;
+		System::Windows::Forms::Label^ lblSummaryTitle;
+		System::Windows::Forms::Label^ lblSumDays;
+		System::Windows::Forms::Label^ lblSumDailyRate;
+		System::Windows::Forms::Label^ lblSumTotalRent;
+		System::Windows::Forms::Label^ lblSumDeposit;
+		System::Windows::Forms::Button^ btnIssueRental;
 
-		// UI Header
-		Panel^ pnlHeader;
-		Label^ lblTitle;
-		Label^ lblSubtitle;
-		Button^ btnClose;
-
-		TabControl^ tabControl1;
-		TabPage^ tabRentalsList;
-		TabPage^ tabNewRental;
-
-		// Tab 1 controls (List & Return)
-		Panel^ pnlListFilter;
-		Label^ lblFilterStatus;
-		ComboBox^ cmbFilterStatus;
-		Label^ lblSearch;
-		TextBox^ txtSearch;
-		Button^ btnRefresh;
-
-		DataGridView^ dgvRentals;
-
-		Panel^ pnlReturnAction;
-		Label^ lblReturnTitle;
-		Label^ lblReturnInfo;
-		Label^ lblReturnDate;
-		DateTimePicker^ dtpReturnDate;
-		Label^ lblLateFeeCalc;
-		Label^ lblTotalCalc;
-		Label^ lblRefundCalc;
-		Button^ btnProcessReturn;
-
-		// Tab 2 controls (New Rental)
-		Panel^ pnlNewRental;
-		Label^ lblNewTitle;
-		Label^ lblCustomer;
-		ComboBox^ cmbCustomer;
-		Label^ lblTool;
-		ComboBox^ cmbTool;
-		Label^ lblRentDate;
-		DateTimePicker^ dtpRentDate;
-		Label^ lblDueDate;
-		DateTimePicker^ dtpDueDate;
-		Label^ lblDeposit;
-		NumericUpDown^ numDeposit;
-		Label^ lblNotes;
-		TextBox^ txtNotes;
-
-		Panel^ pnlSummaryCard;
-		Label^ lblSummaryTitle;
-		Label^ lblSumDays;
-		Label^ lblSumDailyRate;
-		Label^ lblSumTotalRent;
-		Label^ lblSumDeposit;
-		Button^ btnIssueRental;
-
+#pragma region Windows Form Designer generated code
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(rentals::typeid));
+			this->pnlHeader = (gcnew System::Windows::Forms::Panel());
+			this->lblTitle = (gcnew System::Windows::Forms::Label());
+			this->lblSubtitle = (gcnew System::Windows::Forms::Label());
+			this->btnClose = (gcnew System::Windows::Forms::Button());
+			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
+			this->tabRentalsList = (gcnew System::Windows::Forms::TabPage());
+			this->dgvRentals = (gcnew System::Windows::Forms::DataGridView());
+			this->pnlReturnAction = (gcnew System::Windows::Forms::Panel());
+			this->lblReturnTitle = (gcnew System::Windows::Forms::Label());
+			this->lblReturnInfo = (gcnew System::Windows::Forms::Label());
+			this->lblReturnDate = (gcnew System::Windows::Forms::Label());
+			this->dtpReturnDate = (gcnew System::Windows::Forms::DateTimePicker());
+			this->lblLateFeeCalc = (gcnew System::Windows::Forms::Label());
+			this->lblTotalCalc = (gcnew System::Windows::Forms::Label());
+			this->lblRefundCalc = (gcnew System::Windows::Forms::Label());
+			this->btnProcessReturn = (gcnew System::Windows::Forms::Button());
+			this->pnlListFilter = (gcnew System::Windows::Forms::Panel());
+			this->lblFilterStatus = (gcnew System::Windows::Forms::Label());
+			this->cmbFilterStatus = (gcnew System::Windows::Forms::ComboBox());
+			this->lblSearch = (gcnew System::Windows::Forms::Label());
+			this->txtSearch = (gcnew System::Windows::Forms::TextBox());
+			this->btnRefresh = (gcnew System::Windows::Forms::Button());
+			this->tabNewRental = (gcnew System::Windows::Forms::TabPage());
+			this->pnlNewRental = (gcnew System::Windows::Forms::Panel());
+			this->lblNewTitle = (gcnew System::Windows::Forms::Label());
+			this->lblCustomer = (gcnew System::Windows::Forms::Label());
+			this->cmbCustomer = (gcnew System::Windows::Forms::ComboBox());
+			this->lblTool = (gcnew System::Windows::Forms::Label());
+			this->cmbTool = (gcnew System::Windows::Forms::ComboBox());
+			this->lblRentDate = (gcnew System::Windows::Forms::Label());
+			this->dtpRentDate = (gcnew System::Windows::Forms::DateTimePicker());
+			this->lblDueDate = (gcnew System::Windows::Forms::Label());
+			this->dtpDueDate = (gcnew System::Windows::Forms::DateTimePicker());
+			this->lblDeposit = (gcnew System::Windows::Forms::Label());
+			this->numDeposit = (gcnew System::Windows::Forms::NumericUpDown());
+			this->lblNotes = (gcnew System::Windows::Forms::Label());
+			this->txtNotes = (gcnew System::Windows::Forms::TextBox());
+			this->pnlSummaryCard = (gcnew System::Windows::Forms::Panel());
+			this->lblSummaryTitle = (gcnew System::Windows::Forms::Label());
+			this->lblSumDays = (gcnew System::Windows::Forms::Label());
+			this->lblSumDailyRate = (gcnew System::Windows::Forms::Label());
+			this->lblSumTotalRent = (gcnew System::Windows::Forms::Label());
+			this->lblSumDeposit = (gcnew System::Windows::Forms::Label());
+			this->btnIssueRental = (gcnew System::Windows::Forms::Button());
+			this->pnlHeader->SuspendLayout();
+			this->tabControl1->SuspendLayout();
+			this->tabRentalsList->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvRentals))->BeginInit();
+			this->pnlReturnAction->SuspendLayout();
+			this->pnlListFilter->SuspendLayout();
+			this->tabNewRental->SuspendLayout();
+			this->pnlNewRental->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numDeposit))->BeginInit();
+			this->pnlSummaryCard->SuspendLayout();
 			this->SuspendLayout();
-
-			// Form properties
-			this->Text = L"Rent-A-Tool - Rental Management";
+			// 
+			// pnlHeader
+			// 
+			this->pnlHeader->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(47)), static_cast<System::Int32>(static_cast<System::Byte>(79)),
+				static_cast<System::Int32>(static_cast<System::Byte>(79)));
+			this->pnlHeader->Controls->Add(this->lblTitle);
+			this->pnlHeader->Controls->Add(this->lblSubtitle);
+			this->pnlHeader->Controls->Add(this->btnClose);
+			this->pnlHeader->Dock = System::Windows::Forms::DockStyle::Top;
+			this->pnlHeader->Location = System::Drawing::Point(0, 0);
+			this->pnlHeader->Name = L"pnlHeader";
+			this->pnlHeader->Size = System::Drawing::Size(1180, 70);
+			this->pnlHeader->TabIndex = 0;
+			// 
+			// lblTitle
+			// 
+			this->lblTitle->AutoSize = true;
+			this->lblTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 16, System::Drawing::FontStyle::Bold));
+			this->lblTitle->ForeColor = System::Drawing::Color::White;
+			this->lblTitle->Location = System::Drawing::Point(20, 12);
+			this->lblTitle->Name = L"lblTitle";
+			this->lblTitle->Size = System::Drawing::Size(436, 30);
+			this->lblTitle->TabIndex = 0;
+			this->lblTitle->Text = L"RENTAL MANAGEMENT & TRANSACTIONS";
+			// 
+			// lblSubtitle
+			// 
+			this->lblSubtitle->AutoSize = true;
+			this->lblSubtitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F));
+			this->lblSubtitle->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(210)), static_cast<System::Int32>(static_cast<System::Byte>(230)),
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
+			this->lblSubtitle->Location = System::Drawing::Point(22, 42);
+			this->lblSubtitle->Name = L"lblSubtitle";
+			this->lblSubtitle->Size = System::Drawing::Size(413, 17);
+			this->lblSubtitle->TabIndex = 1;
+			this->lblSubtitle->Text = L"Issue tool rentals, calculate fees, track due dates, and process returns";
+			// 
+			// btnClose
+			// 
+			this->btnClose->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->btnClose->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(70)), static_cast<System::Int32>(static_cast<System::Byte>(110)),
+				static_cast<System::Int32>(static_cast<System::Byte>(110)));
+			this->btnClose->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnClose->FlatAppearance->BorderSize = 0;
+			this->btnClose->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnClose->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->btnClose->ForeColor = System::Drawing::Color::White;
+			this->btnClose->Location = System::Drawing::Point(1000, 18);
+			this->btnClose->Name = L"btnClose";
+			this->btnClose->Size = System::Drawing::Size(155, 35);
+			this->btnClose->TabIndex = 2;
+			this->btnClose->Text = L"Back to Dashboard";
+			this->btnClose->UseVisualStyleBackColor = false;
+			this->btnClose->Click += gcnew System::EventHandler(this, &rentals::btnClose_Click);
+			// 
+			// tabControl1
+			// 
+			this->tabControl1->Controls->Add(this->tabRentalsList);
+			this->tabControl1->Controls->Add(this->tabNewRental);
+			this->tabControl1->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->tabControl1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.5F));
+			this->tabControl1->Location = System::Drawing::Point(0, 70);
+			this->tabControl1->Name = L"tabControl1";
+			this->tabControl1->SelectedIndex = 0;
+			this->tabControl1->Size = System::Drawing::Size(1180, 650);
+			this->tabControl1->TabIndex = 1;
+			// 
+			// tabRentalsList
+			// 
+			this->tabRentalsList->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(244)), static_cast<System::Int32>(static_cast<System::Byte>(246)),
+				static_cast<System::Int32>(static_cast<System::Byte>(249)));
+			this->tabRentalsList->Controls->Add(this->dgvRentals);
+			this->tabRentalsList->Controls->Add(this->pnlReturnAction);
+			this->tabRentalsList->Controls->Add(this->pnlListFilter);
+			this->tabRentalsList->Location = System::Drawing::Point(4, 28);
+			this->tabRentalsList->Name = L"tabRentalsList";
+			this->tabRentalsList->Padding = System::Windows::Forms::Padding(3);
+			this->tabRentalsList->Size = System::Drawing::Size(1172, 618);
+			this->tabRentalsList->TabIndex = 0;
+			this->tabRentalsList->Text = L"  Active & All Rentals  ";
+			// 
+			// dgvRentals
+			// 
+			this->dgvRentals->AllowUserToAddRows = false;
+			this->dgvRentals->AllowUserToDeleteRows = false;
+			this->dgvRentals->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			this->dgvRentals->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(244)),
+				static_cast<System::Int32>(static_cast<System::Byte>(246)), static_cast<System::Int32>(static_cast<System::Byte>(249)));
+			this->dgvRentals->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->dgvRentals->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgvRentals->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->dgvRentals->Location = System::Drawing::Point(3, 58);
+			this->dgvRentals->MultiSelect = false;
+			this->dgvRentals->Name = L"dgvRentals";
+			this->dgvRentals->ReadOnly = true;
+			this->dgvRentals->RowHeadersVisible = false;
+			this->dgvRentals->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->dgvRentals->Size = System::Drawing::Size(1166, 437);
+			this->dgvRentals->TabIndex = 1;
+			this->dgvRentals->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &rentals::dgvRentals_CellClick);
+			this->dgvRentals->CellFormatting += gcnew System::Windows::Forms::DataGridViewCellFormattingEventHandler(this, &rentals::dgvRentals_CellFormatting);
+			this->dgvRentals->DataError += gcnew System::Windows::Forms::DataGridViewDataErrorEventHandler(this, &rentals::dgvRentals_DataError);
+			// 
+			// pnlReturnAction
+			// 
+			this->pnlReturnAction->BackColor = System::Drawing::Color::White;
+			this->pnlReturnAction->Controls->Add(this->lblReturnTitle);
+			this->pnlReturnAction->Controls->Add(this->lblReturnInfo);
+			this->pnlReturnAction->Controls->Add(this->lblReturnDate);
+			this->pnlReturnAction->Controls->Add(this->dtpReturnDate);
+			this->pnlReturnAction->Controls->Add(this->lblLateFeeCalc);
+			this->pnlReturnAction->Controls->Add(this->lblTotalCalc);
+			this->pnlReturnAction->Controls->Add(this->lblRefundCalc);
+			this->pnlReturnAction->Controls->Add(this->btnProcessReturn);
+			this->pnlReturnAction->Dock = System::Windows::Forms::DockStyle::Bottom;
+			this->pnlReturnAction->Location = System::Drawing::Point(3, 495);
+			this->pnlReturnAction->Name = L"pnlReturnAction";
+			this->pnlReturnAction->Padding = System::Windows::Forms::Padding(20, 10, 20, 10);
+			this->pnlReturnAction->Size = System::Drawing::Size(1166, 120);
+			this->pnlReturnAction->TabIndex = 2;
+			// 
+			// lblReturnTitle
+			// 
+			this->lblReturnTitle->AutoSize = true;
+			this->lblReturnTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11, System::Drawing::FontStyle::Bold));
+			this->lblReturnTitle->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(47)), static_cast<System::Int32>(static_cast<System::Byte>(79)),
+				static_cast<System::Int32>(static_cast<System::Byte>(79)));
+			this->lblReturnTitle->Location = System::Drawing::Point(20, 8);
+			this->lblReturnTitle->Name = L"lblReturnTitle";
+			this->lblReturnTitle->Size = System::Drawing::Size(250, 20);
+			this->lblReturnTitle->TabIndex = 0;
+			this->lblReturnTitle->Text = L"Process Return for Selected Rental";
+			// 
+			// lblReturnInfo
+			// 
+			this->lblReturnInfo->AutoSize = true;
+			this->lblReturnInfo->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(100)), static_cast<System::Int32>(static_cast<System::Byte>(100)),
+				static_cast<System::Int32>(static_cast<System::Byte>(100)));
+			this->lblReturnInfo->Location = System::Drawing::Point(20, 34);
+			this->lblReturnInfo->Name = L"lblReturnInfo";
+			this->lblReturnInfo->Size = System::Drawing::Size(461, 19);
+			this->lblReturnInfo->TabIndex = 1;
+			this->lblReturnInfo->Text = L"Select an Active or Overdue rental from the table above to process return.";
+			// 
+			// lblReturnDate
+			// 
+			this->lblReturnDate->AutoSize = true;
+			this->lblReturnDate->Location = System::Drawing::Point(20, 65);
+			this->lblReturnDate->Name = L"lblReturnDate";
+			this->lblReturnDate->Size = System::Drawing::Size(86, 19);
+			this->lblReturnDate->TabIndex = 2;
+			this->lblReturnDate->Text = L"Return Date:";
+			// 
+			// dtpReturnDate
+			// 
+			this->dtpReturnDate->Format = System::Windows::Forms::DateTimePickerFormat::Short;
+			this->dtpReturnDate->Location = System::Drawing::Point(110, 62);
+			this->dtpReturnDate->Name = L"dtpReturnDate";
+			this->dtpReturnDate->Size = System::Drawing::Size(120, 26);
+			this->dtpReturnDate->TabIndex = 3;
+			this->dtpReturnDate->ValueChanged += gcnew System::EventHandler(this, &rentals::dtpReturnDate_ValueChanged);
+			// 
+			// lblLateFeeCalc
+			// 
+			this->lblLateFeeCalc->AutoSize = true;
+			this->lblLateFeeCalc->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->lblLateFeeCalc->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(57)),
+				static_cast<System::Int32>(static_cast<System::Byte>(43)));
+			this->lblLateFeeCalc->Location = System::Drawing::Point(260, 65);
+			this->lblLateFeeCalc->Name = L"lblLateFeeCalc";
+			this->lblLateFeeCalc->Size = System::Drawing::Size(119, 17);
+			this->lblLateFeeCalc->TabIndex = 4;
+			this->lblLateFeeCalc->Text = L"Late Fee: LKR 0.00";
+			// 
+			// lblTotalCalc
+			// 
+			this->lblTotalCalc->AutoSize = true;
+			this->lblTotalCalc->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->lblTotalCalc->Location = System::Drawing::Point(440, 65);
+			this->lblTotalCalc->Name = L"lblTotalCalc";
+			this->lblTotalCalc->Size = System::Drawing::Size(133, 17);
+			this->lblTotalCalc->TabIndex = 5;
+			this->lblTotalCalc->Text = L"Final Total: LKR 0.00";
+			// 
+			// lblRefundCalc
+			// 
+			this->lblRefundCalc->AutoSize = true;
+			this->lblRefundCalc->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->lblRefundCalc->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(39)), static_cast<System::Int32>(static_cast<System::Byte>(174)),
+				static_cast<System::Int32>(static_cast<System::Byte>(96)));
+			this->lblRefundCalc->Location = System::Drawing::Point(630, 65);
+			this->lblRefundCalc->Name = L"lblRefundCalc";
+			this->lblRefundCalc->Size = System::Drawing::Size(141, 17);
+			this->lblRefundCalc->TabIndex = 6;
+			this->lblRefundCalc->Text = L"Refund Due: LKR 0.00";
+			// 
+			// btnProcessReturn
+			// 
+			this->btnProcessReturn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(39)), static_cast<System::Int32>(static_cast<System::Byte>(174)),
+				static_cast<System::Int32>(static_cast<System::Byte>(96)));
+			this->btnProcessReturn->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnProcessReturn->Enabled = false;
+			this->btnProcessReturn->FlatAppearance->BorderSize = 0;
+			this->btnProcessReturn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnProcessReturn->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10, System::Drawing::FontStyle::Bold));
+			this->btnProcessReturn->ForeColor = System::Drawing::Color::White;
+			this->btnProcessReturn->Location = System::Drawing::Point(820, 58);
+			this->btnProcessReturn->Name = L"btnProcessReturn";
+			this->btnProcessReturn->Size = System::Drawing::Size(170, 35);
+			this->btnProcessReturn->TabIndex = 7;
+			this->btnProcessReturn->Text = L"Complete Return";
+			this->btnProcessReturn->UseVisualStyleBackColor = false;
+			this->btnProcessReturn->Click += gcnew System::EventHandler(this, &rentals::btnProcessReturn_Click);
+			// 
+			// pnlListFilter
+			// 
+			this->pnlListFilter->BackColor = System::Drawing::Color::White;
+			this->pnlListFilter->Controls->Add(this->lblFilterStatus);
+			this->pnlListFilter->Controls->Add(this->cmbFilterStatus);
+			this->pnlListFilter->Controls->Add(this->lblSearch);
+			this->pnlListFilter->Controls->Add(this->txtSearch);
+			this->pnlListFilter->Controls->Add(this->btnRefresh);
+			this->pnlListFilter->Dock = System::Windows::Forms::DockStyle::Top;
+			this->pnlListFilter->Location = System::Drawing::Point(3, 3);
+			this->pnlListFilter->Name = L"pnlListFilter";
+			this->pnlListFilter->Size = System::Drawing::Size(1166, 55);
+			this->pnlListFilter->TabIndex = 0;
+			// 
+			// lblFilterStatus
+			// 
+			this->lblFilterStatus->AutoSize = true;
+			this->lblFilterStatus->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->lblFilterStatus->Location = System::Drawing::Point(20, 16);
+			this->lblFilterStatus->Name = L"lblFilterStatus";
+			this->lblFilterStatus->Size = System::Drawing::Size(86, 17);
+			this->lblFilterStatus->TabIndex = 0;
+			this->lblFilterStatus->Text = L"Filter Status:";
+			// 
+			// cmbFilterStatus
+			// 
+			this->cmbFilterStatus->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->cmbFilterStatus->FormattingEnabled = true;
+			this->cmbFilterStatus->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"All", L"Active", L"Overdue", L"Returned" });
+			this->cmbFilterStatus->Location = System::Drawing::Point(110, 13);
+			this->cmbFilterStatus->Name = L"cmbFilterStatus";
+			this->cmbFilterStatus->Size = System::Drawing::Size(130, 27);
+			this->cmbFilterStatus->TabIndex = 1;
+			this->cmbFilterStatus->SelectedIndexChanged += gcnew System::EventHandler(this, &rentals::FilterChanged);
+			// 
+			// lblSearch
+			// 
+			this->lblSearch->AutoSize = true;
+			this->lblSearch->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->lblSearch->Location = System::Drawing::Point(270, 16);
+			this->lblSearch->Name = L"lblSearch";
+			this->lblSearch->Size = System::Drawing::Size(52, 17);
+			this->lblSearch->TabIndex = 2;
+			this->lblSearch->Text = L"Search:";
+			// 
+			// txtSearch
+			// 
+			this->txtSearch->Location = System::Drawing::Point(330, 13);
+			this->txtSearch->Name = L"txtSearch";
+			this->txtSearch->Size = System::Drawing::Size(240, 26);
+			this->txtSearch->TabIndex = 3;
+			this->txtSearch->TextChanged += gcnew System::EventHandler(this, &rentals::FilterChanged);
+			// 
+			// btnRefresh
+			// 
+			this->btnRefresh->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(52)), static_cast<System::Int32>(static_cast<System::Byte>(152)),
+				static_cast<System::Int32>(static_cast<System::Byte>(219)));
+			this->btnRefresh->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnRefresh->FlatAppearance->BorderSize = 0;
+			this->btnRefresh->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnRefresh->ForeColor = System::Drawing::Color::White;
+			this->btnRefresh->Location = System::Drawing::Point(585, 12);
+			this->btnRefresh->Name = L"btnRefresh";
+			this->btnRefresh->Size = System::Drawing::Size(90, 28);
+			this->btnRefresh->TabIndex = 4;
+			this->btnRefresh->Text = L"Refresh";
+			this->btnRefresh->UseVisualStyleBackColor = false;
+			this->btnRefresh->Click += gcnew System::EventHandler(this, &rentals::btnRefresh_Click);
+			// 
+			// tabNewRental
+			// 
+			this->tabNewRental->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(244)), static_cast<System::Int32>(static_cast<System::Byte>(246)),
+				static_cast<System::Int32>(static_cast<System::Byte>(249)));
+			this->tabNewRental->Controls->Add(this->pnlNewRental);
+			this->tabNewRental->Location = System::Drawing::Point(4, 28);
+			this->tabNewRental->Name = L"tabNewRental";
+			this->tabNewRental->Padding = System::Windows::Forms::Padding(3);
+			this->tabNewRental->Size = System::Drawing::Size(1172, 618);
+			this->tabNewRental->TabIndex = 1;
+			this->tabNewRental->Text = L"  + Issue New Rental  ";
+			// 
+			// pnlNewRental
+			// 
+			this->pnlNewRental->BackColor = System::Drawing::Color::White;
+			this->pnlNewRental->Controls->Add(this->lblNewTitle);
+			this->pnlNewRental->Controls->Add(this->lblCustomer);
+			this->pnlNewRental->Controls->Add(this->cmbCustomer);
+			this->pnlNewRental->Controls->Add(this->lblTool);
+			this->pnlNewRental->Controls->Add(this->cmbTool);
+			this->pnlNewRental->Controls->Add(this->lblRentDate);
+			this->pnlNewRental->Controls->Add(this->dtpRentDate);
+			this->pnlNewRental->Controls->Add(this->lblDueDate);
+			this->pnlNewRental->Controls->Add(this->dtpDueDate);
+			this->pnlNewRental->Controls->Add(this->lblDeposit);
+			this->pnlNewRental->Controls->Add(this->numDeposit);
+			this->pnlNewRental->Controls->Add(this->lblNotes);
+			this->pnlNewRental->Controls->Add(this->txtNotes);
+			this->pnlNewRental->Controls->Add(this->pnlSummaryCard);
+			this->pnlNewRental->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->pnlNewRental->Location = System::Drawing::Point(3, 3);
+			this->pnlNewRental->Name = L"pnlNewRental";
+			this->pnlNewRental->Padding = System::Windows::Forms::Padding(30);
+			this->pnlNewRental->Size = System::Drawing::Size(1166, 612);
+			this->pnlNewRental->TabIndex = 0;
+			// 
+			// lblNewTitle
+			// 
+			this->lblNewTitle->AutoSize = true;
+			this->lblNewTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14, System::Drawing::FontStyle::Bold));
+			this->lblNewTitle->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(47)), static_cast<System::Int32>(static_cast<System::Byte>(79)),
+				static_cast<System::Int32>(static_cast<System::Byte>(79)));
+			this->lblNewTitle->Location = System::Drawing::Point(30, 20);
+			this->lblNewTitle->Name = L"lblNewTitle";
+			this->lblNewTitle->Size = System::Drawing::Size(281, 25);
+			this->lblNewTitle->TabIndex = 0;
+			this->lblNewTitle->Text = L"Issue a New Rental Agreement";
+			// 
+			// lblCustomer
+			// 
+			this->lblCustomer->AutoSize = true;
+			this->lblCustomer->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->lblCustomer->Location = System::Drawing::Point(30, 65);
+			this->lblCustomer->Name = L"lblCustomer";
+			this->lblCustomer->Size = System::Drawing::Size(112, 17);
+			this->lblCustomer->TabIndex = 1;
+			this->lblCustomer->Text = L"Select Customer:";
+			// 
+			// cmbCustomer
+			// 
+			this->cmbCustomer->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->cmbCustomer->FormattingEnabled = true;
+			this->cmbCustomer->Location = System::Drawing::Point(30, 87);
+			this->cmbCustomer->Name = L"cmbCustomer";
+			this->cmbCustomer->Size = System::Drawing::Size(460, 27);
+			this->cmbCustomer->TabIndex = 2;
+			this->cmbCustomer->SelectedIndexChanged += gcnew System::EventHandler(this, &rentals::NewRentalInputChanged);
+			// 
+			// lblTool
+			// 
+			this->lblTool->AutoSize = true;
+			this->lblTool->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->lblTool->Location = System::Drawing::Point(30, 130);
+			this->lblTool->Name = L"lblTool";
+			this->lblTool->Size = System::Drawing::Size(140, 17);
+			this->lblTool->TabIndex = 3;
+			this->lblTool->Text = L"Select Available Tool:";
+			// 
+			// cmbTool
+			// 
+			this->cmbTool->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->cmbTool->FormattingEnabled = true;
+			this->cmbTool->Location = System::Drawing::Point(30, 152);
+			this->cmbTool->Name = L"cmbTool";
+			this->cmbTool->Size = System::Drawing::Size(460, 27);
+			this->cmbTool->TabIndex = 4;
+			this->cmbTool->SelectedIndexChanged += gcnew System::EventHandler(this, &rentals::cmbTool_SelectedIndexChanged);
+			// 
+			// lblRentDate
+			// 
+			this->lblRentDate->AutoSize = true;
+			this->lblRentDate->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->lblRentDate->Location = System::Drawing::Point(30, 195);
+			this->lblRentDate->Name = L"lblRentDate";
+			this->lblRentDate->Size = System::Drawing::Size(73, 17);
+			this->lblRentDate->TabIndex = 5;
+			this->lblRentDate->Text = L"Rent Date:";
+			// 
+			// dtpRentDate
+			// 
+			this->dtpRentDate->Format = System::Windows::Forms::DateTimePickerFormat::Short;
+			this->dtpRentDate->Location = System::Drawing::Point(30, 217);
+			this->dtpRentDate->Name = L"dtpRentDate";
+			this->dtpRentDate->Size = System::Drawing::Size(215, 26);
+			this->dtpRentDate->TabIndex = 6;
+			this->dtpRentDate->ValueChanged += gcnew System::EventHandler(this, &rentals::NewRentalInputChanged);
+			// 
+			// lblDueDate
+			// 
+			this->lblDueDate->AutoSize = true;
+			this->lblDueDate->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->lblDueDate->Location = System::Drawing::Point(275, 195);
+			this->lblDueDate->Name = L"lblDueDate";
+			this->lblDueDate->Size = System::Drawing::Size(70, 17);
+			this->lblDueDate->TabIndex = 7;
+			this->lblDueDate->Text = L"Due Date:";
+			// 
+			// dtpDueDate
+			// 
+			this->dtpDueDate->Format = System::Windows::Forms::DateTimePickerFormat::Short;
+			this->dtpDueDate->Location = System::Drawing::Point(275, 217);
+			this->dtpDueDate->Name = L"dtpDueDate";
+			this->dtpDueDate->Size = System::Drawing::Size(215, 26);
+			this->dtpDueDate->TabIndex = 8;
+			this->dtpDueDate->ValueChanged += gcnew System::EventHandler(this, &rentals::NewRentalInputChanged);
+			// 
+			// lblDeposit
+			// 
+			this->lblDeposit->AutoSize = true;
+			this->lblDeposit->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->lblDeposit->Location = System::Drawing::Point(30, 260);
+			this->lblDeposit->Name = L"lblDeposit";
+			this->lblDeposit->Size = System::Drawing::Size(128, 17);
+			this->lblDeposit->TabIndex = 9;
+			this->lblDeposit->Text = L"Deposit Paid (LKR):";
+			// 
+			// numDeposit
+			// 
+			this->numDeposit->DecimalPlaces = 2;
+			this->numDeposit->Location = System::Drawing::Point(30, 282);
+			this->numDeposit->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 10000000, 0, 0, 0 });
+			this->numDeposit->Name = L"numDeposit";
+			this->numDeposit->Size = System::Drawing::Size(215, 26);
+			this->numDeposit->TabIndex = 10;
+			this->numDeposit->ValueChanged += gcnew System::EventHandler(this, &rentals::NewRentalInputChanged);
+			// 
+			// lblNotes
+			// 
+			this->lblNotes->AutoSize = true;
+			this->lblNotes->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->lblNotes->Location = System::Drawing::Point(30, 320);
+			this->lblNotes->Name = L"lblNotes";
+			this->lblNotes->Size = System::Drawing::Size(219, 17);
+			this->lblNotes->TabIndex = 11;
+			this->lblNotes->Text = L"Rental Notes / Condition remarks:";
+			// 
+			// txtNotes
+			// 
+			this->txtNotes->Location = System::Drawing::Point(30, 342);
+			this->txtNotes->Multiline = true;
+			this->txtNotes->Name = L"txtNotes";
+			this->txtNotes->Size = System::Drawing::Size(460, 60);
+			this->txtNotes->TabIndex = 12;
+			// 
+			// pnlSummaryCard
+			// 
+			this->pnlSummaryCard->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(248)), static_cast<System::Int32>(static_cast<System::Byte>(249)),
+				static_cast<System::Int32>(static_cast<System::Byte>(250)));
+			this->pnlSummaryCard->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->pnlSummaryCard->Controls->Add(this->lblSummaryTitle);
+			this->pnlSummaryCard->Controls->Add(this->lblSumDays);
+			this->pnlSummaryCard->Controls->Add(this->lblSumDailyRate);
+			this->pnlSummaryCard->Controls->Add(this->lblSumTotalRent);
+			this->pnlSummaryCard->Controls->Add(this->lblSumDeposit);
+			this->pnlSummaryCard->Controls->Add(this->btnIssueRental);
+			this->pnlSummaryCard->Location = System::Drawing::Point(550, 65);
+			this->pnlSummaryCard->Name = L"pnlSummaryCard";
+			this->pnlSummaryCard->Padding = System::Windows::Forms::Padding(25);
+			this->pnlSummaryCard->Size = System::Drawing::Size(450, 320);
+			this->pnlSummaryCard->TabIndex = 13;
+			// 
+			// lblSummaryTitle
+			// 
+			this->lblSummaryTitle->AutoSize = true;
+			this->lblSummaryTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold));
+			this->lblSummaryTitle->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(47)), static_cast<System::Int32>(static_cast<System::Byte>(79)),
+				static_cast<System::Int32>(static_cast<System::Byte>(79)));
+			this->lblSummaryTitle->Location = System::Drawing::Point(20, 20);
+			this->lblSummaryTitle->Name = L"lblSummaryTitle";
+			this->lblSummaryTitle->Size = System::Drawing::Size(182, 21);
+			this->lblSummaryTitle->TabIndex = 0;
+			this->lblSummaryTitle->Text = L"Rental Cost Estimation";
+			// 
+			// lblSumDays
+			// 
+			this->lblSumDays->AutoSize = true;
+			this->lblSumDays->Location = System::Drawing::Point(20, 65);
+			this->lblSumDays->Name = L"lblSumDays";
+			this->lblSumDays->Size = System::Drawing::Size(120, 19);
+			this->lblSumDays->TabIndex = 1;
+			this->lblSumDays->Text = L"Duration: 3 Day(s)";
+			// 
+			// lblSumDailyRate
+			// 
+			this->lblSumDailyRate->AutoSize = true;
+			this->lblSumDailyRate->Location = System::Drawing::Point(20, 105);
+			this->lblSumDailyRate->Name = L"lblSumDailyRate";
+			this->lblSumDailyRate->Size = System::Drawing::Size(131, 19);
+			this->lblSumDailyRate->TabIndex = 2;
+			this->lblSumDailyRate->Text = L"Daily Rate: LKR 0.00";
+			// 
+			// lblSumTotalRent
+			// 
+			this->lblSumTotalRent->AutoSize = true;
+			this->lblSumTotalRent->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11, System::Drawing::FontStyle::Bold));
+			this->lblSumTotalRent->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(41)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(185)));
+			this->lblSumTotalRent->Location = System::Drawing::Point(20, 150);
+			this->lblSumTotalRent->Name = L"lblSumTotalRent";
+			this->lblSumTotalRent->Size = System::Drawing::Size(226, 20);
+			this->lblSumTotalRent->TabIndex = 3;
+			this->lblSumTotalRent->Text = L"Estimated Rent Total: LKR 0.00";
+			// 
+			// lblSumDeposit
+			// 
+			this->lblSumDeposit->AutoSize = true;
+			this->lblSumDeposit->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.5F, System::Drawing::FontStyle::Bold));
+			this->lblSumDeposit->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(39)), static_cast<System::Int32>(static_cast<System::Byte>(174)),
+				static_cast<System::Int32>(static_cast<System::Byte>(96)));
+			this->lblSumDeposit->Location = System::Drawing::Point(20, 195);
+			this->lblSumDeposit->Name = L"lblSumDeposit";
+			this->lblSumDeposit->Size = System::Drawing::Size(190, 19);
+			this->lblSumDeposit->TabIndex = 4;
+			this->lblSumDeposit->Text = L"Required Deposit: LKR 0.00";
+			// 
+			// btnIssueRental
+			// 
+			this->btnIssueRental->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(39)), static_cast<System::Int32>(static_cast<System::Byte>(174)),
+				static_cast<System::Int32>(static_cast<System::Byte>(96)));
+			this->btnIssueRental->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnIssueRental->FlatAppearance->BorderSize = 0;
+			this->btnIssueRental->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnIssueRental->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11, System::Drawing::FontStyle::Bold));
+			this->btnIssueRental->ForeColor = System::Drawing::Color::White;
+			this->btnIssueRental->Location = System::Drawing::Point(20, 245);
+			this->btnIssueRental->Name = L"btnIssueRental";
+			this->btnIssueRental->Size = System::Drawing::Size(405, 45);
+			this->btnIssueRental->TabIndex = 5;
+			this->btnIssueRental->Text = L"Confirm & Issue Rental";
+			this->btnIssueRental->UseVisualStyleBackColor = false;
+			this->btnIssueRental->Click += gcnew System::EventHandler(this, &rentals::btnIssueRental_Click);
+			// 
+			// rentals
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(7, 17);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(244)), static_cast<System::Int32>(static_cast<System::Byte>(246)),
+				static_cast<System::Int32>(static_cast<System::Byte>(249)));
 			this->ClientSize = System::Drawing::Size(1180, 720);
+			this->Controls->Add(this->tabControl1);
+			this->Controls->Add(this->pnlHeader);
+			this->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F));
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MinimumSize = System::Drawing::Size(1020, 640);
-			this->StartPosition = FormStartPosition::CenterScreen;
-			this->BackColor = Color::FromArgb(244, 246, 249);
-			this->Font = gcnew Drawing::Font(L"Segoe UI", 10);
-
-			// Header
-			pnlHeader = gcnew Panel();
-			pnlHeader->Dock = DockStyle::Top;
-			pnlHeader->Height = 70;
-			pnlHeader->BackColor = Color::FromArgb(47, 79, 79);
-
-			lblTitle = gcnew Label();
-			lblTitle->Text = L"RENTAL MANAGEMENT & TRANSACTIONS";
-			lblTitle->Font = gcnew Drawing::Font(L"Segoe UI", 16, FontStyle::Bold);
-			lblTitle->ForeColor = Color::White;
-			lblTitle->Location = Point(20, 12);
-			lblTitle->AutoSize = true;
-
-			lblSubtitle = gcnew Label();
-			lblSubtitle->Text = L"Issue tool rentals, calculate fees, track due dates, and process returns";
-			lblSubtitle->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F);
-			lblSubtitle->ForeColor = Color::FromArgb(210, 230, 230);
-			lblSubtitle->Location = Point(22, 42);
-			lblSubtitle->AutoSize = true;
-
-			btnClose = gcnew Button();
-			btnClose->Text = L"Back to Dashboard";
-			btnClose->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-			btnClose->ForeColor = Color::White;
-			btnClose->BackColor = Color::FromArgb(70, 110, 110);
-			btnClose->FlatStyle = FlatStyle::Flat;
-			btnClose->FlatAppearance->BorderSize = 0;
-			btnClose->Location = Point(1000, 18);
-			btnClose->Size = System::Drawing::Size(155, 35);
-			btnClose->Anchor = AnchorStyles::Top | AnchorStyles::Right;
-			btnClose->Cursor = Cursors::Hand;
-			btnClose->Click += gcnew EventHandler(this, &rentals::btnClose_Click);
-
-			pnlHeader->Controls->Add(lblTitle);
-			pnlHeader->Controls->Add(lblSubtitle);
-			pnlHeader->Controls->Add(btnClose);
-
-			// Tabs
-			tabControl1 = gcnew TabControl();
-			tabControl1->Dock = DockStyle::Fill;
-			tabControl1->Font = gcnew Drawing::Font(L"Segoe UI", 10.5F, FontStyle::Regular);
-
-			tabRentalsList = gcnew TabPage();
-			tabRentalsList->Text = L"  Active & All Rentals  ";
-			tabRentalsList->BackColor = Color::FromArgb(244, 246, 249);
-
-			tabNewRental = gcnew TabPage();
-			tabNewRental->Text = L"  + Issue New Rental  ";
-			tabNewRental->BackColor = Color::FromArgb(244, 246, 249);
-
-			// ================= TAB 1: RENTALS LIST & RETURN =================
-			pnlListFilter = gcnew Panel();
-			pnlListFilter->Dock = DockStyle::Top;
-			pnlListFilter->Height = 55;
-			pnlListFilter->BackColor = Color::White;
-
-			lblFilterStatus = gcnew Label();
-			lblFilterStatus->Text = L"Filter Status:";
-			lblFilterStatus->Location = Point(20, 16);
-			lblFilterStatus->AutoSize = true;
-			lblFilterStatus->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-
-			cmbFilterStatus = gcnew ComboBox();
-			cmbFilterStatus->DropDownStyle = ComboBoxStyle::DropDownList;
-			cmbFilterStatus->Items->AddRange(gcnew cli::array<Object^>{ L"All", L"Active", L"Overdue", L"Returned" });
-			cmbFilterStatus->SelectedIndex = 0;
-			cmbFilterStatus->Location = Point(110, 13);
-			cmbFilterStatus->Size = System::Drawing::Size(130, 25);
-			cmbFilterStatus->SelectedIndexChanged += gcnew EventHandler(this, &rentals::FilterChanged);
-
-			lblSearch = gcnew Label();
-			lblSearch->Text = L"Search:";
-			lblSearch->Location = Point(270, 16);
-			lblSearch->AutoSize = true;
-			lblSearch->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-
-			txtSearch = gcnew TextBox();
-			txtSearch->Location = Point(330, 13);
-			txtSearch->Size = System::Drawing::Size(240, 25);
-			txtSearch->TextChanged += gcnew EventHandler(this, &rentals::FilterChanged);
-
-			btnRefresh = gcnew Button();
-			btnRefresh->Text = L"Refresh";
-			btnRefresh->Location = Point(585, 12);
-			btnRefresh->Size = System::Drawing::Size(90, 28);
-			btnRefresh->BackColor = Color::FromArgb(52, 152, 219);
-			btnRefresh->ForeColor = Color::White;
-			btnRefresh->FlatStyle = FlatStyle::Flat;
-			btnRefresh->FlatAppearance->BorderSize = 0;
-			btnRefresh->Cursor = Cursors::Hand;
-			btnRefresh->Click += gcnew EventHandler(this, &rentals::btnRefresh_Click);
-
-			pnlListFilter->Controls->Add(lblFilterStatus);
-			pnlListFilter->Controls->Add(cmbFilterStatus);
-			pnlListFilter->Controls->Add(lblSearch);
-			pnlListFilter->Controls->Add(txtSearch);
-			pnlListFilter->Controls->Add(btnRefresh);
-
-			// Return Action Panel at bottom of Tab 1
-			pnlReturnAction = gcnew Panel();
-			pnlReturnAction->Dock = DockStyle::Bottom;
-			pnlReturnAction->Height = 120;
-			pnlReturnAction->BackColor = Color::White;
-			pnlReturnAction->Padding = System::Windows::Forms::Padding(20, 10, 20, 10);
-
-			lblReturnTitle = gcnew Label();
-			lblReturnTitle->Text = L"Process Return for Selected Rental";
-			lblReturnTitle->Font = gcnew Drawing::Font(L"Segoe UI", 11, FontStyle::Bold);
-			lblReturnTitle->ForeColor = Color::FromArgb(47, 79, 79);
-			lblReturnTitle->Location = Point(20, 8);
-			lblReturnTitle->AutoSize = true;
-
-			lblReturnInfo = gcnew Label();
-			lblReturnInfo->Text = L"Select an Active or Overdue rental from the table above to process return.";
-			lblReturnInfo->ForeColor = Color::FromArgb(100, 100, 100);
-			lblReturnInfo->Location = Point(20, 34);
-			lblReturnInfo->AutoSize = true;
-
-			lblReturnDate = gcnew Label();
-			lblReturnDate->Text = L"Return Date:";
-			lblReturnDate->Location = Point(20, 65);
-			lblReturnDate->AutoSize = true;
-
-			dtpReturnDate = gcnew DateTimePicker();
-			dtpReturnDate->Format = DateTimePickerFormat::Short;
-			dtpReturnDate->Location = Point(110, 62);
-			dtpReturnDate->Size = System::Drawing::Size(120, 25);
-			dtpReturnDate->ValueChanged += gcnew EventHandler(this, &rentals::dtpReturnDate_ValueChanged);
-
-			lblLateFeeCalc = gcnew Label();
-			lblLateFeeCalc->Text = L"Late Fee: LKR 0.00";
-			lblLateFeeCalc->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-			lblLateFeeCalc->ForeColor = Color::FromArgb(192, 57, 43);
-			lblLateFeeCalc->Location = Point(260, 65);
-			lblLateFeeCalc->AutoSize = true;
-
-			lblTotalCalc = gcnew Label();
-			lblTotalCalc->Text = L"Final Total: LKR 0.00";
-			lblTotalCalc->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-			lblTotalCalc->Location = Point(440, 65);
-			lblTotalCalc->AutoSize = true;
-
-			lblRefundCalc = gcnew Label();
-			lblRefundCalc->Text = L"Refund Due: LKR 0.00";
-			lblRefundCalc->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-			lblRefundCalc->ForeColor = Color::FromArgb(39, 174, 96);
-			lblRefundCalc->Location = Point(630, 65);
-			lblRefundCalc->AutoSize = true;
-
-			btnProcessReturn = gcnew Button();
-			btnProcessReturn->Text = L"Complete Return";
-			btnProcessReturn->Font = gcnew Drawing::Font(L"Segoe UI", 10, FontStyle::Bold);
-			btnProcessReturn->BackColor = Color::FromArgb(39, 174, 96);
-			btnProcessReturn->ForeColor = Color::White;
-			btnProcessReturn->FlatStyle = FlatStyle::Flat;
-			btnProcessReturn->FlatAppearance->BorderSize = 0;
-			btnProcessReturn->Location = Point(820, 58);
-			btnProcessReturn->Size = System::Drawing::Size(170, 35);
-			btnProcessReturn->Cursor = Cursors::Hand;
-			btnProcessReturn->Enabled = false;
-			btnProcessReturn->Click += gcnew EventHandler(this, &rentals::btnProcessReturn_Click);
-
-			pnlReturnAction->Controls->Add(lblReturnTitle);
-			pnlReturnAction->Controls->Add(lblReturnInfo);
-			pnlReturnAction->Controls->Add(lblReturnDate);
-			pnlReturnAction->Controls->Add(dtpReturnDate);
-			pnlReturnAction->Controls->Add(lblLateFeeCalc);
-			pnlReturnAction->Controls->Add(lblTotalCalc);
-			pnlReturnAction->Controls->Add(lblRefundCalc);
-			pnlReturnAction->Controls->Add(btnProcessReturn);
-
-			// DataGridView Rentals
-			dgvRentals = gcnew DataGridView();
-			dgvRentals->Dock = DockStyle::Fill;
-			dgvRentals->BackgroundColor = Color::FromArgb(244, 246, 249);
-			dgvRentals->BorderStyle = BorderStyle::None;
-			dgvRentals->AllowUserToAddRows = false;
-			dgvRentals->AllowUserToDeleteRows = false;
-			dgvRentals->ReadOnly = true;
-			dgvRentals->SelectionMode = DataGridViewSelectionMode::FullRowSelect;
-			dgvRentals->MultiSelect = false;
-			dgvRentals->AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode::Fill;
-			dgvRentals->RowHeadersVisible = false;
-			dgvRentals->CellClick += gcnew DataGridViewCellEventHandler(this, &rentals::dgvRentals_CellClick);
-			dgvRentals->CellFormatting += gcnew DataGridViewCellFormattingEventHandler(this, &rentals::dgvRentals_CellFormatting);
-			dgvRentals->DataError += gcnew DataGridViewDataErrorEventHandler(this, &rentals::dgvRentals_DataError);
-
-			tabRentalsList->Controls->Add(dgvRentals);
-			tabRentalsList->Controls->Add(pnlReturnAction);
-			tabRentalsList->Controls->Add(pnlListFilter);
-
-			// ================= TAB 2: NEW RENTAL =================
-			pnlNewRental = gcnew Panel();
-			pnlNewRental->Dock = DockStyle::Fill;
-			pnlNewRental->Padding = System::Windows::Forms::Padding(30);
-			pnlNewRental->BackColor = Color::White;
-
-			lblNewTitle = gcnew Label();
-			lblNewTitle->Text = L"Issue a New Rental Agreement";
-			lblNewTitle->Font = gcnew Drawing::Font(L"Segoe UI", 14, FontStyle::Bold);
-			lblNewTitle->ForeColor = Color::FromArgb(47, 79, 79);
-			lblNewTitle->Location = Point(30, 20);
-			lblNewTitle->AutoSize = true;
-
-			int y = 65;
-			lblCustomer = gcnew Label();
-			lblCustomer->Text = L"Select Customer:";
-			lblCustomer->Location = Point(30, y);
-			lblCustomer->AutoSize = true;
-			lblCustomer->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-
-			cmbCustomer = gcnew ComboBox();
-			cmbCustomer->DropDownStyle = ComboBoxStyle::DropDownList;
-			cmbCustomer->Location = Point(30, y + 22);
-			cmbCustomer->Size = System::Drawing::Size(460, 26);
-			cmbCustomer->SelectedIndexChanged += gcnew EventHandler(this, &rentals::NewRentalInputChanged);
-
-			y += 65;
-			lblTool = gcnew Label();
-			lblTool->Text = L"Select Available Tool:";
-			lblTool->Location = Point(30, y);
-			lblTool->AutoSize = true;
-			lblTool->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-
-			cmbTool = gcnew ComboBox();
-			cmbTool->DropDownStyle = ComboBoxStyle::DropDownList;
-			cmbTool->Location = Point(30, y + 22);
-			cmbTool->Size = System::Drawing::Size(460, 26);
-			cmbTool->SelectedIndexChanged += gcnew EventHandler(this, &rentals::cmbTool_SelectedIndexChanged);
-
-			y += 65;
-			lblRentDate = gcnew Label();
-			lblRentDate->Text = L"Rent Date:";
-			lblRentDate->Location = Point(30, y);
-			lblRentDate->AutoSize = true;
-			lblRentDate->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-
-			dtpRentDate = gcnew DateTimePicker();
-			dtpRentDate->Format = DateTimePickerFormat::Short;
-			dtpRentDate->Location = Point(30, y + 22);
-			dtpRentDate->Size = System::Drawing::Size(215, 25);
-			dtpRentDate->Value = DateTime::Today;
-			dtpRentDate->ValueChanged += gcnew EventHandler(this, &rentals::NewRentalInputChanged);
-
-			lblDueDate = gcnew Label();
-			lblDueDate->Text = L"Due Date:";
-			lblDueDate->Location = Point(275, y);
-			lblDueDate->AutoSize = true;
-			lblDueDate->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-
-			dtpDueDate = gcnew DateTimePicker();
-			dtpDueDate->Format = DateTimePickerFormat::Short;
-			dtpDueDate->Location = Point(275, y + 22);
-			dtpDueDate->Size = System::Drawing::Size(215, 25);
-			dtpDueDate->Value = DateTime::Today.AddDays(3);
-			dtpDueDate->ValueChanged += gcnew EventHandler(this, &rentals::NewRentalInputChanged);
-
-			y += 65;
-			lblDeposit = gcnew Label();
-			lblDeposit->Text = L"Deposit Paid (LKR):";
-			lblDeposit->Location = Point(30, y);
-			lblDeposit->AutoSize = true;
-			lblDeposit->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-
-			numDeposit = gcnew NumericUpDown();
-			numDeposit->Location = Point(30, y + 22);
-			numDeposit->Size = System::Drawing::Size(215, 25);
-			numDeposit->Maximum = 10000000;
-			numDeposit->DecimalPlaces = 2;
-			numDeposit->ValueChanged += gcnew EventHandler(this, &rentals::NewRentalInputChanged);
-
-			lblNotes = gcnew Label();
-			lblNotes->Text = L"Rental Notes / Condition remarks:";
-			lblNotes->Location = Point(30, y + 60);
-			lblNotes->AutoSize = true;
-			lblNotes->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-
-			txtNotes = gcnew TextBox();
-			txtNotes->Multiline = true;
-			txtNotes->Location = Point(30, y + 82);
-			txtNotes->Size = System::Drawing::Size(460, 60);
-
-			// Summary Card on right
-			pnlSummaryCard = gcnew Panel();
-			pnlSummaryCard->Location = Point(550, 65);
-			pnlSummaryCard->Size = System::Drawing::Size(450, 320);
-			pnlSummaryCard->BackColor = Color::FromArgb(248, 249, 250);
-			pnlSummaryCard->BorderStyle = BorderStyle::FixedSingle;
-			pnlSummaryCard->Padding = System::Windows::Forms::Padding(25);
-
-			lblSummaryTitle = gcnew Label();
-			lblSummaryTitle->Text = L"Rental Cost Estimation";
-			lblSummaryTitle->Font = gcnew Drawing::Font(L"Segoe UI", 12, FontStyle::Bold);
-			lblSummaryTitle->ForeColor = Color::FromArgb(47, 79, 79);
-			lblSummaryTitle->Location = Point(20, 20);
-			lblSummaryTitle->AutoSize = true;
-
-			lblSumDays = gcnew Label();
-			lblSumDays->Text = L"Duration: 3 Day(s)";
-			lblSumDays->Location = Point(20, 65);
-			lblSumDays->AutoSize = true;
-
-			lblSumDailyRate = gcnew Label();
-			lblSumDailyRate->Text = L"Daily Rate: LKR 0.00";
-			lblSumDailyRate->Location = Point(20, 105);
-			lblSumDailyRate->AutoSize = true;
-
-			lblSumTotalRent = gcnew Label();
-			lblSumTotalRent->Text = L"Estimated Rent Total: LKR 0.00";
-			lblSumTotalRent->Font = gcnew Drawing::Font(L"Segoe UI", 11, FontStyle::Bold);
-			lblSumTotalRent->ForeColor = Color::FromArgb(41, 128, 185);
-			lblSumTotalRent->Location = Point(20, 150);
-			lblSumTotalRent->AutoSize = true;
-
-			lblSumDeposit = gcnew Label();
-			lblSumDeposit->Text = L"Required Deposit: LKR 0.00";
-			lblSumDeposit->Font = gcnew Drawing::Font(L"Segoe UI", 10.5F, FontStyle::Bold);
-			lblSumDeposit->ForeColor = Color::FromArgb(39, 174, 96);
-			lblSumDeposit->Location = Point(20, 195);
-			lblSumDeposit->AutoSize = true;
-
-			btnIssueRental = gcnew Button();
-			btnIssueRental->Text = L"Confirm & Issue Rental";
-			btnIssueRental->Font = gcnew Drawing::Font(L"Segoe UI", 11, FontStyle::Bold);
-			btnIssueRental->BackColor = Color::FromArgb(39, 174, 96);
-			btnIssueRental->ForeColor = Color::White;
-			btnIssueRental->FlatStyle = FlatStyle::Flat;
-			btnIssueRental->FlatAppearance->BorderSize = 0;
-			btnIssueRental->Location = Point(20, 245);
-			btnIssueRental->Size = System::Drawing::Size(405, 45);
-			btnIssueRental->Cursor = Cursors::Hand;
-			btnIssueRental->Click += gcnew EventHandler(this, &rentals::btnIssueRental_Click);
-
-			pnlSummaryCard->Controls->Add(lblSummaryTitle);
-			pnlSummaryCard->Controls->Add(lblSumDays);
-			pnlSummaryCard->Controls->Add(lblSumDailyRate);
-			pnlSummaryCard->Controls->Add(lblSumTotalRent);
-			pnlSummaryCard->Controls->Add(lblSumDeposit);
-			pnlSummaryCard->Controls->Add(btnIssueRental);
-
-			pnlNewRental->Controls->Add(lblNewTitle);
-			pnlNewRental->Controls->Add(lblCustomer);
-			pnlNewRental->Controls->Add(cmbCustomer);
-			pnlNewRental->Controls->Add(lblTool);
-			pnlNewRental->Controls->Add(cmbTool);
-			pnlNewRental->Controls->Add(lblRentDate);
-			pnlNewRental->Controls->Add(dtpRentDate);
-			pnlNewRental->Controls->Add(lblDueDate);
-			pnlNewRental->Controls->Add(dtpDueDate);
-			pnlNewRental->Controls->Add(lblDeposit);
-			pnlNewRental->Controls->Add(numDeposit);
-			pnlNewRental->Controls->Add(lblNotes);
-			pnlNewRental->Controls->Add(txtNotes);
-			pnlNewRental->Controls->Add(pnlSummaryCard);
-
-			tabNewRental->Controls->Add(pnlNewRental);
-
-			tabControl1->TabPages->Add(tabRentalsList);
-			tabControl1->TabPages->Add(tabNewRental);
-
-			this->Controls->Add(tabControl1);
-			this->Controls->Add(pnlHeader);
-
-			this->Load += gcnew EventHandler(this, &rentals::rentals_Load);
+			this->Name = L"rentals";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
+			this->Text = L"Rent-A-Tool - Rental Management";
+			this->Load += gcnew System::EventHandler(this, &rentals::rentals_Load);
+			this->pnlHeader->ResumeLayout(false);
+			this->pnlHeader->PerformLayout();
+			this->tabControl1->ResumeLayout(false);
+			this->tabRentalsList->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvRentals))->EndInit();
+			this->pnlReturnAction->ResumeLayout(false);
+			this->pnlReturnAction->PerformLayout();
+			this->pnlListFilter->ResumeLayout(false);
+			this->pnlListFilter->PerformLayout();
+			this->tabNewRental->ResumeLayout(false);
+			this->pnlNewRental->ResumeLayout(false);
+			this->pnlNewRental->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numDeposit))->EndInit();
+			this->pnlSummaryCard->ResumeLayout(false);
+			this->pnlSummaryCard->PerformLayout();
 			this->ResumeLayout(false);
+
 		}
+#pragma endregion
 
 		void dgvRentals_DataError(System::Object^ sender, DataGridViewDataErrorEventArgs^ e)
 		{
@@ -488,9 +733,14 @@ namespace RentATool {
 
 		void rentals_Load(System::Object^ sender, System::EventArgs^ e)
 		{
-			LoadCustomersForRental();
-			LoadAvailableTools();
-			LoadRentals();
+			if (this->DesignMode) return;
+			try {
+				lateFeePerDay = Data::RentalService::GetLateFeePerDay();
+				LoadCustomersForRental();
+				LoadAvailableTools();
+				LoadRentals();
+			}
+			catch (Exception^) {}
 		}
 
 		void LoadRentals()

@@ -19,11 +19,12 @@ CREATE TABLE users (
 
 -- Login with the plain-text passwords below; the hashes are precomputed with the
 -- same salted-SHA-256 scheme PasswordHash.h uses, so TryLogin() verifies correctly.
--- admin    / 200410
+-- admin    / admin123
 -- cashier  / cashier123
 INSERT INTO users (username, password, role, full_name) VALUES
-('admin',   '000102030405060708090a0b0c0d0e0f$3c5c08592ad095a7391208b86b63bb2715898c1b1c488d4c7ea9087edde39479', 'Admin',   'Chukka Fernando'),
-('cashier', '000102030405060708090a0b0c0d0e0f$d5585be436c6216c0e46cc599b29cf6d12c80a46bb5817afbc60237380b41a87', 'Cashier', 'Nimal Perera');
+('admin',   '000102030405060708090a0b0c0d0e0f$b38e1e550428e26561b2ae3e1a969b8fc6f4e596d82fd4055de60082dd2d410f', 'Admin',   'Administrator'),
+('cashier', '000102030405060708090a0b0c0d0e0f$d5585be436c6216c0e46cc599b29cf6d12c80a46bb5817afbc60237380b41a87', 'Cashier', 'Nimal Perera')
+ON DUPLICATE KEY UPDATE password=VALUES(password), role=VALUES(role), full_name=VALUES(full_name);
 
 -- ---------- Tools (Inventory page) ----------
 DROP TABLE IF EXISTS tools;

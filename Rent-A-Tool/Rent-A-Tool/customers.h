@@ -32,316 +32,485 @@ namespace RentATool {
 	private:
 		int selectedCustomerId;
 		System::ComponentModel::Container^ components;
+		System::Windows::Forms::Panel^ pnlHeader;
+		System::Windows::Forms::Label^ lblTitle;
+		System::Windows::Forms::Label^ lblSubtitle;
+		System::Windows::Forms::Button^ btnClose;
+		System::Windows::Forms::Panel^ pnlFilter;
+		System::Windows::Forms::Label^ lblSearch;
+		System::Windows::Forms::TextBox^ txtSearch;
+		System::Windows::Forms::Button^ btnRefresh;
+		System::Windows::Forms::DataGridView^ dgvCustomers;
+		System::Windows::Forms::Panel^ pnlEditor;
+		System::Windows::Forms::Label^ lblEditorTitle;
+		System::Windows::Forms::Label^ lblCode;
+		System::Windows::Forms::TextBox^ txtCode;
+		System::Windows::Forms::Label^ lblName;
+		System::Windows::Forms::TextBox^ txtName;
+		System::Windows::Forms::Label^ lblNIC;
+		System::Windows::Forms::TextBox^ txtNIC;
+		System::Windows::Forms::Label^ lblPhone;
+		System::Windows::Forms::TextBox^ txtPhone;
+		System::Windows::Forms::Label^ lblEmail;
+		System::Windows::Forms::TextBox^ txtEmail;
+		System::Windows::Forms::Label^ lblAddress;
+		System::Windows::Forms::TextBox^ txtAddress;
+		System::Windows::Forms::CheckBox^ chkBlacklist;
+		System::Windows::Forms::Button^ btnAdd;
+		System::Windows::Forms::Button^ btnUpdate;
+		System::Windows::Forms::Button^ btnToggleBlacklist;
+		System::Windows::Forms::Button^ btnDelete;
+		System::Windows::Forms::Button^ btnClear;
 
-		Panel^ pnlHeader;
-		Label^ lblTitle;
-		Label^ lblSubtitle;
-		Button^ btnClose;
-
-		Panel^ pnlFilter;
-		Label^ lblSearch;
-		TextBox^ txtSearch;
-		Button^ btnRefresh;
-
-		DataGridView^ dgvCustomers;
-
-		Panel^ pnlEditor;
-		Label^ lblEditorTitle;
-		Label^ lblCode;
-		TextBox^ txtCode;
-		Label^ lblName;
-		TextBox^ txtName;
-		Label^ lblNIC;
-		TextBox^ txtNIC;
-		Label^ lblPhone;
-		TextBox^ txtPhone;
-		Label^ lblEmail;
-		TextBox^ txtEmail;
-		Label^ lblAddress;
-		TextBox^ txtAddress;
-		CheckBox^ chkBlacklist;
-
-		Button^ btnAdd;
-		Button^ btnUpdate;
-		Button^ btnToggleBlacklist;
-		Button^ btnDelete;
-		Button^ btnClear;
-
+		#pragma region Windows Form Designer generated code
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(customers::typeid));
+			this->pnlHeader = (gcnew System::Windows::Forms::Panel());
+			this->lblTitle = (gcnew System::Windows::Forms::Label());
+			this->lblSubtitle = (gcnew System::Windows::Forms::Label());
+			this->btnClose = (gcnew System::Windows::Forms::Button());
+			this->pnlFilter = (gcnew System::Windows::Forms::Panel());
+			this->lblSearch = (gcnew System::Windows::Forms::Label());
+			this->txtSearch = (gcnew System::Windows::Forms::TextBox());
+			this->btnRefresh = (gcnew System::Windows::Forms::Button());
+			this->pnlEditor = (gcnew System::Windows::Forms::Panel());
+			this->lblEditorTitle = (gcnew System::Windows::Forms::Label());
+			this->lblCode = (gcnew System::Windows::Forms::Label());
+			this->txtCode = (gcnew System::Windows::Forms::TextBox());
+			this->lblName = (gcnew System::Windows::Forms::Label());
+			this->txtName = (gcnew System::Windows::Forms::TextBox());
+			this->lblNIC = (gcnew System::Windows::Forms::Label());
+			this->txtNIC = (gcnew System::Windows::Forms::TextBox());
+			this->lblPhone = (gcnew System::Windows::Forms::Label());
+			this->txtPhone = (gcnew System::Windows::Forms::TextBox());
+			this->lblEmail = (gcnew System::Windows::Forms::Label());
+			this->txtEmail = (gcnew System::Windows::Forms::TextBox());
+			this->lblAddress = (gcnew System::Windows::Forms::Label());
+			this->txtAddress = (gcnew System::Windows::Forms::TextBox());
+			this->chkBlacklist = (gcnew System::Windows::Forms::CheckBox());
+			this->btnAdd = (gcnew System::Windows::Forms::Button());
+			this->btnUpdate = (gcnew System::Windows::Forms::Button());
+			this->btnToggleBlacklist = (gcnew System::Windows::Forms::Button());
+			this->btnClear = (gcnew System::Windows::Forms::Button());
+			this->btnDelete = (gcnew System::Windows::Forms::Button());
+			this->dgvCustomers = (gcnew System::Windows::Forms::DataGridView());
+			this->pnlHeader->SuspendLayout();
+			this->pnlFilter->SuspendLayout();
+			this->pnlEditor->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvCustomers))->BeginInit();
 			this->SuspendLayout();
-
-			// Form properties
-			this->Text = L"Rent-A-Tool - Customer Management";
+			// 
+			// pnlHeader
+			// 
+			this->pnlHeader->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(47)), static_cast<System::Int32>(static_cast<System::Byte>(79)),
+				static_cast<System::Int32>(static_cast<System::Byte>(79)));
+			this->pnlHeader->Controls->Add(this->lblTitle);
+			this->pnlHeader->Controls->Add(this->lblSubtitle);
+			this->pnlHeader->Controls->Add(this->btnClose);
+			this->pnlHeader->Dock = System::Windows::Forms::DockStyle::Top;
+			this->pnlHeader->Location = System::Drawing::Point(0, 0);
+			this->pnlHeader->Name = L"pnlHeader";
+			this->pnlHeader->Size = System::Drawing::Size(1150, 70);
+			this->pnlHeader->TabIndex = 0;
+			// 
+			// lblTitle
+			// 
+			this->lblTitle->AutoSize = true;
+			this->lblTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 16, System::Drawing::FontStyle::Bold));
+			this->lblTitle->ForeColor = System::Drawing::Color::White;
+			this->lblTitle->Location = System::Drawing::Point(20, 12);
+			this->lblTitle->Name = L"lblTitle";
+			this->lblTitle->Size = System::Drawing::Size(427, 30);
+			this->lblTitle->TabIndex = 0;
+			this->lblTitle->Text = L"CUSTOMER MANAGEMENT & DIRECTORY";
+			// 
+			// lblSubtitle
+			// 
+			this->lblSubtitle->AutoSize = true;
+			this->lblSubtitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F));
+			this->lblSubtitle->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(210)), static_cast<System::Int32>(static_cast<System::Byte>(230)),
+				static_cast<System::Int32>(static_cast<System::Byte>(230)));
+			this->lblSubtitle->Location = System::Drawing::Point(22, 42);
+			this->lblSubtitle->Name = L"lblSubtitle";
+			this->lblSubtitle->Size = System::Drawing::Size(417, 17);
+			this->lblSubtitle->TabIndex = 1;
+			this->lblSubtitle->Text = L"Manage customer profiles, contact info, rental history, and blacklisting";
+			// 
+			// btnClose
+			// 
+			this->btnClose->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->btnClose->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(70)), static_cast<System::Int32>(static_cast<System::Byte>(110)),
+				static_cast<System::Int32>(static_cast<System::Byte>(110)));
+			this->btnClose->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnClose->FlatAppearance->BorderSize = 0;
+			this->btnClose->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnClose->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->btnClose->ForeColor = System::Drawing::Color::White;
+			this->btnClose->Location = System::Drawing::Point(980, 18);
+			this->btnClose->Name = L"btnClose";
+			this->btnClose->Size = System::Drawing::Size(150, 35);
+			this->btnClose->TabIndex = 2;
+			this->btnClose->Text = L"Back to Dashboard";
+			this->btnClose->UseVisualStyleBackColor = false;
+			this->btnClose->Click += gcnew System::EventHandler(this, &customers::btnClose_Click);
+			// 
+			// pnlFilter
+			// 
+			this->pnlFilter->BackColor = System::Drawing::Color::White;
+			this->pnlFilter->Controls->Add(this->lblSearch);
+			this->pnlFilter->Controls->Add(this->txtSearch);
+			this->pnlFilter->Controls->Add(this->btnRefresh);
+			this->pnlFilter->Dock = System::Windows::Forms::DockStyle::Top;
+			this->pnlFilter->Location = System::Drawing::Point(0, 70);
+			this->pnlFilter->Name = L"pnlFilter";
+			this->pnlFilter->Padding = System::Windows::Forms::Padding(20, 10, 20, 10);
+			this->pnlFilter->Size = System::Drawing::Size(1150, 55);
+			this->pnlFilter->TabIndex = 1;
+			// 
+			// lblSearch
+			// 
+			this->lblSearch->AutoSize = true;
+			this->lblSearch->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->lblSearch->Location = System::Drawing::Point(20, 16);
+			this->lblSearch->Name = L"lblSearch";
+			this->lblSearch->Size = System::Drawing::Size(281, 17);
+			this->lblSearch->TabIndex = 0;
+			this->lblSearch->Text = L"Search Customer (Name, NIC, Phone, Code):";
+			// 
+			// txtSearch
+			// 
+			this->txtSearch->Location = System::Drawing::Point(330, 13);
+			this->txtSearch->Name = L"txtSearch";
+			this->txtSearch->Size = System::Drawing::Size(280, 24);
+			this->txtSearch->TabIndex = 1;
+			this->txtSearch->TextChanged += gcnew System::EventHandler(this, &customers::txtSearch_TextChanged);
+			// 
+			// btnRefresh
+			// 
+			this->btnRefresh->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(52)), static_cast<System::Int32>(static_cast<System::Byte>(152)),
+				static_cast<System::Int32>(static_cast<System::Byte>(219)));
+			this->btnRefresh->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnRefresh->FlatAppearance->BorderSize = 0;
+			this->btnRefresh->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnRefresh->ForeColor = System::Drawing::Color::White;
+			this->btnRefresh->Location = System::Drawing::Point(625, 12);
+			this->btnRefresh->Name = L"btnRefresh";
+			this->btnRefresh->Size = System::Drawing::Size(90, 28);
+			this->btnRefresh->TabIndex = 2;
+			this->btnRefresh->Text = L"Refresh";
+			this->btnRefresh->UseVisualStyleBackColor = false;
+			this->btnRefresh->Click += gcnew System::EventHandler(this, &customers::btnRefresh_Click);
+			// 
+			// pnlEditor
+			// 
+			this->pnlEditor->BackColor = System::Drawing::Color::White;
+			this->pnlEditor->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->pnlEditor->Controls->Add(this->lblEditorTitle);
+			this->pnlEditor->Controls->Add(this->lblCode);
+			this->pnlEditor->Controls->Add(this->txtCode);
+			this->pnlEditor->Controls->Add(this->lblName);
+			this->pnlEditor->Controls->Add(this->txtName);
+			this->pnlEditor->Controls->Add(this->lblNIC);
+			this->pnlEditor->Controls->Add(this->txtNIC);
+			this->pnlEditor->Controls->Add(this->lblPhone);
+			this->pnlEditor->Controls->Add(this->txtPhone);
+			this->pnlEditor->Controls->Add(this->lblEmail);
+			this->pnlEditor->Controls->Add(this->txtEmail);
+			this->pnlEditor->Controls->Add(this->lblAddress);
+			this->pnlEditor->Controls->Add(this->txtAddress);
+			this->pnlEditor->Controls->Add(this->chkBlacklist);
+			this->pnlEditor->Controls->Add(this->btnAdd);
+			this->pnlEditor->Controls->Add(this->btnUpdate);
+			this->pnlEditor->Controls->Add(this->btnToggleBlacklist);
+			this->pnlEditor->Controls->Add(this->btnClear);
+			this->pnlEditor->Controls->Add(this->btnDelete);
+			this->pnlEditor->Dock = System::Windows::Forms::DockStyle::Right;
+			this->pnlEditor->Location = System::Drawing::Point(815, 125);
+			this->pnlEditor->Name = L"pnlEditor";
+			this->pnlEditor->Padding = System::Windows::Forms::Padding(20);
+			this->pnlEditor->Size = System::Drawing::Size(335, 555);
+			this->pnlEditor->TabIndex = 2;
+			// 
+			// lblEditorTitle
+			// 
+			this->lblEditorTitle->AutoSize = true;
+			this->lblEditorTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold));
+			this->lblEditorTitle->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(47)), static_cast<System::Int32>(static_cast<System::Byte>(79)),
+				static_cast<System::Int32>(static_cast<System::Byte>(79)));
+			this->lblEditorTitle->Location = System::Drawing::Point(20, 15);
+			this->lblEditorTitle->Name = L"lblEditorTitle";
+			this->lblEditorTitle->Size = System::Drawing::Size(138, 21);
+			this->lblEditorTitle->TabIndex = 0;
+			this->lblEditorTitle->Text = L"Customer Profile";
+			// 
+			// lblCode
+			// 
+			this->lblCode->AutoSize = true;
+			this->lblCode->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.5F, System::Drawing::FontStyle::Bold));
+			this->lblCode->Location = System::Drawing::Point(20, 48);
+			this->lblCode->Name = L"lblCode";
+			this->lblCode->Size = System::Drawing::Size(95, 15);
+			this->lblCode->TabIndex = 1;
+			this->lblCode->Text = L"Customer Code:";
+			// 
+			// txtCode
+			// 
+			this->txtCode->Location = System::Drawing::Point(20, 66);
+			this->txtCode->Name = L"txtCode";
+			this->txtCode->ReadOnly = true;
+			this->txtCode->Size = System::Drawing::Size(295, 24);
+			this->txtCode->TabIndex = 2;
+			// 
+			// lblName
+			// 
+			this->lblName->AutoSize = true;
+			this->lblName->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.5F, System::Drawing::FontStyle::Bold));
+			this->lblName->Location = System::Drawing::Point(20, 96);
+			this->lblName->Name = L"lblName";
+			this->lblName->Size = System::Drawing::Size(65, 15);
+			this->lblName->TabIndex = 3;
+			this->lblName->Text = L"Full Name:";
+			// 
+			// txtName
+			// 
+			this->txtName->Location = System::Drawing::Point(20, 114);
+			this->txtName->Name = L"txtName";
+			this->txtName->Size = System::Drawing::Size(295, 24);
+			this->txtName->TabIndex = 4;
+			// 
+			// lblNIC
+			// 
+			this->lblNIC->AutoSize = true;
+			this->lblNIC->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.5F, System::Drawing::FontStyle::Bold));
+			this->lblNIC->Location = System::Drawing::Point(20, 144);
+			this->lblNIC->Name = L"lblNIC";
+			this->lblNIC->Size = System::Drawing::Size(84, 15);
+			this->lblNIC->TabIndex = 5;
+			this->lblNIC->Text = L"NIC / ID Num:";
+			// 
+			// txtNIC
+			// 
+			this->txtNIC->Location = System::Drawing::Point(20, 162);
+			this->txtNIC->Name = L"txtNIC";
+			this->txtNIC->Size = System::Drawing::Size(295, 24);
+			this->txtNIC->TabIndex = 6;
+			// 
+			// lblPhone
+			// 
+			this->lblPhone->AutoSize = true;
+			this->lblPhone->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.5F, System::Drawing::FontStyle::Bold));
+			this->lblPhone->Location = System::Drawing::Point(20, 192);
+			this->lblPhone->Name = L"lblPhone";
+			this->lblPhone->Size = System::Drawing::Size(45, 15);
+			this->lblPhone->TabIndex = 7;
+			this->lblPhone->Text = L"Phone:";
+			// 
+			// txtPhone
+			// 
+			this->txtPhone->Location = System::Drawing::Point(20, 210);
+			this->txtPhone->Name = L"txtPhone";
+			this->txtPhone->Size = System::Drawing::Size(295, 24);
+			this->txtPhone->TabIndex = 8;
+			// 
+			// lblEmail
+			// 
+			this->lblEmail->AutoSize = true;
+			this->lblEmail->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.5F, System::Drawing::FontStyle::Bold));
+			this->lblEmail->Location = System::Drawing::Point(20, 240);
+			this->lblEmail->Name = L"lblEmail";
+			this->lblEmail->Size = System::Drawing::Size(39, 15);
+			this->lblEmail->TabIndex = 9;
+			this->lblEmail->Text = L"Email:";
+			// 
+			// txtEmail
+			// 
+			this->txtEmail->Location = System::Drawing::Point(20, 258);
+			this->txtEmail->Name = L"txtEmail";
+			this->txtEmail->Size = System::Drawing::Size(295, 24);
+			this->txtEmail->TabIndex = 10;
+			// 
+			// lblAddress
+			// 
+			this->lblAddress->AutoSize = true;
+			this->lblAddress->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.5F, System::Drawing::FontStyle::Bold));
+			this->lblAddress->Location = System::Drawing::Point(20, 288);
+			this->lblAddress->Name = L"lblAddress";
+			this->lblAddress->Size = System::Drawing::Size(54, 15);
+			this->lblAddress->TabIndex = 11;
+			this->lblAddress->Text = L"Address:";
+			// 
+			// txtAddress
+			// 
+			this->txtAddress->Location = System::Drawing::Point(20, 306);
+			this->txtAddress->Name = L"txtAddress";
+			this->txtAddress->Size = System::Drawing::Size(295, 24);
+			this->txtAddress->TabIndex = 12;
+			// 
+			// chkBlacklist
+			// 
+			this->chkBlacklist->AutoSize = true;
+			this->chkBlacklist->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Bold));
+			this->chkBlacklist->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(57)),
+				static_cast<System::Int32>(static_cast<System::Byte>(43)));
+			this->chkBlacklist->Location = System::Drawing::Point(20, 338);
+			this->chkBlacklist->Name = L"chkBlacklist";
+			this->chkBlacklist->Size = System::Drawing::Size(189, 19);
+			this->chkBlacklist->TabIndex = 13;
+			this->chkBlacklist->Text = L"Blacklisted / Block from Rent";
+			this->chkBlacklist->UseVisualStyleBackColor = true;
+			// 
+			// btnAdd
+			// 
+			this->btnAdd->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(39)), static_cast<System::Int32>(static_cast<System::Byte>(174)),
+				static_cast<System::Int32>(static_cast<System::Byte>(96)));
+			this->btnAdd->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnAdd->FlatAppearance->BorderSize = 0;
+			this->btnAdd->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnAdd->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->btnAdd->ForeColor = System::Drawing::Color::White;
+			this->btnAdd->Location = System::Drawing::Point(20, 368);
+			this->btnAdd->Name = L"btnAdd";
+			this->btnAdd->Size = System::Drawing::Size(140, 34);
+			this->btnAdd->TabIndex = 14;
+			this->btnAdd->Text = L"Add Customer";
+			this->btnAdd->UseVisualStyleBackColor = false;
+			this->btnAdd->Click += gcnew System::EventHandler(this, &customers::btnAdd_Click);
+			// 
+			// btnUpdate
+			// 
+			this->btnUpdate->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(41)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(185)));
+			this->btnUpdate->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnUpdate->FlatAppearance->BorderSize = 0;
+			this->btnUpdate->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnUpdate->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F, System::Drawing::FontStyle::Bold));
+			this->btnUpdate->ForeColor = System::Drawing::Color::White;
+			this->btnUpdate->Location = System::Drawing::Point(175, 368);
+			this->btnUpdate->Name = L"btnUpdate";
+			this->btnUpdate->Size = System::Drawing::Size(140, 34);
+			this->btnUpdate->TabIndex = 15;
+			this->btnUpdate->Text = L"Update";
+			this->btnUpdate->UseVisualStyleBackColor = false;
+			this->btnUpdate->Click += gcnew System::EventHandler(this, &customers::btnUpdate_Click);
+			// 
+			// btnToggleBlacklist
+			// 
+			this->btnToggleBlacklist->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(230)),
+				static_cast<System::Int32>(static_cast<System::Byte>(126)), static_cast<System::Int32>(static_cast<System::Byte>(34)));
+			this->btnToggleBlacklist->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnToggleBlacklist->FlatAppearance->BorderSize = 0;
+			this->btnToggleBlacklist->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnToggleBlacklist->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Bold));
+			this->btnToggleBlacklist->ForeColor = System::Drawing::Color::White;
+			this->btnToggleBlacklist->Location = System::Drawing::Point(20, 410);
+			this->btnToggleBlacklist->Name = L"btnToggleBlacklist";
+			this->btnToggleBlacklist->Size = System::Drawing::Size(140, 34);
+			this->btnToggleBlacklist->TabIndex = 16;
+			this->btnToggleBlacklist->Text = L"Toggle Blacklist";
+			this->btnToggleBlacklist->UseVisualStyleBackColor = false;
+			this->btnToggleBlacklist->Click += gcnew System::EventHandler(this, &customers::btnToggleBlacklist_Click);
+			// 
+			// btnClear
+			// 
+			this->btnClear->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(149)), static_cast<System::Int32>(static_cast<System::Byte>(165)),
+				static_cast<System::Int32>(static_cast<System::Byte>(166)));
+			this->btnClear->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnClear->FlatAppearance->BorderSize = 0;
+			this->btnClear->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnClear->ForeColor = System::Drawing::Color::White;
+			this->btnClear->Location = System::Drawing::Point(175, 410);
+			this->btnClear->Name = L"btnClear";
+			this->btnClear->Size = System::Drawing::Size(140, 34);
+			this->btnClear->TabIndex = 17;
+			this->btnClear->Text = L"Clear Form";
+			this->btnClear->UseVisualStyleBackColor = false;
+			this->btnClear->Click += gcnew System::EventHandler(this, &customers::btnClear_Click);
+			// 
+			// btnDelete
+			// 
+			this->btnDelete->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(231)), static_cast<System::Int32>(static_cast<System::Byte>(76)),
+				static_cast<System::Int32>(static_cast<System::Byte>(60)));
+			this->btnDelete->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnDelete->FlatAppearance->BorderSize = 0;
+			this->btnDelete->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnDelete->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Bold));
+			this->btnDelete->ForeColor = System::Drawing::Color::White;
+			this->btnDelete->Location = System::Drawing::Point(20, 452);
+			this->btnDelete->Name = L"btnDelete";
+			this->btnDelete->Size = System::Drawing::Size(295, 32);
+			this->btnDelete->TabIndex = 18;
+			this->btnDelete->Text = L"Delete Customer";
+			this->btnDelete->UseVisualStyleBackColor = false;
+			this->btnDelete->Click += gcnew System::EventHandler(this, &customers::btnDelete_Click);
+			// 
+			// dgvCustomers
+			// 
+			this->dgvCustomers->AllowUserToAddRows = false;
+			this->dgvCustomers->AllowUserToDeleteRows = false;
+			this->dgvCustomers->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			this->dgvCustomers->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(244)),
+				static_cast<System::Int32>(static_cast<System::Byte>(246)), static_cast<System::Int32>(static_cast<System::Byte>(249)));
+			this->dgvCustomers->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->dgvCustomers->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgvCustomers->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->dgvCustomers->Location = System::Drawing::Point(0, 125);
+			this->dgvCustomers->MultiSelect = false;
+			this->dgvCustomers->Name = L"dgvCustomers";
+			this->dgvCustomers->ReadOnly = true;
+			this->dgvCustomers->RowHeadersVisible = false;
+			this->dgvCustomers->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->dgvCustomers->Size = System::Drawing::Size(815, 555);
+			this->dgvCustomers->TabIndex = 3;
+			this->dgvCustomers->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &customers::dgvCustomers_CellClick);
+			this->dgvCustomers->CellFormatting += gcnew System::Windows::Forms::DataGridViewCellFormattingEventHandler(this, &customers::dgvCustomers_CellFormatting);
+			this->dgvCustomers->DataError += gcnew System::Windows::Forms::DataGridViewDataErrorEventHandler(this, &customers::dgvCustomers_DataError);
+			// 
+			// customers
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(7, 17);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(244)), static_cast<System::Int32>(static_cast<System::Byte>(246)),
+				static_cast<System::Int32>(static_cast<System::Byte>(249)));
 			this->ClientSize = System::Drawing::Size(1150, 680);
+			this->Controls->Add(this->dgvCustomers);
+			this->Controls->Add(this->pnlEditor);
+			this->Controls->Add(this->pnlFilter);
+			this->Controls->Add(this->pnlHeader);
+			this->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.5F));
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MinimumSize = System::Drawing::Size(1000, 600);
-			this->StartPosition = FormStartPosition::CenterScreen;
-			this->BackColor = Color::FromArgb(244, 246, 249);
-			this->Font = gcnew Drawing::Font(L"Segoe UI", 10);
-
-			// Header Panel
-			pnlHeader = gcnew Panel();
-			pnlHeader->Dock = DockStyle::Top;
-			pnlHeader->Height = 70;
-			pnlHeader->BackColor = Color::FromArgb(47, 79, 79);
-
-			lblTitle = gcnew Label();
-			lblTitle->Text = L"CUSTOMER MANAGEMENT & DIRECTORY";
-			lblTitle->Font = gcnew Drawing::Font(L"Segoe UI", 16, FontStyle::Bold);
-			lblTitle->ForeColor = Color::White;
-			lblTitle->Location = Point(20, 12);
-			lblTitle->AutoSize = true;
-
-			lblSubtitle = gcnew Label();
-			lblSubtitle->Text = L"Manage customer profiles, contact info, rental history, and blacklisting";
-			lblSubtitle->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F);
-			lblSubtitle->ForeColor = Color::FromArgb(210, 230, 230);
-			lblSubtitle->Location = Point(22, 42);
-			lblSubtitle->AutoSize = true;
-
-			btnClose = gcnew Button();
-			btnClose->Text = L"Back to Dashboard";
-			btnClose->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-			btnClose->ForeColor = Color::White;
-			btnClose->BackColor = Color::FromArgb(70, 110, 110);
-			btnClose->FlatStyle = FlatStyle::Flat;
-			btnClose->FlatAppearance->BorderSize = 0;
-			btnClose->Location = Point(980, 18);
-			btnClose->Size = System::Drawing::Size(150, 35);
-			btnClose->Anchor = AnchorStyles::Top | AnchorStyles::Right;
-			btnClose->Cursor = Cursors::Hand;
-			btnClose->Click += gcnew EventHandler(this, &customers::btnClose_Click);
-
-			pnlHeader->Controls->Add(lblTitle);
-			pnlHeader->Controls->Add(lblSubtitle);
-			pnlHeader->Controls->Add(btnClose);
-
-			// Filter Bar Panel
-			pnlFilter = gcnew Panel();
-			pnlFilter->Dock = DockStyle::Top;
-			pnlFilter->Height = 55;
-			pnlFilter->BackColor = Color::White;
-			pnlFilter->Padding = System::Windows::Forms::Padding(20, 10, 20, 10);
-
-			lblSearch = gcnew Label();
-			lblSearch->Text = L"Search Customer (Name, NIC, Phone, Code):";
-			lblSearch->Location = Point(20, 16);
-			lblSearch->AutoSize = true;
-			lblSearch->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-
-			txtSearch = gcnew TextBox();
-			txtSearch->Location = Point(330, 13);
-			txtSearch->Size = System::Drawing::Size(280, 25);
-			txtSearch->TextChanged += gcnew EventHandler(this, &customers::txtSearch_TextChanged);
-
-			btnRefresh = gcnew Button();
-			btnRefresh->Text = L"Refresh";
-			btnRefresh->Location = Point(625, 12);
-			btnRefresh->Size = System::Drawing::Size(90, 28);
-			btnRefresh->BackColor = Color::FromArgb(52, 152, 219);
-			btnRefresh->ForeColor = Color::White;
-			btnRefresh->FlatStyle = FlatStyle::Flat;
-			btnRefresh->FlatAppearance->BorderSize = 0;
-			btnRefresh->Cursor = Cursors::Hand;
-			btnRefresh->Click += gcnew EventHandler(this, &customers::btnRefresh_Click);
-
-			pnlFilter->Controls->Add(lblSearch);
-			pnlFilter->Controls->Add(txtSearch);
-			pnlFilter->Controls->Add(btnRefresh);
-
-			// Right Editor Panel
-			pnlEditor = gcnew Panel();
-			pnlEditor->Dock = DockStyle::Right;
-			pnlEditor->Width = 340;
-			pnlEditor->BackColor = Color::White;
-			pnlEditor->Padding = System::Windows::Forms::Padding(20);
-
-			lblEditorTitle = gcnew Label();
-			lblEditorTitle->Text = L"Customer Details";
-			lblEditorTitle->Font = gcnew Drawing::Font(L"Segoe UI", 12, FontStyle::Bold);
-			lblEditorTitle->ForeColor = Color::FromArgb(47, 79, 79);
-			lblEditorTitle->Location = Point(20, 15);
-			lblEditorTitle->AutoSize = true;
-
-			int y = 50;
-			lblCode = gcnew Label();
-			lblCode->Text = L"Customer Code:";
-			lblCode->Location = Point(20, y);
-			lblCode->AutoSize = true;
-			txtCode = gcnew TextBox();
-			txtCode->Location = Point(20, y + 20);
-			txtCode->Size = System::Drawing::Size(295, 25);
-
-			y += 50;
-			lblName = gcnew Label();
-			lblName->Text = L"Full Name:";
-			lblName->Location = Point(20, y);
-			lblName->AutoSize = true;
-			txtName = gcnew TextBox();
-			txtName->Location = Point(20, y + 20);
-			txtName->Size = System::Drawing::Size(295, 25);
-
-			y += 50;
-			lblNIC = gcnew Label();
-			lblNIC->Text = L"NIC / ID Card:";
-			lblNIC->Location = Point(20, y);
-			lblNIC->AutoSize = true;
-			txtNIC = gcnew TextBox();
-			txtNIC->Location = Point(20, y + 20);
-			txtNIC->Size = System::Drawing::Size(295, 25);
-
-			y += 50;
-			lblPhone = gcnew Label();
-			lblPhone->Text = L"Phone Number:";
-			lblPhone->Location = Point(20, y);
-			lblPhone->AutoSize = true;
-			txtPhone = gcnew TextBox();
-			txtPhone->Location = Point(20, y + 20);
-			txtPhone->Size = System::Drawing::Size(295, 25);
-
-			y += 50;
-			lblEmail = gcnew Label();
-			lblEmail->Text = L"Email Address:";
-			lblEmail->Location = Point(20, y);
-			lblEmail->AutoSize = true;
-			txtEmail = gcnew TextBox();
-			txtEmail->Location = Point(20, y + 20);
-			txtEmail->Size = System::Drawing::Size(295, 25);
-
-			y += 50;
-			lblAddress = gcnew Label();
-			lblAddress->Text = L"Address:";
-			lblAddress->Location = Point(20, y);
-			lblAddress->AutoSize = true;
-			txtAddress = gcnew TextBox();
-			txtAddress->Location = Point(20, y + 20);
-			txtAddress->Size = System::Drawing::Size(295, 25);
-
-			y += 55;
-			chkBlacklist = gcnew CheckBox();
-			chkBlacklist->Text = L"Blacklist this Customer (blocks new rentals)";
-			chkBlacklist->ForeColor = Color::FromArgb(192, 57, 43);
-			chkBlacklist->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-			chkBlacklist->Location = Point(20, y);
-			chkBlacklist->Size = System::Drawing::Size(300, 25);
-
-			// Action buttons
-			y += 40;
-			btnAdd = gcnew Button();
-			btnAdd->Text = L"+ Add Customer";
-			btnAdd->Location = Point(20, y);
-			btnAdd->Size = System::Drawing::Size(140, 36);
-			btnAdd->BackColor = Color::FromArgb(39, 174, 96);
-			btnAdd->ForeColor = Color::White;
-			btnAdd->FlatStyle = FlatStyle::Flat;
-			btnAdd->FlatAppearance->BorderSize = 0;
-			btnAdd->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-			btnAdd->Cursor = Cursors::Hand;
-			btnAdd->Click += gcnew EventHandler(this, &customers::btnAdd_Click);
-
-			btnUpdate = gcnew Button();
-			btnUpdate->Text = L"Update";
-			btnUpdate->Location = Point(175, y);
-			btnUpdate->Size = System::Drawing::Size(140, 36);
-			btnUpdate->BackColor = Color::FromArgb(41, 128, 185);
-			btnUpdate->ForeColor = Color::White;
-			btnUpdate->FlatStyle = FlatStyle::Flat;
-			btnUpdate->FlatAppearance->BorderSize = 0;
-			btnUpdate->Font = gcnew Drawing::Font(L"Segoe UI", 9.5F, FontStyle::Bold);
-			btnUpdate->Cursor = Cursors::Hand;
-			btnUpdate->Click += gcnew EventHandler(this, &customers::btnUpdate_Click);
-
-			y += 44;
-			btnToggleBlacklist = gcnew Button();
-			btnToggleBlacklist->Text = L"Toggle Blacklist";
-			btnToggleBlacklist->Location = Point(20, y);
-			btnToggleBlacklist->Size = System::Drawing::Size(140, 34);
-			btnToggleBlacklist->BackColor = Color::FromArgb(230, 126, 34);
-			btnToggleBlacklist->ForeColor = Color::White;
-			btnToggleBlacklist->FlatStyle = FlatStyle::Flat;
-			btnToggleBlacklist->FlatAppearance->BorderSize = 0;
-			btnToggleBlacklist->Font = gcnew Drawing::Font(L"Segoe UI", 9, FontStyle::Bold);
-			btnToggleBlacklist->Cursor = Cursors::Hand;
-			btnToggleBlacklist->Click += gcnew EventHandler(this, &customers::btnToggleBlacklist_Click);
-
-			btnClear = gcnew Button();
-			btnClear->Text = L"Clear Form";
-			btnClear->Location = Point(175, y);
-			btnClear->Size = System::Drawing::Size(140, 34);
-			btnClear->BackColor = Color::FromArgb(149, 165, 166);
-			btnClear->ForeColor = Color::White;
-			btnClear->FlatStyle = FlatStyle::Flat;
-			btnClear->FlatAppearance->BorderSize = 0;
-			btnClear->Cursor = Cursors::Hand;
-			btnClear->Click += gcnew EventHandler(this, &customers::btnClear_Click);
-
-			y += 42;
-			btnDelete = gcnew Button();
-			btnDelete->Text = L"Delete Customer";
-			btnDelete->Location = Point(20, y);
-			btnDelete->Size = System::Drawing::Size(295, 32);
-			btnDelete->BackColor = Color::FromArgb(231, 76, 60);
-			btnDelete->ForeColor = Color::White;
-			btnDelete->FlatStyle = FlatStyle::Flat;
-			btnDelete->FlatAppearance->BorderSize = 0;
-			btnDelete->Font = gcnew Drawing::Font(L"Segoe UI", 9, FontStyle::Bold);
-			btnDelete->Cursor = Cursors::Hand;
-			btnDelete->Click += gcnew EventHandler(this, &customers::btnDelete_Click);
-
-			pnlEditor->Controls->Add(lblEditorTitle);
-			pnlEditor->Controls->Add(lblCode);
-			pnlEditor->Controls->Add(txtCode);
-			pnlEditor->Controls->Add(lblName);
-			pnlEditor->Controls->Add(txtName);
-			pnlEditor->Controls->Add(lblNIC);
-			pnlEditor->Controls->Add(txtNIC);
-			pnlEditor->Controls->Add(lblPhone);
-			pnlEditor->Controls->Add(txtPhone);
-			pnlEditor->Controls->Add(lblEmail);
-			pnlEditor->Controls->Add(txtEmail);
-			pnlEditor->Controls->Add(lblAddress);
-			pnlEditor->Controls->Add(txtAddress);
-			pnlEditor->Controls->Add(chkBlacklist);
-			pnlEditor->Controls->Add(btnAdd);
-			pnlEditor->Controls->Add(btnUpdate);
-			pnlEditor->Controls->Add(btnToggleBlacklist);
-			pnlEditor->Controls->Add(btnClear);
-			pnlEditor->Controls->Add(btnDelete);
-
-			// DataGridView Customers
-			dgvCustomers = gcnew DataGridView();
-			dgvCustomers->Dock = DockStyle::Fill;
-			dgvCustomers->BackgroundColor = Color::FromArgb(244, 246, 249);
-			dgvCustomers->BorderStyle = BorderStyle::None;
-			dgvCustomers->AllowUserToAddRows = false;
-			dgvCustomers->AllowUserToDeleteRows = false;
-			dgvCustomers->ReadOnly = true;
-			dgvCustomers->SelectionMode = DataGridViewSelectionMode::FullRowSelect;
-			dgvCustomers->MultiSelect = false;
-			dgvCustomers->AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode::Fill;
-			dgvCustomers->RowHeadersVisible = false;
-			dgvCustomers->CellClick += gcnew DataGridViewCellEventHandler(this, &customers::dgvCustomers_CellClick);
-			dgvCustomers->CellFormatting += gcnew DataGridViewCellFormattingEventHandler(this, &customers::dgvCustomers_CellFormatting);
-			dgvCustomers->DataError += gcnew DataGridViewDataErrorEventHandler(this, &customers::dgvCustomers_DataError);
-
-			this->Controls->Add(dgvCustomers);
-			this->Controls->Add(pnlEditor);
-			this->Controls->Add(pnlFilter);
-			this->Controls->Add(pnlHeader);
-
-			this->Load += gcnew EventHandler(this, &customers::customers_Load);
+			this->Name = L"customers";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
+			this->Text = L"Rent-A-Tool - Customer Management";
+			this->Load += gcnew System::EventHandler(this, &customers::customers_Load);
+			this->pnlHeader->ResumeLayout(false);
+			this->pnlHeader->PerformLayout();
+			this->pnlFilter->ResumeLayout(false);
+			this->pnlFilter->PerformLayout();
+			this->pnlEditor->ResumeLayout(false);
+			this->pnlEditor->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvCustomers))->EndInit();
 			this->ResumeLayout(false);
-		}
 
-		void dgvCustomers_DataError(System::Object^ sender, DataGridViewDataErrorEventArgs^ e)
+		}
+#pragma endregion
+
+void dgvCustomers_DataError(System::Object^ sender, DataGridViewDataErrorEventArgs^ e)
 		{
 			e->ThrowException = false;
 		}
 
 		void customers_Load(System::Object^ sender, System::EventArgs^ e)
 		{
-			LoadCustomers();
+			if (this->DesignMode) return;
+			try {
+				LoadCustomers();
+			} catch (Exception^) {}
 		}
 
 		void LoadCustomers()
