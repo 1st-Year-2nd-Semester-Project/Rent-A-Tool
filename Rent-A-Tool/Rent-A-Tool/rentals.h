@@ -27,6 +27,22 @@ namespace RentATool {
 			InitializeComponent();
 		}
 
+		void SelectNewRentalTab()
+		{
+			if (this->tabControl1 != nullptr && this->tabNewRental != nullptr)
+			{
+				this->tabControl1->SelectedTab = this->tabNewRental;
+			}
+		}
+
+		void SelectRentalsListTab()
+		{
+			if (this->tabControl1 != nullptr && this->tabRentalsList != nullptr)
+			{
+				this->tabControl1->SelectedTab = this->tabRentalsList;
+			}
+		}
+
 	protected:
 		~rentals()
 		{

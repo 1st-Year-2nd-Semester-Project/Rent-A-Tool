@@ -543,6 +543,7 @@ namespace RentATool {
 			this->dgvTools->Size = System::Drawing::Size(815, 555);
 			this->dgvTools->TabIndex = 3;
 			this->dgvTools->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &inventory::dgvTools_CellClick);
+			this->dgvTools->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &inventory::dgvTools_CellContentClick);
 			this->dgvTools->CellFormatting += gcnew System::Windows::Forms::DataGridViewCellFormattingEventHandler(this, &inventory::dgvTools_CellFormatting);
 			this->dgvTools->DataError += gcnew System::Windows::Forms::DataGridViewDataErrorEventHandler(this, &inventory::dgvTools_DataError);
 			// 
@@ -788,5 +789,7 @@ void dgvTools_DataError(System::Object^ sender, DataGridViewDataErrorEventArgs^ 
 				}
 			}
 		}
-	};
+	private: System::Void dgvTools_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	}
+};
 }
