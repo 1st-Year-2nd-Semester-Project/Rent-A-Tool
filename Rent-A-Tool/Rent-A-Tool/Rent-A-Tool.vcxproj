@@ -168,6 +168,7 @@
     <ClInclude Include="settings.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Data\CodeGenerator.h" />
     <ClInclude Include="Data\ToolService.h" />
     <ClInclude Include="Data\CustomerService.h" />
     <ClInclude Include="Data\RentalService.h" />

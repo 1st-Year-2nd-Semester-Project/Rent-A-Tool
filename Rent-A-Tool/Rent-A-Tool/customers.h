@@ -1,4 +1,5 @@
 #pragma once
+#include "Data/CodeGenerator.h"
 #include "Data/CustomerService.h"
 #include "Data/authresult.h"
 
@@ -260,6 +261,7 @@ namespace RentATool {
 			// 
 			// txtCode
 			// 
+			this->txtCode->BackColor = System::Drawing::SystemColors::Control;
 			this->txtCode->Location = System::Drawing::Point(20, 66);
 			this->txtCode->Name = L"txtCode";
 			this->txtCode->ReadOnly = true;
@@ -553,7 +555,11 @@ void dgvCustomers_DataError(System::Object^ sender, DataGridViewDataErrorEventAr
 		void ClearForm()
 		{
 			selectedCustomerId = -1;
-			txtCode->Clear();
+			try {
+				txtCode->Text = Data::CodeGenerator::GetNextCustomerCode();
+			} catch (Exception^) {
+				txtCode->Text = L"C-0001";
+			}
 			txtName->Clear();
 			txtNIC->Clear();
 			txtPhone->Clear();
@@ -566,6 +572,7 @@ void dgvCustomers_DataError(System::Object^ sender, DataGridViewDataErrorEventAr
 		void btnClear_Click(System::Object^ sender, System::EventArgs^ e)
 		{
 			ClearForm();
+			txtName->Focus();
 		}
 
 		void dgvCustomers_CellClick(System::Object^ sender, DataGridViewCellEventArgs^ e)
@@ -601,7 +608,6 @@ void dgvCustomers_DataError(System::Object^ sender, DataGridViewDataErrorEventAr
 
 		void btnAdd_Click(System::Object^ sender, System::EventArgs^ e)
 		{
-			String^ code = txtCode->Text->Trim();
 			String^ name = txtName->Text->Trim();
 			String^ nic = txtNIC->Text->Trim();
 			String^ phone = txtPhone->Text->Trim();
@@ -609,16 +615,20 @@ void dgvCustomers_DataError(System::Object^ sender, DataGridViewDataErrorEventAr
 			String^ address = txtAddress->Text->Trim();
 			bool bl = chkBlacklist->Checked;
 
-			if (code->Length == 0 || name->Length == 0) {
-				MessageBox::Show(this, L"Please enter customer code and full name.", L"Validation Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			if (name->Length == 0) {
+				MessageBox::Show(this, L"Please enter customer full name.", L"Validation Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				txtName->Focus();
 				return;
 			}
 
-			String^ err = Data::CustomerService::AddCustomer(code, name, nic, phone, email, address, bl);
+			String^ assignedCode = nullptr;
+			String^ err = Data::CustomerService::AddCustomer(assignedCode, name, nic, phone, email, address, bl);
 			if (err->Length == 0) {
-				MessageBox::Show(this, L"Customer added successfully!", L"Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show(this, String::Format(L"Customer added successfully!\nAssigned Code: {0}", assignedCode),
+					L"Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				LoadCustomers();
 				ClearForm();
+				txtName->Focus();
 			}
 			else {
 				MessageBox::Show(this, err, L"Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -640,8 +650,9 @@ void dgvCustomers_DataError(System::Object^ sender, DataGridViewDataErrorEventAr
 			String^ address = txtAddress->Text->Trim();
 			bool bl = chkBlacklist->Checked;
 
-			if (code->Length == 0 || name->Length == 0) {
-				MessageBox::Show(this, L"Please enter customer code and full name.", L"Validation Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			if (name->Length == 0) {
+				MessageBox::Show(this, L"Please enter customer full name.", L"Validation Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				txtName->Focus();
 				return;
 			}
 
@@ -650,6 +661,7 @@ void dgvCustomers_DataError(System::Object^ sender, DataGridViewDataErrorEventAr
 				MessageBox::Show(this, L"Customer updated successfully!", L"Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				LoadCustomers();
 				ClearForm();
+				txtName->Focus();
 			}
 			else {
 				MessageBox::Show(this, err, L"Error", MessageBoxButtons::OK, MessageBoxIcon::Error);

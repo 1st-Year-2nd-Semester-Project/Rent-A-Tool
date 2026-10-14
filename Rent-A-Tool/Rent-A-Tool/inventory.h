@@ -1,4 +1,5 @@
 #pragma once
+#include "Data/CodeGenerator.h"
 #include "Data/ToolService.h"
 #include "Data/authresult.h"
 
@@ -324,6 +325,7 @@ namespace RentATool {
 			// 
 			// txtCode
 			// 
+			this->txtCode->BackColor = System::Drawing::SystemColors::Control;
 			this->txtCode->Location = System::Drawing::Point(20, 66);
 			this->txtCode->Name = L"txtCode";
 			this->txtCode->ReadOnly = true;
@@ -645,7 +647,11 @@ void dgvTools_DataError(System::Object^ sender, DataGridViewDataErrorEventArgs^ 
 		void ClearForm()
 		{
 			selectedToolId = -1;
-			txtCode->Clear();
+			try {
+				txtCode->Text = Data::CodeGenerator::GetNextToolCode();
+			} catch (Exception^) {
+				txtCode->Text = L"T-0001";
+			}
 			txtName->Clear();
 			if (cmbCategory->Items->Count > 0) cmbCategory->SelectedIndex = 0;
 			numDailyRate->Value = 0;
@@ -659,6 +665,7 @@ void dgvTools_DataError(System::Object^ sender, DataGridViewDataErrorEventArgs^ 
 		void btnClear_Click(System::Object^ sender, System::EventArgs^ e)
 		{
 			ClearForm();
+			txtName->Focus();
 		}
 
 		void btnClose_Click(System::Object^ sender, System::EventArgs^ e)
@@ -711,26 +718,29 @@ void dgvTools_DataError(System::Object^ sender, DataGridViewDataErrorEventArgs^ 
 
 		void btnAdd_Click(System::Object^ sender, System::EventArgs^ e)
 		{
-			String^ code = txtCode->Text->Trim();
 			String^ name = txtName->Text->Trim();
 			String^ cat = cmbCategory->Text->Trim();
 			Decimal rate = numDailyRate->Value;
 			Decimal dep = numDeposit->Value;
-			String^ stat = cmbStatus->SelectedItem->ToString();
+			String^ stat = cmbStatus->SelectedItem != nullptr ? cmbStatus->SelectedItem->ToString() : "Available";
 			String^ brand = txtBrand->Text->Trim();
 			String^ model = txtModel->Text->Trim();
 
-			if (code->Length == 0 || name->Length == 0) {
-				MessageBox::Show(this, L"Please enter tool code and tool name.", L"Validation Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			if (name->Length == 0) {
+				MessageBox::Show(this, L"Please enter tool name.", L"Validation Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				txtName->Focus();
 				return;
 			}
 
-			String^ err = Data::ToolService::AddTool(code, name, cat, rate, dep, stat, brand, model, L"");
+			String^ assignedCode = nullptr;
+			String^ err = Data::ToolService::AddTool(assignedCode, name, cat, rate, dep, stat, brand, model, L"");
 			if (err->Length == 0) {
-				MessageBox::Show(this, L"Tool added successfully!", L"Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show(this, String::Format(L"Tool added successfully!\nAssigned Code: {0}", assignedCode),
+					L"Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				LoadCategories();
 				LoadTools();
 				ClearForm();
+				txtName->Focus();
 			}
 			else {
 				MessageBox::Show(this, err, L"Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -749,12 +759,13 @@ void dgvTools_DataError(System::Object^ sender, DataGridViewDataErrorEventArgs^ 
 			String^ cat = cmbCategory->Text->Trim();
 			Decimal rate = numDailyRate->Value;
 			Decimal dep = numDeposit->Value;
-			String^ stat = cmbStatus->SelectedItem->ToString();
+			String^ stat = cmbStatus->SelectedItem != nullptr ? cmbStatus->SelectedItem->ToString() : "Available";
 			String^ brand = txtBrand->Text->Trim();
 			String^ model = txtModel->Text->Trim();
 
-			if (code->Length == 0 || name->Length == 0) {
-				MessageBox::Show(this, L"Please enter tool code and tool name.", L"Validation Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			if (name->Length == 0) {
+				MessageBox::Show(this, L"Please enter tool name.", L"Validation Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				txtName->Focus();
 				return;
 			}
 
@@ -763,6 +774,7 @@ void dgvTools_DataError(System::Object^ sender, DataGridViewDataErrorEventArgs^ 
 				MessageBox::Show(this, L"Tool updated successfully!", L"Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				LoadTools();
 				ClearForm();
+				txtName->Focus();
 			}
 			else {
 				MessageBox::Show(this, err, L"Error", MessageBoxButtons::OK, MessageBoxIcon::Error);

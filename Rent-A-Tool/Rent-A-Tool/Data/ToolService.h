@@ -1,5 +1,6 @@
 #pragma once
 #include "Dbconfig.h"
+#include "CodeGenerator.h"
 
 using namespace System;
 using namespace System::Data;
@@ -100,24 +101,64 @@ namespace Data {
             return categories;
         }
 
-        // Add a new tool. Returns empty string on success, error message on failure.
-        static String^ AddTool(String^ code, String^ name, String^ category, Decimal dailyRate, Decimal deposit,
+        // Add a new tool with auto-generated code and retry mechanism on concurrency conflict (MySQL 1062).
+        // Returns empty string on success and outputs the assigned code; returns error message on failure.
+        static String^ AddTool([Runtime::InteropServices::Out] String^% assignedCode,
+                               String^ name, String^ category, Decimal dailyRate, Decimal deposit,
                                String^ status, String^ brand, String^ modelSerial, String^ notes) {
+            const int maxRetries = 5;
+            for (int attempt = 1; attempt <= maxRetries; attempt++) {
+                MySqlConnection^ conn = nullptr;
+                try {
+                    conn = Db::GetConnection();
+                    String^ code = CodeGenerator::GetNextToolCode(conn);
+                    assignedCode = code;
+
+                    String^ insertQuery = "INSERT INTO tools (tool_code, name, category, daily_rate, deposit, status, brand, model_serial, notes) "
+                                          "VALUES (@code, @name, @cat, @rate, @dep, @stat, @brand, @model, @notes)";
+                    MySqlCommand^ cmd = gcnew MySqlCommand(insertQuery, conn);
+                    cmd->Parameters->AddWithValue("@code", code);
+                    cmd->Parameters->AddWithValue("@name", name ? name->Trim() : "");
+                    cmd->Parameters->AddWithValue("@cat", category);
+                    cmd->Parameters->AddWithValue("@rate", dailyRate);
+                    cmd->Parameters->AddWithValue("@dep", deposit);
+                    cmd->Parameters->AddWithValue("@stat", status);
+                    cmd->Parameters->AddWithValue("@brand", brand ? brand->Trim() : "");
+                    cmd->Parameters->AddWithValue("@model", modelSerial ? modelSerial->Trim() : "");
+                    cmd->Parameters->AddWithValue("@notes", notes ? notes->Trim() : "");
+
+                    cmd->ExecuteNonQuery();
+                    return "";
+                }
+                catch (MySqlException^ sqlEx) {
+                    if (sqlEx->Number == 1062 && attempt < maxRetries) {
+                        System::Threading::Thread::Sleep(50 * attempt);
+                        continue;
+                    }
+                    return "DB Error: " + sqlEx->Message;
+                }
+                catch (Exception^ ex) {
+                    return "DB Error: " + ex->Message;
+                }
+                finally {
+                    if (conn != nullptr) conn->Close();
+                }
+            }
+            return "Failed to assign a unique tool code after multiple attempts. Please try again.";
+        }
+
+        // Overload for manual or legacy code specification
+        static String^ AddToolWithCode(String^ code, String^ name, String^ category, Decimal dailyRate, Decimal deposit,
+                                       String^ status, String^ brand, String^ modelSerial, String^ notes) {
+            String^ assigned = code;
             MySqlConnection^ conn = nullptr;
             try {
                 conn = Db::GetConnection();
-
-                // Check duplicate code
-                MySqlCommand^ checkCmd = gcnew MySqlCommand("SELECT COUNT(*) FROM tools WHERE tool_code=@code", conn);
-                checkCmd->Parameters->AddWithValue("@code", code->Trim());
-                int count = Convert::ToInt32(checkCmd->ExecuteScalar());
-                if (count > 0) return "A tool with code '" + code + "' already exists.";
-
                 String^ insertQuery = "INSERT INTO tools (tool_code, name, category, daily_rate, deposit, status, brand, model_serial, notes) "
                                       "VALUES (@code, @name, @cat, @rate, @dep, @stat, @brand, @model, @notes)";
                 MySqlCommand^ cmd = gcnew MySqlCommand(insertQuery, conn);
-                cmd->Parameters->AddWithValue("@code", code->Trim());
-                cmd->Parameters->AddWithValue("@name", name->Trim());
+                cmd->Parameters->AddWithValue("@code", code ? code->Trim() : "");
+                cmd->Parameters->AddWithValue("@name", name ? name->Trim() : "");
                 cmd->Parameters->AddWithValue("@cat", category);
                 cmd->Parameters->AddWithValue("@rate", dailyRate);
                 cmd->Parameters->AddWithValue("@dep", deposit);

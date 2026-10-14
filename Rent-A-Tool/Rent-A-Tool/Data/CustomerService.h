@@ -1,5 +1,6 @@
 #pragma once
 #include "Dbconfig.h"
+#include "CodeGenerator.h"
 
 using namespace System;
 using namespace System::Data;
@@ -66,24 +67,61 @@ namespace Data {
             return table;
         }
 
-        // Add a customer
-        static String^ AddCustomer(String^ code, String^ name, String^ nic, String^ phone,
+        // Add a customer with auto-generated code and retry mechanism on concurrency conflict (MySQL 1062).
+        // Returns empty string on success and outputs assignedCode; returns error message on failure.
+        static String^ AddCustomer([Runtime::InteropServices::Out] String^% assignedCode,
+                                   String^ name, String^ nic, String^ phone,
                                    String^ email, String^ address, bool isBlacklisted) {
+            const int maxRetries = 5;
+            for (int attempt = 1; attempt <= maxRetries; attempt++) {
+                MySqlConnection^ conn = nullptr;
+                try {
+                    conn = Db::GetConnection();
+                    String^ code = CodeGenerator::GetNextCustomerCode(conn);
+                    assignedCode = code;
+
+                    String^ insertQuery = "INSERT INTO customers (cust_code, name, nic, phone, email, address, is_blacklisted) "
+                                          "VALUES (@code, @name, @nic, @phone, @email, @address, @bl)";
+                    MySqlCommand^ cmd = gcnew MySqlCommand(insertQuery, conn);
+                    cmd->Parameters->AddWithValue("@code", code);
+                    cmd->Parameters->AddWithValue("@name", name ? name->Trim() : "");
+                    cmd->Parameters->AddWithValue("@nic", nic ? nic->Trim() : "");
+                    cmd->Parameters->AddWithValue("@phone", phone ? phone->Trim() : "");
+                    cmd->Parameters->AddWithValue("@email", email ? email->Trim() : "");
+                    cmd->Parameters->AddWithValue("@address", address ? address->Trim() : "");
+                    cmd->Parameters->AddWithValue("@bl", isBlacklisted ? 1 : 0);
+
+                    cmd->ExecuteNonQuery();
+                    return "";
+                }
+                catch (MySqlException^ sqlEx) {
+                    if (sqlEx->Number == 1062 && attempt < maxRetries) {
+                        System::Threading::Thread::Sleep(50 * attempt);
+                        continue;
+                    }
+                    return "DB Error: " + sqlEx->Message;
+                }
+                catch (Exception^ ex) {
+                    return "DB Error: " + ex->Message;
+                }
+                finally {
+                    if (conn != nullptr) conn->Close();
+                }
+            }
+            return "Failed to assign a unique customer code after multiple attempts. Please try again.";
+        }
+
+        // Overload for manual or legacy customer code specification
+        static String^ AddCustomerWithCode(String^ code, String^ name, String^ nic, String^ phone,
+                                           String^ email, String^ address, bool isBlacklisted) {
             MySqlConnection^ conn = nullptr;
             try {
                 conn = Db::GetConnection();
-
-                // Check duplicate customer code
-                MySqlCommand^ checkCmd = gcnew MySqlCommand("SELECT COUNT(*) FROM customers WHERE cust_code=@code", conn);
-                checkCmd->Parameters->AddWithValue("@code", code->Trim());
-                int count = Convert::ToInt32(checkCmd->ExecuteScalar());
-                if (count > 0) return "A customer with code '" + code + "' already exists.";
-
                 String^ insertQuery = "INSERT INTO customers (cust_code, name, nic, phone, email, address, is_blacklisted) "
                                       "VALUES (@code, @name, @nic, @phone, @email, @address, @bl)";
                 MySqlCommand^ cmd = gcnew MySqlCommand(insertQuery, conn);
-                cmd->Parameters->AddWithValue("@code", code->Trim());
-                cmd->Parameters->AddWithValue("@name", name->Trim());
+                cmd->Parameters->AddWithValue("@code", code ? code->Trim() : "");
+                cmd->Parameters->AddWithValue("@name", name ? name->Trim() : "");
                 cmd->Parameters->AddWithValue("@nic", nic ? nic->Trim() : "");
                 cmd->Parameters->AddWithValue("@phone", phone ? phone->Trim() : "");
                 cmd->Parameters->AddWithValue("@email", email ? email->Trim() : "");

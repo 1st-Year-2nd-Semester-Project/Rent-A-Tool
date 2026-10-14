@@ -9,8 +9,7 @@ USE rent_a_tool;
 -- ============================================
 -- 1. Users Table (Authentication & User Mgmt)
 -- ============================================
-DROP TABLE IF EXISTS users;
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
     id         INT AUTO_INCREMENT PRIMARY KEY,
     username   VARCHAR(50)  NOT NULL UNIQUE,
     password   VARCHAR(100) NOT NULL,   -- Salted SHA-256, format: "<saltHex>$<hashHex>" (see Data/PasswordHash.h)
@@ -30,8 +29,7 @@ ON DUPLICATE KEY UPDATE password=VALUES(password), role=VALUES(role), full_name=
 -- ============================================
 -- 2. Tools Table (Inventory)
 -- ============================================
-DROP TABLE IF EXISTS tools;
-CREATE TABLE tools (
+CREATE TABLE IF NOT EXISTS tools (
     id               INT AUTO_INCREMENT PRIMARY KEY,
     tool_code        VARCHAR(20)   NOT NULL UNIQUE,
     name             VARCHAR(100)  NOT NULL,
@@ -58,8 +56,7 @@ ON DUPLICATE KEY UPDATE name=VALUES(name), category=VALUES(category), daily_rate
 -- ============================================
 -- 3. Customers Table
 -- ============================================
-DROP TABLE IF EXISTS customers;
-CREATE TABLE customers (
+CREATE TABLE IF NOT EXISTS customers (
     id             INT AUTO_INCREMENT PRIMARY KEY,
     cust_code      VARCHAR(20)  NOT NULL UNIQUE,
     name           VARCHAR(100) NOT NULL,
@@ -80,8 +77,7 @@ ON DUPLICATE KEY UPDATE name=VALUES(name), nic=VALUES(nic), phone=VALUES(phone),
 -- ============================================
 -- 4. Rentals Table
 -- ============================================
-DROP TABLE IF EXISTS rentals;
-CREATE TABLE rentals (
+CREATE TABLE IF NOT EXISTS rentals (
     id           INT AUTO_INCREMENT PRIMARY KEY,
     rental_code  VARCHAR(20)   NOT NULL UNIQUE,
     customer_id  INT           NOT NULL,
@@ -108,8 +104,7 @@ ON DUPLICATE KEY UPDATE return_date=VALUES(return_date), deposit_paid=VALUES(dep
 -- ============================================
 -- 5. Settings Table
 -- ============================================
-DROP TABLE IF EXISTS settings;
-CREATE TABLE settings (
+CREATE TABLE IF NOT EXISTS settings (
     `key`   VARCHAR(50)  PRIMARY KEY,
     `value` VARCHAR(255) NOT NULL
 );
